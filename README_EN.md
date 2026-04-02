@@ -315,6 +315,17 @@ This `1.0.1`update primarily focuses on the enhancement of two professional edit
 <img width="430" height="599" alt="image" src="https://github.com/user-attachments/assets/64221294-63da-4aff-aeec-69250f0b6650" />
 
 
-- **Encryption Logic Intelligent Analysis (Professional Edition)**: Located to the right of the AI Analysis button. The model combines clues from the current request's URL, parameters, headers, body, and response, along with function names, field names, and submission flows from JS/HTML on the same page, to help determine if encoding, hashing, signing, or hybrid encryption is implemented on the front-end. It is suitable for reviewing changes in signature chains before and after packet modification.
+- **Encryption Logic Intelligent Analysis (Professional Edition)**: Located to the right of the AI Analysis button. The model combines clues from the current request's URL, parameters, headers, body, and response, along with function names, field names, and submission flows from JS/HTML on the same page, to help determine if encoding, hashing, signing, or hybrid encryption is implemented on the front-end. It is suitable for reviewing changes in signature chains before and after packet modification.（In a nutshell: Let AI help you guess encryption, encoding, or signature logic, saving you the time of manual reverse engineering.）
+
+  <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/f6a6e38e-21c2-4531-b6a9-56234e43e043" />
+
+  <img width="1531" height="929" alt="image" src="https://github.com/user-attachments/assets/718d6ad7-1f99-4c99-b3c7-108afdd48ac0" />
+
+  <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/213b5822-bcf7-404c-baa7-69111dd1116b" />
+
+  <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/b762a1cc-6054-4d17-9fa1-0adec61f35b8" />
+
+  <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/e255ea62-6817-4ad3-815e-c1f7b40c77e2" />
+
   
 - **Stability Improvements**: Concurrently strengthened details related to request header completion and proxy release in the standard capture mode, reducing display discrepancies and the probability of conflicts when switching between standard mode, intercept mode, and proxy settings.
