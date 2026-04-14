@@ -277,16 +277,8 @@ After install, open the **in-product User Manual** for full tutorials, **Chrome 
 
 New users can first use the **full Pro trial for 30 minutes**. When the trial ends without activation, the product automatically falls back to **Community**. If the experience fits your workflow, you can obtain a Pro activation code through the following methods:
 
-+ **Method One:** Purchase the activation code on [Xianyu (Idle Fish)]
-  
-1.[Purchase Link 1](https://m.tb.cn/h.igkesa4?tk=dNrvUzjjrXt)
+**Visit [the activation code tutorialto](https://www.yuque.com/u12459488/bzqpay/udkx5qy1x6guinz0?singleDoc) get your activation code for free for a limited time.**
 
-2.[Purchase Link 2](https://m.tb.cn/h.ihX27bl?tk=Qfan5Zb5B82)
-
-+ **Method Two:​** Join the [Hx0 Team] Knowledge Planet. The first 100 members can obtain a one-year free authorization activation code (the first 10 members can get a permanent authorization), and other members of the planet can enjoy a 20% discount on purchases.
-<img width="280" alt="image" src="https://github.com/user-attachments/assets/7e786e1b-815c-46d5-8b7d-252b7eca5d79" />
-
-+ **Method Three:​** Overseas users, please contact the official email (hx0studio@foxmail.com) to purchase an activation code.
 ---
 
 ## 11. Contact & feedback
@@ -332,3 +324,7 @@ This `1.0.1`update primarily focuses on the enhancement of two professional edit
 - **Sidebar and Batch Page Optimization**: Sidebar message display and interaction optimization (consistent across both ends), overall layout optimization of batch pages.  
 - **Enhanced In-Page Replay and In-Page Fuzz Functions**: Updated to support form POST (Request Header Content-Type: application/x-www-form-urlencoded).
 - **Replay Workspace Optimized**:  Encoding/decoding functions now support response body processing, added scope differentiation, and unified undo/redo records for both requests and responses.
+- **“All domains” filter**: Fixed incorrect list or filter behavior when the host filter is set to “All domains” and it interacts with the workbench scope (current tab vs all traffic).
+- **Capture / intercept list**: Column widths can be adjusted by dragging the vertical handles on the right side of each header cell; widths are saved locally and restored the next time you open the panel.
+- **302 / redirect capture**: Improved how redirects (e.g. 302) are recorded and deduplicated across webRequest and passive CDP paths, reducing duplicate entries and missed captures caused by inconsistent typing.
+- **Three-state header sorting**: The capture / intercept table headers cycle default → ascending → descending → default. The Fuzz results table uses the same pattern; clearing sort restores the original row order by sequence; clicking a column-width handle does not trigger sorting.
