@@ -114,34 +114,35 @@ Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **
 
 ### Feature Comparison Table
 
-| Feature | Community Edition | Pro Edition | Notes |
-| --- | --- | --- | --- |
-| Capture toggle, target domain / IP, capture types / suffixes | ✅ | ✅ | Community edition already covers basic capture and traffic noise reduction |
-| History list, current page / all packets switch, Host / Method / Status filters | ✅ | ✅ | Helps quickly locate target requests |
-| Pretty / Raw / Hex / Render, copy / single export / click title to copy URL | ✅ | ✅ | Community edition already supports core detail inspection |
-| Built-in sensitive data detection and aggregated view | ✅ | ✅ | Supports viewing hits from built-in rules |
-| Standard replay | ✅ | ✅ | Community edition keeps the full basic verification loop |
-| Floating ball, save as new tab, language switch | ✅ | ✅ | Daily efficiency entry points remain available in Community edition |
-| **Basic encode / decode**: MD5, SM3, SHA-1, SHA-256, ROT13, Base32 / Base64 / URL / Hex encode-decode | ✅ | ✅ | Directly available in Community edition |
-| **Advanced encode / decode**: SHA-512, HMAC-SHA256, Base64URL, Unicode, HTML, JSON, JWT, timestamp conversion | ❌ | ✅ | For deeper validation, signing, and analysis scenarios |
-| **Crypto Logic Intelligent Analysis (new in 1.0.1)** | ❌ | ✅ | Uses current request context plus same-page JS / HTML clues to help infer encoding, hashing, signing, or mixed encryption chains |
-| Intercept toggle, edit / release / release all / drop all | ❌ | ✅ | Represents the Pro ability to actively control traffic |
-| In-page replay, in-page Fuzz, Micro Fuzz, injection-point marker | ❌ | ✅ | Suitable for dynamic pages, WAF scenarios, and high-frequency parameter probing |
-| Switch request method, target domain override | ❌ | ✅ | Useful for multi-environment debugging and verification |
-| **Smart Proxy Dispatcher (new in 1.0.1)** | ❌ | ✅ | Located below `Capture types / suffixes` in Basic Settings. Routes matched requests to Burp, Yakit, or another upstream proxy by site rule, while unmatched traffic keeps its original path. Firefox additionally supports `Compatibility Mode / Takeover Mode` |
-| AI analysis settings, AI result view, AI analysis, AI case generation | ❌ | ✅ | All AI capabilities are grouped under Pro |
-| Dark-link and static threat detection, report download, trusted domain / TLD list | ❌ | ✅ | Rule-based scanning, reporting, and false-positive reduction |
-| Full deep search, custom regex / keyword libraries | ❌ | ✅ | Deep search and rule-extension capabilities |
-| Batch export, batch delete, batch replay, batch AI analysis, batch dark-link scan | ❌ | ✅ | Batch workbench features are all part of Pro |
+| Feature                                                                                                           | Community Edition | Professional Edition | Description                                                                                                                                                                                                                                                                                                            |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Packet Capture Toggle, Target Domain / IP, Capture Type / Suffix Filters                                          | ✅                 | ✅                    | The Community Edition is sufficient for basic traffic capture and noise reduction                                                                                                                                                                                                                                      |
+| History List, Current Page / All Packets Switch, Host / Method / Status Code Filters                              | ✅                 | ✅                    | Quickly locate and filter requests                                                                                                                                                                                                                                                                                     |
+| Pretty / Raw / Hex / Render Views, Copy / Single Export / Copy URL by Title                                       | ✅                 | ✅                    | Full packet detail auditing is available in the Community Edition                                                                                                                                                                                                                                                      |
+| Built-in Sensitive Information Detection & Aggregated Display                                                     | ✅                 | ✅                    | Supports built-in rule-based detection                                                                                                                                                                                                                                                                                 |
+| Standard Replay                                                                                                   | ✅                 | ✅                    | The Community Edition retains the complete basic replay workflow                                                                                                                                                                                                                                                       |
+| **Interception Toggle, Modify / Forward / Forward All / Drop All (Released to Community in v1.0.2)**              | ✅                 | ✅                    | Represents advanced active traffic control capabilities                                                                                                                                                                                                                                                                |
+| Floating Action Button, Open as New Tab, Language Switching                                                       | ✅                 | ✅                    | Daily productivity features remain available in the Community Edition                                                                                                                                                                                                                                                  |
+| **Basic Encoding & Decoding**: MD5, SM3, SHA-1, SHA-256, ROT13, Base32 / Base64 / URL / Hex                       | ✅                 | ✅                    | Directly available in the Community Edition                                                                                                                                                                                                                                                                            |
+| **Advanced Encoding & Decoding**: SHA-512, HMAC-SHA256, Base64URL, Unicode, HTML, JSON, JWT, Timestamp Conversion | ❌                 | ✅                    | Designed for advanced verification, signing, and analysis workflows                                                                                                                                                                                                                                                    |
+| **Intelligent Encryption Logic Analysis (Added in v1.0.1)**                                                       | ❌                 | ✅                    | Combines request context with related JS / HTML clues to help identify encoding, hashing, signatures, or hybrid encryption workflows                                                                                                                                                                                   |
+| In-Page Replay, In-Page Fuzzing, Micro Fuzzing, Injection Point Marking                                           | ❌                 | ✅                    | Suitable for dynamic pages, WAF bypass testing, and high-frequency parameter probing                                                                                                                                                                                                                                   |
+| Switch HTTP Method, Switch Target Domain                                                                          | ❌                 | ✅                    | Useful for multi-environment debugging and verification                                                                                                                                                                                                                                                                |
+| **Intelligent Proxy Router (Added in v1.0.1)**                                                                    | ❌                 | ✅                    | Located below “Capture Type / Suffix” in Settings. Requests matching site rules can be automatically forwarded to upstream proxies such as Burp Suite or Yakit, while unmatched traffic continues using the original network path. The Firefox version additionally supports “Compatibility Mode” and “Takeover Mode”. |
+| AI Analysis Settings, AI Result Analysis, AI Analysis, AI Test Case Generation                                    | ❌                 | ✅                    | All AI-related capabilities are included in the Professional Edition                                                                                                                                                                                                                                                   |
+| **AI Tasks (Added in v1.0.2)**                                                                                    | ❌                 | ✅                    | Allows AI to automatically analyze the current target, generate testing plans, coordinate replay/fuzz validation, and collect evidence. Supports both Intelligent Penetration Mode and CTF Capture-the-Flag Mode.                                                                                                      |
+| Hidden Link & Static Threat Detection, Report Export, High-Reputation Top-Level Domains                           | ❌                 | ✅                    | Rule scanning, reporting, and advanced noise-reduction capabilities                                                                                                                                                                                                                                                    |
+| Full Deep Search, Custom Regex / Keyword Libraries                                                                | ❌                 | ✅                    | Advanced search and rule extension capabilities                                                                                                                                                                                                                                                                        |
+| Batch Export, Batch Delete, Batch Replay, Batch AI Analysis, Batch Hidden-Link Detection                          | ❌                 | ✅                    | Unified batch-processing workflow exclusive to the Professional Edition                                                                                                                                                                                                                                                |
 
-> Version `1.0.1` mainly adds two new Pro features: `Smart Proxy Dispatcher` and `Crypto Logic Intelligent Analysis`.
+> Version `1.0.1` mainly introduced two Professional Edition features: `Intelligent Proxy Router` and `Intelligent Encryption Logic Analysis`.
+> Version `1.0.2` mainly introduced one new Professional Edition feature: `AI Tasks`, while also releasing one previously Professional-only capability to the Community Edition: `Interception Toggle, Modify / Forward / Forward All / Drop All`.
 
+### Understanding the Edition Boundaries in One Sentence
 
-### Practical boundary
-
-- **Community is for** viewing, understanding, first-pass validation, and basic encode/decode work.
-- **Pro is for** active traffic control, page-context execution, mutation testing, AI-assisted review, dark-link workflows, and batch output.
-- If your goal is to confirm the product value first, Community already keeps the most important daily path available.
+- **Community Edition focuses on:** packet inspection, request understanding, basic verification, essential encoding/decoding, and traffic control.
+- **Professional Edition focuses on:** page-context validation, mutation testing, AI analysis, AI tasks, hidden-link scanning, and large-scale batch workflows.
+- If you simply want to evaluate the product’s core value first, the Community Edition is already sufficient for the most important primary workflow.
 
 ---
 
@@ -328,3 +329,50 @@ This `1.0.1`update primarily focuses on the enhancement of two professional edit
 - **Capture / intercept list**: Column widths can be adjusted by dragging the vertical handles on the right side of each header cell; widths are saved locally and restored the next time you open the panel.
 - **302 / redirect capture**: Improved how redirects (e.g. 302) are recorded and deduplicated across webRequest and passive CDP paths, reducing duplicate entries and missed captures caused by inconsistent typing.
 - **Three-state header sorting**: The capture / intercept table headers cycle default → ascending → descending → default. The Fuzz results table uses the same pattern; clearing sort restores the original row order by sequence; clicking a column-width handle does not trigger sorting.
+
+## 14. 1.0.2 Changelog
+
+This `v1.0.2` release focuses on major upgrades to replay capabilities, AI-powered automated testing workflows, and Community Edition feature availability, further improving the efficiency of Web security testing, CTF practice, and daily traffic analysis.
+
+<img width="1055" height="1491" alt="v1 0 2海报-en" src="https://github.com/user-attachments/assets/98ec2d5e-e410-40c3-92fd-088a87f2d467" />
+
+
+## Main Updates
+
+### 1. Replay Requests Now Support Critical Header Overrides
+
+The Replay Workbench has been enhanced to better handle special request headers. You can now edit and apply the following fields directly inside Raw requests:
+
+- `Referer: https://xxx.com`
+- `User-Agent: xxx`
+- `Origin: https://xxx.com`
+- `X-Forwarded-For: x.x.x.x`
+
+This feature is useful for common scenarios such as referer validation bypass, User-Agent verification, forged origins, and CTF Referer bypass techniques. Users can directly modify request headers in Raw mode and replay them, with behavior designed to closely resemble the replay experience of Burp Suite.
+
+### 2. Added AI Task Module
+
+A brand-new standalone AI Task Module has been introduced to automate the workflow of traffic capture, request analysis, vulnerability testing, and report generation.
+
+The AI Task Module currently supports two modes:
+
+- **Intelligent Penetration Mode**
+  Designed for standard Web security testing scenarios. Based on the target site, historical traffic, and page context, the AI can automatically perform information gathering, entry-point analysis, attack modeling, vulnerability probing, and result evaluation.
+  
+<img width="3912" height="2070" alt="a7d48640ee2e4fed8032b4cf48229b23" src="https://github.com/user-attachments/assets/707007d2-7dc9-48c2-8981-8e7732219690" />
+
+- **CTF Capture-the-Flag Mode**
+  Designed for Web-based CTF challenges. The AI automatically plans solving strategies around challenge entry points, hints, response behaviors, and suspicious parameters. It attempts to construct exploitation requests and generates a post-analysis report after successfully capturing the Flag.
+
+  <img width="3912" height="2070" alt="27e66bc42b733225d16ceccd9e78eed7" src="https://github.com/user-attachments/assets/a00c9dc2-8203-4a2a-aadd-ee32971d0138" />
+
+The AI Task Module records the entire execution process, including request evidence, key payloads, Flag hits, and final analysis reports, making it easier to reproduce results and organize Writeups later.
+
+### 3. Interception Mode Is Now Available in the Community Edition
+
+Interception Mode is now officially available for Community Edition users.
+
+Community Edition users can now pause, inspect, modify, and forward requests through Interception Mode, making manual testing, parameter debugging, and request verification much more convenient.
+
+<img width="1956" height="1035" alt="image" src="https://github.com/user-attachments/assets/6154a019-fbbe-45d6-bbbf-3b68227db08b" />
+
