@@ -4,17 +4,17 @@
 【[中文](./README.md) / English】
 
 
-![](https://img.shields.io/badge/Network-No_system_proxy-success)  ![](https://img.shields.io/badge/UI-Sidebar_integrated-5865F2)  ![](https://img.shields.io/badge/Session-Same_origin_XHR_Fetch-00A86B)  ![](https://img.shields.io/badge/Capture-Intercept-4285F4)  ![](https://img.shields.io/badge/Capability-Traffic_replay-blue)  ![](https://img.shields.io/badge/Capability-Micro_Fuzz-8B5CF6)  ![](https://img.shields.io/badge/Capability-Sensitive_data-FF69B4)  ![](https://img.shields.io/badge/Capability-Dark_link_scan-333333)  ![](https://img.shields.io/badge/AI-BYOK_optional-orange)
+![](https://img.shields.io/badge/Network-No_system_proxy-success)  ![](https://img.shields.io/badge/UI-Sidebar_integrated-5865F2)  ![](https://img.shields.io/badge/Session-Same_origin_XHR_Fetch_WS-00A86B)  ![](https://img.shields.io/badge/Capture-Intercept-4285F4)  ![](https://img.shields.io/badge/Capability-Traffic_replay-blue)  ![](https://img.shields.io/badge/Capability-Micro_Fuzz-8B5CF6)  ![](https://img.shields.io/badge/Capability-Sensitive_data-FF69B4)  ![](https://img.shields.io/badge/Capability-Dark_link_scan-333333)  ![](https://img.shields.io/badge/AI-BYOK_optional-orange)
 
 ## 1. What it is
-**Skip the proxy hassle—truly ready out of the box.** Hx0 HawkEye is a native browser extension (Chrome / Firefox and mainstream Chromium) that gives you a full **capture, intercept, replay, micro-Fuzz, and AI-assisted auditing** loop directly in the sidebar.
+**Skip the proxy hassle—truly ready out of the box.** Hx0 HawkEye is a native browser extension (Chrome / Firefox and mainstream Chromium) that gives you a full **capture, intercept (HTTP + WebSocket frames), replay, micro-Fuzz, and AI-assisted auditing** loop directly in the sidebar.
 
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774276035508-0a9af8e0-4a11-4c83-9fe7-8ea82484d093.png)
 
 #### ⚡ Core advantage: why not a classic proxy?
 + **Zero environment overhead**: no Burp Suite required, no system proxy, no root trust or Java setup.
-+ **Session fidelity**: sees real page **XHR / Fetch** traffic with the **same origin login state** as the active tab—no more “proxy ate my cookies” or constant re-auth pain.
++ **Session fidelity**: sees real page **XHR / Fetch / WebSocket** traffic with the **same origin login state** as the active tab—no more “proxy ate my cookies” or constant re-auth pain.
 + **Works immediately after install**: ideal for day-to-day dev/debug, API triage, and **authorized** first-pass security review.
 
 <!-- 这是一张图片，ocr 内容为： -->
@@ -60,14 +60,14 @@ Bring your own model API (BYOK) and embed AI into the sidebar workflow:
 ---
 
 ## 2. Why we built it
-With **SPAs and heavy XHR/Fetch**, engineers constantly switch between “real browser session” and “capture / tamper / replay.” Classic proxies (e.g. Burp) are powerful but need system proxy and trust, and **cookies / login state** can diverge from the tab; lightweight toolbar extensions often lack **durable history, structured detail, and a closed-loop workbench**.
+With **SPAs, heavy XHR/Fetch, and WebSocket**, engineers constantly switch between “real browser session” and “capture / tamper / replay.” Classic proxies (e.g. Burp) are powerful but need system proxy and trust, and **cookies / login state** can diverge from the tab; lightweight toolbar extensions often lack **durable history, structured detail, and a closed-loop workbench**.
 
-**Hx0 HawkEye** aims to keep **no mandatory system proxy** while folding **capture → filter → detail audit → intercept → replay → micro Fuzz → sensitive & dark-link checks → optional AI** into **one sidebar hub**, cutting context-switch cost for dev triage and **authorized** API review.
+**Hx0 HawkEye** aims to keep **no mandatory system proxy** while folding **capture (HTTP / WebSocket) → filter → detail audit → intercept → replay → micro Fuzz → sensitive & dark-link checks → optional AI** into **one sidebar hub**, cutting context-switch cost for dev triage and **authorized** API review.
 
 ---
 
 ## 3. Features
-Core flow: **Capture** → **Filter** → **Detail** → **Replay** (optional **AI test cases**) → **Micro Fuzz** (optional **AI payloads**) → **Dark-link / AI packet analysis** (including **batch AI / dark-link workbenches** after multi-select).
+Core flow: **Capture** (optional **WebSocket**) → **Filter** → **Detail** → **Replay** (HTTP / **WebSocket frames**; optional **AI test cases**) → **Micro Fuzz** (HTTP / **WS**; optional **AI payloads**) → **Dark-link / AI packet analysis** (including **batch AI / dark-link workbenches** after multi-select) → **AI Task Console** (Pro, multi-stage automation).
 
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774276082646-8aad5093-4c32-4595-9c6b-a5378a0f564d.png)
@@ -86,15 +86,15 @@ Core flow: **Capture** → **Filter** → **Detail** → **Replay** (optional **
 
 | Module | Description |
 | --- | --- |
-| **Capture** | Hooks `fetch` / XHR in the page world; records requests and responses (including bodies, with size guards). Noise control via **host/IP wildcards**, **resource types** (XHR/Fetch, JSON, HTML, JS, binary, etc.), and **custom suffixes**. |
+| **Capture** | Hooks `fetch` / XHR in the page world; records requests and responses (including bodies, with size guards). Noise control via **host/IP wildcards**, **resource types** (XHR/Fetch, **WebSocket**, JSON, HTML, JS, binary, etc.), and **custom suffixes**. With **WebSocket** enabled, records handshakes (e.g. `GET 101`) and frames (`WS`, `OUT` / `IN`). |
 | **History** | **IndexedDB** persistence; filters by type, host, method, status, **sensitive hits**, search; default scope **current page** or **all packets**. |
-| **Intercept** | Queued hold; **edit, forward, drop** in the sidebar; bulk actions; shares target rules with capture. |
+| **Intercept** | Queued hold for **HTTP**; **WebSocket** outbound/inbound **frames** can enter a **frame** queue when rules match; **edit, forward, drop** in the sidebar; bulk actions; shares target rules with capture. |
 | **Detail audit** | **Pretty / Raw / Hex**; response **Render** (sandbox); **sensitive** aggregation & highlights; copy full URL from title; download split raw **.txt**; **Burp-style** export. |
-| **Replay** | Edit raw traffic and replay; **in-page replay** (some WAF challenge pages); undo/redo; host switch; **AI test cases** from current request/options (requires AI config). |
+| **Replay** | Edit raw traffic and replay; **WebSocket frame replay** shares the same workbench and sends via a still-**OPEN** page socket (not a fresh handshake); **in-page replay** (some WAF challenge pages); undo/redo; host switch; **AI test cases** from current request/options (requires AI config). |
 | **Encode / hash** | MD5, SM3, SHA, ROT13, Base64, URL, Hex, etc.; scope: **selection / param values only / full URL line**. |
-| **Micro Fuzz** | `§...§` injection points; **Start Fuzz** and **in-page Fuzz**; baseline diff; **AI payloads** from model context; pair with Render, sensitive, and **AI result** views. |
+| **Micro Fuzz** | `§...§` injection points; **Start Fuzz** and **in-page Fuzz** (HTTP/DOM); **WebSocket micro Fuzz** sends serially and uses the **next inbound frame** as the response (needs an active page socket); baseline diff; **AI payloads** from model context; pair with Render, sensitive, and **AI result** views. |
 | **Dark link & static threats** | Rule scan on static HTML, etc.; **high-trust TLD** allowlist; downloadable reports; **AI packet/semantic** interpretation; **batch dark-link** workbench for **horizontal compare** and **third-party script clues** (supply-chain first pass). |
-| **AI (optional)** | **Single packet**: interpret **request + response**, anomalies and risk notes. **Batch**: multi-select history, dedicated tab with **per-row highlights + summary** for multi-endpoint evidence. Models: OpenAI, DeepSeek, local LM Studio, **custom base URL**; **OpenAI-compatible** and paths such as **Baidu Qianfan coding plans**; traffic goes **only to your configured endpoint** (BYOK). |
+| **AI (optional)** | **Single packet**: interpret **request + response**, anomalies and risk notes. **Batch**: multi-select history, dedicated tab with **per-row highlights + summary** for multi-endpoint evidence. **AI Task Console**: multi-stage automation (penetration / CTF) in the sidebar, with **in-task supplementary hints** queued into later turns. Models: OpenAI, DeepSeek, local LM Studio, **custom base URL**; **OpenAI-compatible** and paths such as **Baidu Qianfan coding plans**; traffic goes **only to your configured endpoint** (BYOK). |
 | **Sensitive matching** | Built-in rules (IDs, phones, cards, email, Shiro/JWT/Swagger/UEditor/Druid fingerprints, IP, domain, CTF flags, etc.) plus **custom regex** and **keyword lists**; import/export, clear-all. |
 | **Batch** | Bulk export/delete, **batch AI**, **batch dark-link** (separate tab), batch replay, etc. |
 | **i18n** | UI **中文 / English**. |
@@ -108,8 +108,8 @@ Core flow: **Capture** → **Filter** → **Detail** → **Replay** (optional **
 
 Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **30-minute first-install Pro trial**.
 
-- **Community** keeps the essential loop: **capture → inspect → normal replay → basic encode/decode**.
-- **Pro** unlocks **active traffic control, in-page replay / fuzzing, AI, dark-link review, batch workbenches, and advanced encode/decode tools**.
+- **Community** keeps the essential loop: **capture (including WebSocket) → inspect → standard replay (including WebSocket frames) → basic encode/decode**, plus **intercept** (**HTTP** and matching **WebSocket frames**).
+- **Pro** unlocks **in-page replay / fuzzing, HTTP/WS micro Fuzz, AI, AI Task Console, dark-link review, batch workbenches, and advanced encode/decode tools**.
 - **First-install trial** grants **full Pro capability for 30 minutes**. If no activation code is applied after the trial, the product **automatically falls back to Community**.
 
 ### Feature Comparison Table
@@ -120,27 +120,27 @@ Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **
 | History List, Current Page / All Packets Switch, Host / Method / Status Code Filters                              | ✅                 | ✅                    | Quickly locate and filter requests                                                                                                                                                                                                                                                                                     |
 | Pretty / Raw / Hex / Render Views, Copy / Single Export / Copy URL by Title                                       | ✅                 | ✅                    | Full packet detail auditing is available in the Community Edition                                                                                                                                                                                                                                                      |
 | Built-in Sensitive Information Detection & Aggregated Display                                                     | ✅                 | ✅                    | Supports built-in rule-based detection                                                                                                                                                                                                                                                                                 |
-| Standard Replay                                                                                                   | ✅                 | ✅                    | The Community Edition retains the complete basic replay workflow                                                                                                                                                                                                                                                       |
-| **Interception Toggle, Modify / Forward / Forward All / Drop All (Released to Community in v1.0.2)**              | ✅                 | ✅                    | Represents advanced active traffic control capabilities                                                                                                                                                                                                                                                                |
+| Standard Replay                                                                                                   | ✅                 | ✅                    | Full basic replay workflow; includes **WebSocket frame replay** via the shared workbench (requires an `OPEN` socket in the page)                                                                                                                                                                                                                                                      |
+| **Interception Toggle, Modify / Forward / Forward All / Drop All (Community since v1.0.2)**                      | ✅                 | ✅                    | Queue-based intercept for **HTTP** and **WebSocket frames** when host rules match                                                                                                                                                                                                                                                                                                   |
 | Floating Action Button, Open as New Tab, Language Switching                                                       | ✅                 | ✅                    | Daily productivity features remain available in the Community Edition                                                                                                                                                                                                                                                  |
 | **Basic Encoding & Decoding**: MD5, SM3, SHA-1, SHA-256, ROT13, Base32 / Base64 / URL / Hex                       | ✅                 | ✅                    | Directly available in the Community Edition                                                                                                                                                                                                                                                                            |
 | **Advanced Encoding & Decoding**: SHA-512, HMAC-SHA256, Base64URL, Unicode, HTML, JSON, JWT, Timestamp Conversion | ❌                 | ✅                    | Designed for advanced verification, signing, and analysis workflows                                                                                                                                                                                                                                                    |
 | **Intelligent Encryption Logic Analysis (Added in v1.0.1)**                                                       | ❌                 | ✅                    | Combines request context with related JS / HTML clues to help identify encoding, hashing, signatures, or hybrid encryption workflows                                                                                                                                                                                   |
-| In-Page Replay, In-Page Fuzzing, Micro Fuzzing, Injection Point Marking                                           | ❌                 | ✅                    | Suitable for dynamic pages, WAF bypass testing, and high-frequency parameter probing                                                                                                                                                                                                                                   |
+| In-Page Replay, In-Page Fuzzing, **HTTP / WebSocket Micro Fuzz**, Injection Point Marking                                           | ❌                 | ✅                    | Suitable for dynamic pages, WAF testing, real-time channels, and high-frequency parameter probing                                                                                                                                                                                                                                   |
 | Switch HTTP Method, Switch Target Domain                                                                          | ❌                 | ✅                    | Useful for multi-environment debugging and verification                                                                                                                                                                                                                                                                |
 | **Intelligent Proxy Router (Added in v1.0.1)**                                                                    | ❌                 | ✅                    | Located below “Capture Type / Suffix” in Settings. Requests matching site rules can be automatically forwarded to upstream proxies such as Burp Suite or Yakit, while unmatched traffic continues using the original network path. The Firefox version additionally supports “Compatibility Mode” and “Takeover Mode”. |
 | AI Analysis Settings, AI Result Analysis, AI Analysis, AI Test Case Generation                                    | ❌                 | ✅                    | All AI-related capabilities are included in the Professional Edition                                                                                                                                                                                                                                                   |
-| **AI Tasks (Added in v1.0.2)**                                                                                    | ❌                 | ✅                    | Allows AI to automatically analyze the current target, generate testing plans, coordinate replay/fuzz validation, and collect evidence. Supports both Intelligent Penetration Mode and CTF Capture-the-Flag Mode.                                                                                                      |
+| **AI Task Console (v1.0.2)**                                                                                    | ❌                 | ✅                    | Multi-stage automation: Intelligent Penetration and CTF modes; **in-task supplementary hints**; tighter orchestration and tool chains; ties history, replay, and evidence into reports                                                                                                                                |
 | Hidden Link & Static Threat Detection, Report Export, High-Reputation Top-Level Domains                           | ❌                 | ✅                    | Rule scanning, reporting, and advanced noise-reduction capabilities                                                                                                                                                                                                                                                    |
 | Full Deep Search, Custom Regex / Keyword Libraries                                                                | ❌                 | ✅                    | Advanced search and rule extension capabilities                                                                                                                                                                                                                                                                        |
 | Batch Export, Batch Delete, Batch Replay, Batch AI Analysis, Batch Hidden-Link Detection                          | ❌                 | ✅                    | Unified batch-processing workflow exclusive to the Professional Edition                                                                                                                                                                                                                                                |
 
-> Version `1.0.1` mainly introduced two Professional Edition features: `Intelligent Proxy Router` and `Intelligent Encryption Logic Analysis`.
-> Version `1.0.2` mainly introduced one new Professional Edition feature: `AI Tasks`, while also releasing one previously Professional-only capability to the Community Edition: `Interception Toggle, Modify / Forward / Forward All / Drop All`.
+> Version `1.0.1` mainly introduced two Professional Edition features: `Intelligent Proxy Router` and `Intelligent Encryption Logic Analysis`.  
+> Version `1.0.2` adds **WebSocket** (capture / frame replay / **WS micro Fuzz** / frame intercept), the **AI Task Console** (including **in-task hints** and multi-stage orchestration improvements), and moves **intercept** capabilities to the Community Edition.
 
 ### Understanding the Edition Boundaries in One Sentence
 
-- **Community Edition focuses on:** packet inspection, request understanding, basic verification, essential encoding/decoding, and traffic control.
+- **Community Edition focuses on:** packet inspection (**HTTP / WebSocket**), understanding, basic verification, essential encoding/decoding, and **intercept/tamper**.
 - **Professional Edition focuses on:** page-context validation, mutation testing, AI analysis, AI tasks, hidden-link scanning, and large-scale batch workflows.
 - If you simply want to evaluate the product’s core value first, the Community Edition is already sufficient for the most important primary workflow.
 
@@ -149,11 +149,11 @@ Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **
 ## 5. Product strengths
 1. **No proxy wall**: extension form factor—**no separate JVM, no dedicated proxy port**; configure targets and capture.  
 2. **Session match**: same **same-origin session** as the active tab; fewer **random logouts** on replay.  
-3. **One workbench**: history, intercept, replay, encoders, micro Fuzz, sensitive, dark-link, AI—**same sidebar**.  
-4. **Modern frontends**: **XHR/Fetch, FormData, multipart**; **Raw / Hex** within extension limits.  
+3. **One workbench**: history, intercept, replay, encoders, micro Fuzz, **WebSocket**, sensitive, dark-link, AI—**same sidebar**.  
+4. **Modern frontends**: **XHR/Fetch, WebSocket, FormData, multipart**; **Raw / Hex** within extension limits.  
 5. **Dynamic-page forensics**: **in-page replay / in-page Fuzz** runs in real DOM—helps with some **WAF / challenge** pages.  
 6. **Sensitive & dark-link built-in**: list badges, detail rollups, exportable reports for **dev self-check and authorized first pass**.  
-7. **AI in the loop**: **AI test cases**, **AI Fuzz payloads**, **single-packet AI**, **batch AI** (multi-packet summary for **supply-chain / dependency** hints), **dark-link rules + AI**—same sidebar, fewer tools.  
+7. **AI in the loop**: **AI Task Console** (multi-stage + **in-task hints**), **AI test cases**, **AI Fuzz payloads**, **single-packet AI**, **batch AI** (multi-packet summary for **supply-chain / dependency** hints), **dark-link rules + AI**—same sidebar, fewer tools.  
 8. **AI under your control (BYOK)**: you choose model and endpoint; **data only goes to your API**—cloud (DeepSeek, SiliconFlow, Qianfan, etc.) or **on-prem**.  
 9. **Light footprint**: runs with the browser vs heavy standalone proxy stacks.
 
@@ -167,11 +167,11 @@ Compared across shape, session, workflow, and specialties: **Hx0 HawkEye**, **Bu
 | **Shape & deploy** | Browser extension; **sidebar = main hub**; optional floating ball; **no JVM, no proxy port** | Java proxy + browser trust; suite, heavy | Desktop + engine/plugin ecosystem; security platform | Often toolbar mini-panel or single-request helpers |
 | **Day-to-day cost** | **Install and go**; no forced system proxy; EN/ZH UI, flow in sidebar | Proxy, root trust, Proxy/Repeater learning curve | Install + pipeline/workflow learning | Fast start, scattered features, weak “project” workspace |
 | **Browser session** | **Same tab origin**; fewer login gaps on replay | Via proxy; cookie juggling into Repeater common | Via proxy/engine; different from pure extension | Manual headers/cookies |
-| **Modern APIs (XHR/Fetch/SPA)** | Page-world fetch/XHR hooks; **multipart Raw/Hex** (within limits) | Full proxy visibility, very capable | Plugins cover complex cases | Often no history, no Hex/sensitive rollups |
-| **History & workbench** | **IndexedDB**; rich filters; detail/replay/fuzz/AI **in sidebar** | Proxy History very strong; more app switching | Platform records & collaboration | Usually **no or weak history** |
-| **System proxy / non-browser** | **Browser HTTP(S)** focus | Strong | Strong | Weak |
-| **Intercept** | Queued; per-item or bulk in sidebar | Proxy intercept, industry standard | MITM / workflows | Rare or URL-only |
-| **Replay / fuzz** | Replay + **micro Fuzz** + **in-page replay/fuzz (GET)** | Repeater / Intruder mature | Web Fuzzer, etc. | Rarely concurrent fuzz or structured diff |
+| **Modern APIs (XHR/Fetch/SPA + WS)** | Page-world fetch/XHR hooks; optional **WebSocket** capture / frame replay / frame tamper; **multipart Raw/Hex** (within limits) | Full proxy visibility, very capable | Plugins cover complex cases | Often no history, no Hex/sensitive rollups |
+| **History & workbench** | **IndexedDB**; rich filters (including **WebSocket** type); detail/replay/fuzz/AI **in sidebar** | Proxy History very strong; more app switching | Platform records & collaboration | Usually **no or weak history** |
+| **System proxy / non-browser** | **In-browser** HTTP(S) and **page WebSocket** | Strong | Strong | Weak |
+| **Intercept** | **HTTP + WebSocket frames**; queued; per-item or bulk in sidebar | Proxy intercept, industry standard | MITM / workflows | Rare or URL-only |
+| **Replay / fuzz** | Replay + **HTTP/WS micro Fuzz** + **in-page replay/fuzz** (e.g. form POST) | Repeater / Intruder mature | Web Fuzzer, etc. | Rarely concurrent fuzz or structured diff |
 | **Sensitive / dark-link / reports** | **Built-in rules + badges + rollups**; export | Scanner, BApps; licensing/config | Rich PoC/plugins | Rarely built-in |
 | **AI assist** | **BYO API**, **you control data path** | Often third-party or DIY | Growing | Uncommon |
 | **Active scan / heavy automation** | Not the focus; **manual tight loop** | Scanner, macros, plugins | PoC, batch, collaboration | Minimal |
@@ -185,7 +185,7 @@ Compared across shape, session, workflow, and specialties: **Hx0 HawkEye**, **Bu
 ## 7. Offline install (release build)
 This extension uses low-level network capture and security APIs and is **not listed on the Chrome or Firefox add-on stores**. Download the **release** package from this repo’s **Releases** page (or mirrors/attachments noted in the release notes), then follow your browser below for **offline install**.
 
-> Actual archive names follow each release. Examples: `Hx0-HawkEye-Chrome-V1.0.0-Official.Release` (folder / `.crx`) and `Hx0-HawkEye-Firefox-V1.0.0-Official.Release` (folder / `.xpi`). Version numbers update per release.
+> Actual archive names follow each release. Examples: `Hx0-HawkEye-Chrome-V1.0.2-Official.Release` (folder / `.crx`) and `Hx0-HawkEye-Firefox-V1.0.2.Official.Release` (folder / `.xpi`). Version numbers update per release.
 >
 
 ### Browser compatibility & recommended methods
@@ -208,7 +208,7 @@ These browsers are friendly to local extensions; `.crx` usually **survives resta
     - **QQ Browser**: `qqbrowser://extensions/`  
     - **Sogou**: `se://extensions/`
 2. Enable **Developer mode** (Edge: “Developer mode”; often bottom-left or top-right).
-3. **Drag** `Hx0-HawkEye-Chrome-V1.0.0-Official.Release.crx` onto the page.
+3. **Drag** `Hx0-HawkEye-Chrome-V1.0.2-Official.Release.crx` onto the page.
 4. Confirm **Add extension**.
 
 <!-- 这是一张图片，ocr 内容为： -->
@@ -217,7 +217,7 @@ These browsers are friendly to local extensions; `.crx` usually **survives resta
 #### 2. ⭐⭐⭐⭐ · Google Chrome
 Chrome tightly restricts non-store `.crx`; prefer **unpacked folder**.
 
-1. Unzip to a **fixed path** (e.g. `D:\Tools\Hx0-Extension\`); **do not delete** `Hx0-HawkEye-Chrome-V1.0.0-Official.Release`.
+1. Unzip to a **fixed path** (e.g. `D:\Tools\Hx0-Extension\`); **do not delete** `Hx0-HawkEye-Chrome-V1.0.2-Official.Release`.
 2. Open `chrome://extensions/`.
 3. Enable **Developer mode** (top right).
 4. **Load unpacked** → select that folder.
@@ -239,7 +239,7 @@ Unsigned extensions are restricted; for **permanent** install use **Firefox Deve
 
 3. Open `about:addons` → Extensions.
 4. Gear **⚙** → **Install Add-on From File…**
-5. Choose `Hx0-HawkEye-Firefox-V1.0.0-Official.Release.xpi`.
+5. Choose `Hx0-HawkEye-Firefox-V1.0.2.Official.Release.xpi`.
 
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774270404338-e04bc8ac-19af-42ba-b952-5dc0852b4902.png)
@@ -248,7 +248,7 @@ Unsigned extensions are restricted; for **permanent** install use **Firefox Deve
 
 1. After each Firefox start, open `about:debugging`.
 2. **This Firefox** → **Load Temporary Add-on…**
-3. In the unpacked `Hx0-HawkEye-Firefox-V1.0.0-Official.Release` folder, select `manifest.json`.
+3. In the unpacked `Hx0-HawkEye-Firefox-V1.0.2.Official.Release` folder, select `manifest.json`.
 4. Repeat after **every** browser restart.
 
 <!-- 这是一张图片，ocr 内容为： -->
@@ -278,7 +278,7 @@ After install, open the **in-product User Manual** for full tutorials, **Chrome 
 
 New users can first use the **full Pro trial for 30 minutes**. When the trial ends without activation, the product automatically falls back to **Community**. If the experience fits your workflow, you can obtain a Pro activation code through the following methods:
 
-**Visit [the activation code tutorialto](https://www.yuque.com/u12459488/bzqpay/udkx5qy1x6guinz0?singleDoc) get your activation code for free for a limited time.**
+**Visit [the activation code tutorial](https://www.yuque.com/u12459488/bzqpay/udkx5qy1x6guinz0?singleDoc) to get your activation code for free for a limited time.**
 
 ---
 
@@ -300,7 +300,7 @@ The authors and contributors **assume no liability** for **unauthorized testing*
 
 ## 13. 1.0.1 Changelog
 
-This `1.0.1`update primarily focuses on the enhancement of two professional edition capabilities:
+This `1.0.1` update primarily focuses on the enhancement of two professional edition capabilities:
 
 - **Smart Proxy Dispatcher (Professional Edition)**: Added a proxy dispatch entry below the `Capture Type / Suffix`on the basic settings page. It can forward browser requests matching site rules to Burp, Yakit, or other upstream proxies, while unmatched requests continue on their original network path. This is suitable for integrating "native browser session capture" and "in-depth proxy debugging" into a single workflow, reducing the overhead of frequently switching system proxies.
   
@@ -332,7 +332,7 @@ This `1.0.1`update primarily focuses on the enhancement of two professional edit
 
 ## 14. 1.0.2 Changelog
 
-This `v1.0.2` release focuses on major upgrades to replay capabilities, AI-powered automated testing workflows, and Community Edition feature availability, further improving the efficiency of Web security testing, CTF practice, and daily traffic analysis.
+This `v1.0.2` release strengthens **HTTP replay headers**, adds a **WebSocket workbench**, expands the **AI Task Console** (**in-task hints** + **orchestration improvements**), and brings **intercept** to the Community Edition—boosting Web assessments, CTF workflows, and daily capture analysis.
 
 <img width="1055" height="1491" alt="v1 0 2海报-en" src="https://github.com/user-attachments/assets/98ec2d5e-e410-40c3-92fd-088a87f2d467" />
 
@@ -366,13 +366,30 @@ The AI Task Module currently supports two modes:
 
   <img width="3912" height="2070" alt="27e66bc42b733225d16ceccd9e78eed7" src="https://github.com/user-attachments/assets/a00c9dc2-8203-4a2a-aadd-ee32971d0138" />
 
-The AI Task Module records the entire execution process, including request evidence, key payloads, Flag hits, and final analysis reports, making it easier to reproduce results and organize Writeups later.
+The AI Task module records execution, evidence, key payloads, Flag hits, and final reports; while **running**, use toolbar **Supplementary hints** to **queue** context for later turns **without replacing** the pre-launch brief. The underlying **multi-stage adaptive orchestration** is continuously hardened (tool chain, budgets, readability). See in-product User Manual §8.
 
 ### 3. Interception Mode Is Now Available in the Community Edition
 
-Interception Mode is now officially available for Community Edition users.
+Interception Mode is now officially available for Community Edition users (**HTTP** and **WebSocket frames** when rules match).
 
 Community Edition users can now pause, inspect, modify, and forward requests through Interception Mode, making manual testing, parameter debugging, and request verification much more convenient.
 
 <img width="1956" height="1035" alt="image" src="https://github.com/user-attachments/assets/6154a019-fbbe-45d6-bbbf-3b68227db08b" />
+
+### 4. WebSocket Capture, Replay, Micro Fuzz, and Intercept
+
+Enable **WebSocket** under capture types, then filter by type in the sidebar; handshakes often show as `GET 101`, frames as **`WS`** (**`OUT`** / **`IN`**). **Frame replay** shares the HTTP workbench and needs an **`OPEN`** page socket; **`§...§` + Micro Fuzz** uses the next inbound frame as the response. **Intercept** supports **per-frame** edit/forward/drop. Scope is page-created WebSockets inside the browser—not a system MITM. Details: User Manual §5.
+
+<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/28b7a2de-26cc-41b5-9f58-9a9b262ff45c" />
+
+### 5. AI Tasks: In-Task Supplementary Hints
+
+While a task **runs**, expand **Supplementary hints**, enter newly noticed parameters, reflections, paths, or CTF hints, and **Submit**; entries are **queued** with timestamps and appended as **runtime user supplementary hints** for later model turns, with per-turn and queue size caps. **Do not** paste real secrets; redaction and authorization rules match the full AI workflow.
+
+<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/6634413a-4d35-4e2f-b286-5c7a88c29c84" />
+<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/c40d4f83-6d44-46a6-b8e3-d170f274c2f7" />
+
+### 6. AI Tasks: Orchestration and Execution Improvements
+
+The **AI Task Console** multi-stage adaptive pipeline is tightened: **multi-turn agent** loops with real HTTP evidence, **structured runtime memory** (including failure memory aligned with sidebar metrics), and **protocol checks / replanning** for steadier stages and CTF early-finalize paths.
 
