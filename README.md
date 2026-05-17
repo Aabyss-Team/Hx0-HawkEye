@@ -380,7 +380,7 @@ AI 任务模块会记录执行过程、请求证据、关键 payload、Flag 命�
 
 弹窗勾选 **WebSocket** 后，侧栏可按类型筛选；握手多为 `GET 101`，数据帧为 **`WS`**（**`OUT`** / **`IN`**）。**帧重放** 与 HTTP 共用重放工作台，依赖页内 **`OPEN`** 连接；**`§...§` + 微型 Fuzz** 以下一条入站帧为响应。**拦截** 下支持 **帧级** 编辑/放行/丢弃。定位为浏览器内页面 JS 创建的 WebSocket，非系统级 MITM；细节见用户手册 §5。
 
-<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/3ebcb1ed-a4c4-42f0-87d3-ba701637de7b" />
+<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/392bcbfd-4356-459d-a6eb-0c2d58ff8bcd" />
 
 ### 5. AI 任务：运行中「补充线索」
 
