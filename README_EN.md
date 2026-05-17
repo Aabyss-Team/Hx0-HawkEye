@@ -380,7 +380,7 @@ Community Edition users can now pause, inspect, modify, and forward requests thr
 
 Enable **WebSocket** under capture types, then filter by type in the sidebar; handshakes often show as `GET 101`, frames as **`WS`** (**`OUT`** / **`IN`**). **Frame replay** shares the HTTP workbench and needs an **`OPEN`** page socket; **`§...§` + Micro Fuzz** uses the next inbound frame as the response. **Intercept** supports **per-frame** edit/forward/drop. Scope is page-created WebSockets inside the browser—not a system MITM. Details: User Manual §5.
 
-<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/28b7a2de-26cc-41b5-9f58-9a9b262ff45c" />
+<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/d7a6f0fa-4894-4e30-a729-2c962aad194a" />
 
 ### 5. AI Tasks: In-Task Supplementary Hints
 
