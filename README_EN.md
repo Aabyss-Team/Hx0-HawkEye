@@ -406,6 +406,11 @@ This `v1.0.3` release brings three main updates:
 
 The **AI Task Console** can inject built-in **penetration / CTF knowledge bases**, or **import external SKILL.md files and skill folders** from Advanced Settings. Pick libraries and submodules in the task panel—they are injected as context to support multi-stage automated testing and triage.
 
+<img width="438" height="575" alt="image" src="https://github.com/user-attachments/assets/82d7170f-cd6b-4e38-9b78-49a788af2b3a" />
+
+<img width="1956" height="1040" alt="image" src="https://github.com/user-attachments/assets/9f970717-f7df-4dc6-910f-74c70b989cad" />
+
+
 ### 2. Capture & Intercept Experience Improvements
 
 Smoother **capture / intercept** workflows in the sidebar: cleaner filtering and scope switching, easier list browsing, and more fluid edit/forward actions for day-to-day debugging and manual testing.
@@ -413,4 +418,7 @@ Smoother **capture / intercept** workflows in the sidebar: cleaner filtering and
 ### 3. Online Activation Added
 
 **Single-click** the popup **status badge** to open Software activation with a new **Online** tab for subscription or lifetime membership. Benefits sync online and are **cached locally**, so Pro features continue offline while the cache/subscription remains valid—alongside the existing **offline activation code** path for easier checkout and renewal.
+
+<img width="438" height="575" alt="image" src="https://github.com/user-attachments/assets/e2a80834-6d66-4ffa-bcf3-8151b322de59" />
+
 
