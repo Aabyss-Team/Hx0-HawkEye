@@ -405,6 +405,12 @@ AI 任务模块会记录执行过程、请求证据、关键 payload、Flag 命�
 
 AI 任务台可注入内置 **渗透 / CTF 知识库**，也支持在高级设置 **导入外部 SKILL.md 或技能目录**；任务面板可按需勾选库与子模块，启动后作为上下文辅助多阶段自动化测试与研判。
 
+<img width="1956" height="1040" alt="image" src="https://github.com/user-attachments/assets/63206722-eef8-4e76-ab67-64d631c17644" />
+
+
+<img width="438" height="563" alt="image" src="https://github.com/user-attachments/assets/6d56a214-5d1c-4181-b421-fc1783f03c40" />
+
+
 ### 2. 抓包与拦截体验优化
 
 优化侧栏 **抓包 / 拦截** 列表的浏览与操作：筛选与范围切换更连贯，列表展示与改包、放行等日常动作更顺手，减少高频调试时的来回切换。
@@ -412,3 +418,6 @@ AI 任务台可注入内置 **渗透 / CTF 知识库**，也支持在高级设�
 ### 3. 新增在线激活
 
 单击弹窗 **状态徽章** 打开「软件激活」，新增 **在线激活** Tab，支持订阅或永久会员；权益联网同步并 **缓存到本机**，断网后可在有效期内继续使用专业版。与原有 **离线激活码** 并行，开通与续费更方便。
+
+<img width="438" height="563" alt="image" src="https://github.com/user-attachments/assets/71313a25-a59d-4c02-80cf-9ee6ef6a75e2" />
+
