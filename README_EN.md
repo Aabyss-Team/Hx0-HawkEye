@@ -1,7 +1,7 @@
 # 🦅 Hx0 HawkEye: Full-stack lightweight capture & AI security auditing extension
 
 
-【[中文](./README.md) / English】
+【[中文](./README-git.md) / English】
 
 
 ![](https://img.shields.io/badge/Network-No_system_proxy-success)  ![](https://img.shields.io/badge/UI-Sidebar_integrated-5865F2)  ![](https://img.shields.io/badge/Session-Same_origin_XHR_Fetch_WS-00A86B)  ![](https://img.shields.io/badge/Capture-Intercept-4285F4)  ![](https://img.shields.io/badge/Capability-Traffic_replay-blue)  ![](https://img.shields.io/badge/Capability-Micro_Fuzz-8B5CF6)  ![](https://img.shields.io/badge/Capability-Sensitive_data-FF69B4)  ![](https://img.shields.io/badge/Capability-Dark_link_scan-333333)  ![](https://img.shields.io/badge/AI-BYOK_optional-orange)
@@ -94,7 +94,7 @@ Core flow: **Capture** (optional **WebSocket**) → **Filter** → **Detail** �
 | **Encode / hash** | MD5, SM3, SHA, ROT13, Base64, URL, Hex, etc.; scope: **selection / param values only / full URL line**. |
 | **Micro Fuzz** | `§...§` injection points; **Start Fuzz** and **in-page Fuzz** (HTTP/DOM); **WebSocket micro Fuzz** sends serially and uses the **next inbound frame** as the response (needs an active page socket); baseline diff; **AI payloads** from model context; pair with Render, sensitive, and **AI result** views. |
 | **Dark link & static threats** | Rule scan on static HTML, etc.; **high-trust TLD** allowlist; downloadable reports; **AI packet/semantic** interpretation; **batch dark-link** workbench for **horizontal compare** and **third-party script clues** (supply-chain first pass). |
-| **AI (optional)** | **Single packet**: interpret **request + response**, anomalies and risk notes. **Batch**: multi-select history, dedicated tab with **per-row highlights + summary** for multi-endpoint evidence. **AI Task Console**: multi-stage automation (penetration / CTF) in the sidebar, with **in-task supplementary hints** queued into later turns. Models: OpenAI, DeepSeek, local LM Studio, **custom base URL**; **OpenAI-compatible** and paths such as **Baidu Qianfan coding plans**; traffic goes **only to your configured endpoint** (BYOK). |
+| **AI (optional)** | **Single packet**: interpret **request + response**, anomalies and risk notes. **Batch**: multi-select history, dedicated tab with **per-row highlights + summary** for multi-endpoint evidence. **AI Task Console**: multi-stage automation (penetration / CTF) in the sidebar, with **Skills knowledge-base injection** (built-in penetration/CTF modules, import external `SKILL.md`, per-task submodule selection), **in-task supplementary hints** queued into later turns. Models: OpenAI, DeepSeek, local LM Studio, **custom base URL**; **OpenAI-compatible** and paths such as **Baidu Qianfan coding plans**; traffic goes **only to your configured endpoint** (BYOK). |
 | **Sensitive matching** | Built-in rules (IDs, phones, cards, email, Shiro/JWT/Swagger/UEditor/Druid fingerprints, IP, domain, CTF flags, etc.) plus **custom regex** and **keyword lists**; import/export, clear-all. |
 | **Batch** | Bulk export/delete, **batch AI**, **batch dark-link** (separate tab), batch replay, etc. |
 | **i18n** | UI **中文 / English**. |
@@ -109,7 +109,7 @@ Core flow: **Capture** (optional **WebSocket**) → **Filter** → **Detail** �
 Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **30-minute first-install Pro trial**.
 
 - **Community** keeps the essential loop: **capture (including WebSocket) → inspect → standard replay (including WebSocket frames) → basic encode/decode**, plus **intercept** (**HTTP** and matching **WebSocket frames**).
-- **Pro** unlocks **in-page replay / fuzzing, HTTP/WS micro Fuzz, AI, AI Task Console, dark-link review, batch workbenches, and advanced encode/decode tools**.
+- **Pro** unlocks **in-page replay / fuzzing, HTTP/WS micro Fuzz, AI, AI Task Console, Skills knowledge base, dark-link review, batch workbenches, and advanced encode/decode tools**.
 - **First-install trial** grants **full Pro capability for 30 minutes**. If no activation code is applied after the trial, the product **automatically falls back to Community**.
 
 ### Feature Comparison Table
@@ -130,18 +130,20 @@ Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **
 | Switch HTTP Method, Switch Target Domain                                                                          | ❌                 | ✅                    | Useful for multi-environment debugging and verification                                                                                                                                                                                                                                                                |
 | **Intelligent Proxy Router (Added in v1.0.1)**                                                                    | ❌                 | ✅                    | Located below “Capture Type / Suffix” in Settings. Requests matching site rules can be automatically forwarded to upstream proxies such as Burp Suite or Yakit, while unmatched traffic continues using the original network path. The Firefox version additionally supports “Compatibility Mode” and “Takeover Mode”. |
 | AI Analysis Settings, AI Result Analysis, AI Analysis, AI Test Case Generation                                    | ❌                 | ✅                    | All AI-related capabilities are included in the Professional Edition                                                                                                                                                                                                                                                   |
-| **AI Task Console (v1.0.2)**                                                                                    | ❌                 | ✅                    | Multi-stage automation: Intelligent Penetration and CTF modes; **in-task supplementary hints**; tighter orchestration and tool chains; ties history, replay, and evidence into reports                                                                                                                                |
+| **AI Task Console (since v1.0.2)**                                                                                    | ❌                 | ✅                    | Multi-stage automation: Intelligent Penetration and CTF modes; **Skills knowledge-base injection** (v1.0.3: smarter defaults and manual-selection priority), **in-task supplementary hints**; tighter orchestration and tool chains; ties history, replay, and evidence into reports                                                                                                                                |
+| **AI Skills Knowledge Base (v1.0.3)**                                                                               | ❌                 | ✅                    | Built-in penetration/CTF libraries with reference submodules; editable markdown; **import external SKILL.md / skill folders**; layered selection in Advanced Settings and AI Task panel; injected into AI tasks and single/batch AI analysis                                                                                                                                                                      |
 | Hidden Link & Static Threat Detection, Report Export, High-Reputation Top-Level Domains                           | ❌                 | ✅                    | Rule scanning, reporting, and advanced noise-reduction capabilities                                                                                                                                                                                                                                                    |
 | Full Deep Search, Custom Regex / Keyword Libraries                                                                | ❌                 | ✅                    | Advanced search and rule extension capabilities                                                                                                                                                                                                                                                                        |
 | Batch Export, Batch Delete, Batch Replay, Batch AI Analysis, Batch Hidden-Link Detection                          | ❌                 | ✅                    | Unified batch-processing workflow exclusive to the Professional Edition                                                                                                                                                                                                                                                |
 
 > Version `1.0.1` mainly introduced two Professional Edition features: `Intelligent Proxy Router` and `Intelligent Encryption Logic Analysis`.  
-> Version `1.0.2` adds **WebSocket** (capture / frame replay / **WS micro Fuzz** / frame intercept), the **AI Task Console** (including **in-task hints** and multi-stage orchestration improvements), and moves **intercept** capabilities to the Community Edition.
+> Version `1.0.2` adds **WebSocket** (capture / frame replay / **WS micro Fuzz** / frame intercept), the **AI Task Console** (including **in-task hints** and multi-stage orchestration improvements), and moves **intercept** capabilities to the Community Edition.  
+> Version `1.0.3` adds **Skills injection for AI tasks**, **capture/intercept UX improvements**, and **online activation**.
 
 ### Understanding the Edition Boundaries in One Sentence
 
 - **Community Edition focuses on:** packet inspection (**HTTP / WebSocket**), understanding, basic verification, essential encoding/decoding, and **intercept/tamper**.
-- **Professional Edition focuses on:** page-context validation, mutation testing, AI analysis, AI tasks, hidden-link scanning, and large-scale batch workflows.
+- **Professional Edition focuses on:** page-context validation, mutation testing, AI analysis, AI tasks & Skills, hidden-link scanning, and large-scale batch workflows.
 - If you simply want to evaluate the product’s core value first, the Community Edition is already sufficient for the most important primary workflow.
 
 ---
@@ -153,7 +155,7 @@ Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **
 4. **Modern frontends**: **XHR/Fetch, WebSocket, FormData, multipart**; **Raw / Hex** within extension limits.  
 5. **Dynamic-page forensics**: **in-page replay / in-page Fuzz** runs in real DOM—helps with some **WAF / challenge** pages.  
 6. **Sensitive & dark-link built-in**: list badges, detail rollups, exportable reports for **dev self-check and authorized first pass**.  
-7. **AI in the loop**: **AI Task Console** (multi-stage + **in-task hints**), **AI test cases**, **AI Fuzz payloads**, **single-packet AI**, **batch AI** (multi-packet summary for **supply-chain / dependency** hints), **dark-link rules + AI**—same sidebar, fewer tools.  
+7. **AI in the loop**: **AI Task Console** (multi-stage + **Skills knowledge base** + **in-task hints**), **AI test cases**, **AI Fuzz payloads**, **single-packet AI**, **batch AI** (multi-packet summary for **supply-chain / dependency** hints), **dark-link rules + AI**—same sidebar, fewer tools.  
 8. **AI under your control (BYOK)**: you choose model and endpoint; **data only goes to your API**—cloud (DeepSeek, SiliconFlow, Qianfan, etc.) or **on-prem**.  
 9. **Light footprint**: runs with the browser vs heavy standalone proxy stacks.
 
@@ -173,7 +175,7 @@ Compared across shape, session, workflow, and specialties: **Hx0 HawkEye**, **Bu
 | **Intercept** | **HTTP + WebSocket frames**; queued; per-item or bulk in sidebar | Proxy intercept, industry standard | MITM / workflows | Rare or URL-only |
 | **Replay / fuzz** | Replay + **HTTP/WS micro Fuzz** + **in-page replay/fuzz** (e.g. form POST) | Repeater / Intruder mature | Web Fuzzer, etc. | Rarely concurrent fuzz or structured diff |
 | **Sensitive / dark-link / reports** | **Built-in rules + badges + rollups**; export | Scanner, BApps; licensing/config | Rich PoC/plugins | Rarely built-in |
-| **AI assist** | **BYO API**, **you control data path** | Often third-party or DIY | Growing | Uncommon |
+| **AI assist** | **BYO API**, **you control data path**; **Skills knowledge base** and **AI Task Console** multi-stage orchestration | Often third-party or DIY | Growing | Uncommon |
 | **Active scan / heavy automation** | Not the focus; **manual tight loop** | Scanner, macros, plugins | PoC, batch, collaboration | Minimal |
 | **Resource use** | With browser, **light** | Proxy + JVM, usually higher | Varies | Tiny but narrow |
 
@@ -185,7 +187,7 @@ Compared across shape, session, workflow, and specialties: **Hx0 HawkEye**, **Bu
 ## 7. Offline install (release build)
 This extension uses low-level network capture and security APIs and is **not listed on the Chrome or Firefox add-on stores**. Download the **release** package from this repo’s **Releases** page (or mirrors/attachments noted in the release notes), then follow your browser below for **offline install**.
 
-> Actual archive names follow each release. Examples: `Hx0-HawkEye-Chrome-V1.0.2-Official.Release` (folder / `.crx`) and `Hx0-HawkEye-Firefox-V1.0.2.Official.Release` (folder / `.xpi`). Version numbers update per release.
+> Actual archive names follow each release. Examples: `Hx0-HawkEye-Chrome-V1.0.3-Official.Release` (folder / `.zip`) and `Hx0-HawkEye-Firefox-V1.0.3.Official.Release` (folder / `.xpi` / `.zip`). Version numbers update per release.
 >
 
 ### Browser compatibility & recommended methods
@@ -208,7 +210,7 @@ These browsers are friendly to local extensions; `.crx` usually **survives resta
     - **QQ Browser**: `qqbrowser://extensions/`  
     - **Sogou**: `se://extensions/`
 2. Enable **Developer mode** (Edge: “Developer mode”; often bottom-left or top-right).
-3. **Drag** `Hx0-HawkEye-Chrome-V1.0.2-Official.Release.crx` onto the page.
+3. **Drag** the unpacked `Hx0-HawkEye-Chrome-V1.0.3-Official.Release.zip` (or a provided `.crx`) onto the page.
 4. Confirm **Add extension**.
 
 <!-- 这是一张图片，ocr 内容为： -->
@@ -217,7 +219,7 @@ These browsers are friendly to local extensions; `.crx` usually **survives resta
 #### 2. ⭐⭐⭐⭐ · Google Chrome
 Chrome tightly restricts non-store `.crx`; prefer **unpacked folder**.
 
-1. Unzip to a **fixed path** (e.g. `D:\Tools\Hx0-Extension\`); **do not delete** `Hx0-HawkEye-Chrome-V1.0.2-Official.Release`.
+1. Unzip to a **fixed path** (e.g. `D:\Tools\Hx0-Extension\`); **do not delete** `Hx0-HawkEye-Chrome-V1.0.3-Official.Release`.
 2. Open `chrome://extensions/`.
 3. Enable **Developer mode** (top right).
 4. **Load unpacked** → select that folder.
@@ -239,7 +241,7 @@ Unsigned extensions are restricted; for **permanent** install use **Firefox Deve
 
 3. Open `about:addons` → Extensions.
 4. Gear **⚙** → **Install Add-on From File…**
-5. Choose `Hx0-HawkEye-Firefox-V1.0.2.Official.Release.xpi`.
+5. Choose `Hx0-HawkEye-Firefox-V1.0.3.Official.Release.xpi`.
 
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774270404338-e04bc8ac-19af-42ba-b952-5dc0852b4902.png)
@@ -248,7 +250,7 @@ Unsigned extensions are restricted; for **permanent** install use **Firefox Deve
 
 1. After each Firefox start, open `about:debugging`.
 2. **This Firefox** → **Load Temporary Add-on…**
-3. In the unpacked `Hx0-HawkEye-Firefox-V1.0.2.Official.Release` folder, select `manifest.json`.
+3. In the unpacked `Hx0-HawkEye-Firefox-V1.0.3.Official.Release` folder, select `manifest.json`.
 4. Repeat after **every** browser restart.
 
 <!-- 这是一张图片，ocr 内容为： -->
@@ -257,7 +259,7 @@ Unsigned extensions are restricted; for **permanent** install use **Firefox Deve
 ### After install
 + **Toolbar popup**: capture/intercept toggles, targets & types, open capture UI (sidebar)
 + **Sidebar**: history, intercept, replay workbench
-+ **Options**: language, AI, payload encoding, sensitive rules, dark-link, etc. (Chrome: `chrome://extensions` → Details → Extension options)
++ **Options**: language, AI, **Skills**, payload encoding, sensitive rules, dark-link, etc. (Chrome: `chrome://extensions` → Details → Extension options)
 
 ---
 
@@ -285,6 +287,7 @@ New users can first use the **full Pro trial for 30 minutes**. When the trial en
 ## 11. Contact & feedback
 **Hx0 Team (Hx0战队)**
 
++ **Hx0 HawkEye website**: [https://www.hx0.store/products/hawkeye](https://www.hx0.store/products/hawkeye) (product overview, downloads, and docs)
 + WeChat official account / knowledge planet: **Hx0战队**
 + Email: [hx0studio@foxmail.com](mailto:hx0studio@foxmail.com)
 
@@ -366,7 +369,7 @@ The AI Task Module currently supports two modes:
 
   <img width="3912" height="2070" alt="27e66bc42b733225d16ceccd9e78eed7" src="https://github.com/user-attachments/assets/a00c9dc2-8203-4a2a-aadd-ee32971d0138" />
 
-The AI Task module records execution, evidence, key payloads, Flag hits, and final reports; while **running**, use toolbar **Supplementary hints** to **queue** context for later turns **without replacing** the pre-launch brief. The underlying **multi-stage adaptive orchestration** is continuously hardened (tool chain, budgets, readability). See in-product User Manual §8.
+The AI Task module records execution, evidence, key payloads, Flag hits, and final reports; while **running**, use toolbar **Supplementary hints** to **queue** context for later turns **without replacing** the pre-launch brief. The underlying **multi-stage adaptive orchestration** is continuously hardened (tool chain, budgets, readability). See in-product User Manual §10.
 
 ### 3. Interception Mode Is Now Available in the Community Edition
 
@@ -392,4 +395,22 @@ While a task **runs**, expand **Supplementary hints**, enter newly noticed param
 ### 6. AI Tasks: Orchestration and Execution Improvements
 
 The **AI Task Console** multi-stage adaptive pipeline is tightened: **multi-turn agent** loops with real HTTP evidence, **structured runtime memory** (including failure memory aligned with sidebar metrics), and **protocol checks / replanning** for steadier stages and CTF early-finalize paths.
+
+---
+
+## 15. 1.0.3 Changelog
+
+This `v1.0.3` release brings three main updates:
+
+### 1. AI Tasks Support Skills Loading (Pro)
+
+The **AI Task Console** can inject built-in **penetration / CTF knowledge bases**, or **import external SKILL.md files and skill folders** from Advanced Settings. Pick libraries and submodules in the task panel—they are injected as context to support multi-stage automated testing and triage.
+
+### 2. Capture & Intercept Experience Improvements
+
+Smoother **capture / intercept** workflows in the sidebar: cleaner filtering and scope switching, easier list browsing, and more fluid edit/forward actions for day-to-day debugging and manual testing.
+
+### 3. Online Activation Added
+
+**Single-click** the popup **status badge** to open Software activation with a new **Online** tab for subscription or lifetime membership. Benefits sync online and are **cached locally**, so Pro features continue offline while the cache/subscription remains valid—alongside the existing **offline activation code** path for easier checkout and renewal.
 
