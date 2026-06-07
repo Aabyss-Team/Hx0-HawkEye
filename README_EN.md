@@ -109,7 +109,7 @@ Core flow: **Capture** (optional **WebSocket**) → **Filter** → **Detail** �
 Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **30-minute first-install Pro trial**.
 
 - **Community** keeps the essential loop: **capture (including WebSocket) → inspect → standard replay (including WebSocket frames) → basic encode/decode**, plus **intercept** (**HTTP** and matching **WebSocket frames**).
-- **Pro** unlocks **in-page replay / fuzzing, HTTP/WS micro Fuzz, AI, AI Task Console, Skills knowledge base, dark-link review, batch workbenches, and advanced encode/decode tools**.
+- **Pro** unlocks **in-page replay / fuzzing, HTTP/WS micro Fuzz, Tampermonkey scripts, AI, AI Task Console, Skills knowledge base, dark-link review, batch workbenches, and advanced encode/decode tools**.
 - **First-install trial** grants **full Pro capability for 30 minutes**. If no activation code is applied after the trial, the product **automatically falls back to Community**.
 
 ### Feature Comparison Table
@@ -132,13 +132,16 @@ Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **
 | AI Analysis Settings, AI Result Analysis, AI Analysis, AI Test Case Generation                                    | ❌                 | ✅                    | All AI-related capabilities are included in the Professional Edition                                                                                                                                                                                                                                                   |
 | **AI Task Console (since v1.0.2)**                                                                                    | ❌                 | ✅                    | Multi-stage automation: Intelligent Penetration and CTF modes; **Skills knowledge-base injection** (v1.0.3: smarter defaults and manual-selection priority), **in-task supplementary hints**; tighter orchestration and tool chains; ties history, replay, and evidence into reports                                                                                                                                |
 | **AI Skills Knowledge Base (v1.0.3)**                                                                               | ❌                 | ✅                    | Built-in penetration/CTF libraries with reference submodules; editable markdown; **import external SKILL.md / skill folders**; layered selection in Advanced Settings and AI Task panel; injected into AI tasks and single/batch AI analysis                                                                                                                                                                      |
+| **Tampermonkey / Page Script Workspace (v1.0.4)**                                                                   | ❌                 | ✅                    | Import `.user.js`, script library management, one-click inject; AI create/optimize scripts; integrates with capture, replay, and scanning tools                                                                                                                                                                                                                                        |
+| **AI Task Smart Script Dispatch (v1.0.4)**                                                                          | ❌                 | ✅                    | During tasks, AI can list, run, and create page scripts—combines with Skills, replay, and Fuzz orchestration                                                                                                                                                                                                                                                                    |
 | Hidden Link & Static Threat Detection, Report Export, High-Reputation Top-Level Domains                           | ❌                 | ✅                    | Rule scanning, reporting, and advanced noise-reduction capabilities                                                                                                                                                                                                                                                    |
 | Full Deep Search, Custom Regex / Keyword Libraries                                                                | ❌                 | ✅                    | Advanced search and rule extension capabilities                                                                                                                                                                                                                                                                        |
 | Batch Export, Batch Delete, Batch Replay, Batch AI Analysis, Batch Hidden-Link Detection                          | ❌                 | ✅                    | Unified batch-processing workflow exclusive to the Professional Edition                                                                                                                                                                                                                                                |
 
 > Version `1.0.1` mainly introduced two Professional Edition features: `Intelligent Proxy Router` and `Intelligent Encryption Logic Analysis`.  
 > Version `1.0.2` adds **WebSocket** (capture / frame replay / **WS micro Fuzz** / frame intercept), the **AI Task Console** (including **in-task hints** and multi-stage orchestration improvements), and moves **intercept** capabilities to the Community Edition.  
-> Version `1.0.3` adds **Skills injection for AI tasks**, **capture/intercept UX improvements**, and **online activation**.
+> Version `1.0.3` adds **Skills injection for AI tasks**, **capture/intercept UX improvements**, and **online activation**.  
+> Version `1.0.4` adds **Tampermonkey script support**, **AI smart script dispatch**, **capture/intercept reliability**, and **Firefox cross-browser alignment**.
 
 ### Understanding the Edition Boundaries in One Sentence
 
@@ -187,7 +190,7 @@ Compared across shape, session, workflow, and specialties: **Hx0 HawkEye**, **Bu
 ## 7. Offline install (release build)
 This extension uses low-level network capture and security APIs and is **not listed on the Chrome or Firefox add-on stores**. Download the **release** package from this repo’s **Releases** page (or mirrors/attachments noted in the release notes), then follow your browser below for **offline install**.
 
-> Actual archive names follow each release. Examples: `Hx0-HawkEye-Chrome-V1.0.3-Official.Release` (folder / `.zip`) and `Hx0-HawkEye-Firefox-V1.0.3.Official.Release` (folder / `.xpi` / `.zip`). Version numbers update per release.
+> Actual archive names follow each release. Examples: `Hx0-HawkEye-Chrome-V1.0.4-Official.Release` (folder / `.zip`) and `Hx0-HawkEye-Firefox-V1.0.4.Official.Release` (folder / `.xpi` / `.zip`). Version numbers update per release.
 >
 
 ### Browser compatibility & recommended methods
@@ -210,7 +213,7 @@ These browsers are friendly to local extensions; `.crx` usually **survives resta
     - **QQ Browser**: `qqbrowser://extensions/`  
     - **Sogou**: `se://extensions/`
 2. Enable **Developer mode** (Edge: “Developer mode”; often bottom-left or top-right).
-3. **Drag** the unpacked `Hx0-HawkEye-Chrome-V1.0.3-Official.Release.zip` (or a provided `.crx`) onto the page.
+3. **Drag** the unpacked `Hx0-HawkEye-Chrome-V1.0.4-Official.Release.zip` (or a provided `.crx`) onto the page.
 4. Confirm **Add extension**.
 
 <!-- 这是一张图片，ocr 内容为： -->
@@ -219,7 +222,7 @@ These browsers are friendly to local extensions; `.crx` usually **survives resta
 #### 2. ⭐⭐⭐⭐ · Google Chrome
 Chrome tightly restricts non-store `.crx`; prefer **unpacked folder**.
 
-1. Unzip to a **fixed path** (e.g. `D:\Tools\Hx0-Extension\`); **do not delete** `Hx0-HawkEye-Chrome-V1.0.3-Official.Release`.
+1. Unzip to a **fixed path** (e.g. `D:\Tools\Hx0-Extension\`); **do not delete** `Hx0-HawkEye-Chrome-V1.0.4-Official.Release`.
 2. Open `chrome://extensions/`.
 3. Enable **Developer mode** (top right).
 4. **Load unpacked** → select that folder.
@@ -241,7 +244,7 @@ Unsigned extensions are restricted; for **permanent** install use **Firefox Deve
 
 3. Open `about:addons` → Extensions.
 4. Gear **⚙** → **Install Add-on From File…**
-5. Choose `Hx0-HawkEye-Firefox-V1.0.3.Official.Release.xpi`.
+5. Choose `Hx0-HawkEye-Firefox-V1.0.4.Official.Release.xpi`.
 
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774270404338-e04bc8ac-19af-42ba-b952-5dc0852b4902.png)
@@ -250,7 +253,7 @@ Unsigned extensions are restricted; for **permanent** install use **Firefox Deve
 
 1. After each Firefox start, open `about:debugging`.
 2. **This Firefox** → **Load Temporary Add-on…**
-3. In the unpacked `Hx0-HawkEye-Firefox-V1.0.3.Official.Release` folder, select `manifest.json`.
+3. In the unpacked `Hx0-HawkEye-Firefox-V1.0.4.Official.Release` folder, select `manifest.json`.
 4. Repeat after **every** browser restart.
 
 <!-- 这是一张图片，ocr 内容为： -->
@@ -421,4 +424,32 @@ Smoother **capture / intercept** workflows in the sidebar: cleaner filtering and
 
 <img width="438" height="575" alt="image" src="https://github.com/user-attachments/assets/e2a80834-6d66-4ffa-bcf3-8151b322de59" />
 
+---
+
+## 16. 1.0.4 Changelog
+
+This `v1.0.4` release brings four main updates:
+
+### 1. Tampermonkey Scripts + Page Script Workspace (Pro)
+
+Import `.user.js` userscripts and manage them in the sidebar with one-click inject. AI can create or optimize scripts from traffic and tie them into capture, replay, and sensitive scanning. Human-written scripts, AI-written scripts, and AI-orchestrated scripts share one workflow.
+
+<img width="3046" height="1688" alt="041bc1f31c42a9d53fedf9c92b972b9a" src="https://github.com/user-attachments/assets/067a5dab-9e00-4cd9-a964-012d5733f8d5" />
+
+<img width="3096" height="1882" alt="f48bb626b893c2efe11b0cdf9c8e69b9" src="https://github.com/user-attachments/assets/1e805ed7-b7ab-4fc8-a6b3-a9e779ce5507" />
+
+
+### 2. AI Task Smart Script Dispatch (Pro)
+
+Enable **Smart Script Dispatch** so AI tasks can list, run, or create page scripts during pentest / CTF—pull page-side intelligence back, then continue replay verification and reporting.
+
+### 3. Capture / Intercept Reliability
+
+More stable intercept for local labs and self-signed HTTPS; fixes regressions such as empty intercept queues; packet editor now accepts Chinese input correctly.
+
+### 4. Firefox Stability and Cross-Browser Alignment
+
+Fixes Firefox capture, sidebar, intercept, replay, and script injection; daily experience is further aligned across Chrome and Firefox.
+
+> See `1.0.4更新说明` in the repo for the full release notes.
 
