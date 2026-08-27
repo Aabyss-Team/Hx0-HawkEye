@@ -12,10 +12,10 @@
 ![](https://img.shields.io/badge/能力-敏感信息检测-FF69B4)<!-- 这是一张图片，ocr 内容为： -->
 ![](https://img.shields.io/badge/能力-暗链检测-333333)<!-- 这是一张图片，ocr 内容为： -->
 ![](https://img.shields.io/badge/AI-BYOK_可选-orange)
-
 ![](https://img.shields.io/badge/Version-1.0.6-6D28D9) ![](https://img.shields.io/badge/PRO-安全专版_MCP-7C3AED) ![](https://img.shields.io/badge/Agent-浏览器级-2563EB) ![](https://img.shields.io/badge/Release-ZIP_only-0F766E)
 
-<img width="1672" height="940" alt="Hx0 HawkEye v1.0.6 · HawkEye MCP × Browser-level Agent" src="https://github.com/user-attachments/assets/33bc1d80-c7db-43ff-bf39-e0b424296664" />
+<img width="1672" height="941" alt="1.0.6" src="https://github.com/user-attachments/assets/d1e65fd3-66de-4f0d-8ce4-9f2ec8b438a7" />
+
 
 ## v1.0.6 重点更新
 
