@@ -486,6 +486,11 @@ Agent 模式仅对有效试用或专业版授权开放。它以用户当前真�
 
 <img width="1500" height="900" alt="v1.0.6 浏览器级 Agent" src="https://github.com/user-attachments/assets/26994329-4e55-42c4-b48d-9a60153ae146" />
 
+<img width="3096" height="1882" alt="ee4d555e47df0404083987143a76c727" src="https://github.com/user-attachments/assets/cb8d9460-bb90-4bc8-be5f-5ea635b95bfb" />
+
+<img width="3096" height="1882" alt="1570653742b0ce10142f775ebe5171af" src="https://github.com/user-attachments/assets/ed512839-09b8-4307-a8f0-bb620fc305fb" />
+
+
 ### 3. 极致性能与低占用
 
 Firefox 重点去除常驻被动监听，让 `webRequest` 监听器只在实际需要时存活；同时对 DOM 快照、ref 建立、列表行、抓包通知、MutationObserver、Agent 与 MCP 传输做了单次遍历、缓存复用、批处理、紧凑化和有界分页。大结果通过 `next_cursor` 续读，避免为追求速度丢失证据。
