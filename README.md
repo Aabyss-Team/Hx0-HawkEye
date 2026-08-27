@@ -15,17 +15,17 @@
 
 ![](https://img.shields.io/badge/Version-1.0.6-6D28D9) ![](https://img.shields.io/badge/PRO-安全专版_MCP-7C3AED) ![](https://img.shields.io/badge/Agent-浏览器级-2563EB) ![](https://img.shields.io/badge/Release-ZIP_only-0F766E)
 
-<img width="1600" height="900" alt="Hx0 HawkEye v1.0.6" src="https://github.com/user-attachments/assets/1ab5a1da-aa10-4429-b9e3-447f809268b7" />
+<img width="1672" height="940" alt="Hx0 HawkEye v1.0.6 · HawkEye MCP × Browser-level Agent" src="https://github.com/user-attachments/assets/33bc1d80-c7db-43ff-bf39-e0b424296664" />
 
 ## v1.0.6 重点更新
 
-- **鹰眼浏览器自动化 MCP（PRO）**：定位类似面向安全专版的 Playwright MCP。除了导航、点击、输入、页面快照与截图，还直接贯通鹰眼抓包、重放、变异、编解码、敏感信息、TLS 与证据工具链；支持 stdio、Streamable HTTP 和 legacy SSE。
+- **鹰眼浏览器自动化 MCP（PRO）**：定位类似面向安全专版的 Playwright MCP。Codex、Cursor、LM Studio 等 Agent Host 接入 `hx0-hawkeye` 后，可让 Host 中的模型自动调用浏览器与鹰眼工具控制真实标签页完成任务；支持 stdio、Streamable HTTP 和 legacy SSE，独立于扩展内 AI 任务台。
 - **浏览器级 Agent（PRO）**：直接在用户真实标签页与登录态中自主规划、多轮执行导航、复杂控件 / iframe 交互、抓包研判、重放验证、联网研究与原生下载，不是普通聊天或单次 AI 报告；Agent 模式仅在有效试用或专业版授权下可用。
 - **1.0.6 社区版能力开放**：相比 1.0.5，智能代理分流器、全量深度搜索、内置 / 自定义敏感信息匹配与关键词库已向社区版开放。
 - **Firefox 与 Chrome 性能重构**：DOM 快照改为单次线性遍历与有界输出，视口外元素早过滤；Firefox `webRequest` 监听器按状态动态注册 / 卸载；Agent / MCP 传输紧凑化、通知批处理、观察器复用、大结果支持 `next_cursor` 续读，不牺牲任务证据完整性。
 - **Skills 双重显式授权**：内置渗透 / CTF 知识库更新至 v1.0.6；Agent 新会话默认不启用 Skills。用户须先在「高级设置」启用允许的 Skill / 子模块，再点击当前 Agent 会话的 `Skills`；Agent 只能在该允许列表内按目标适时调用。
 
-<img width="366" height="201" alt="v1.0.6 鹰眼浏览器自动化 MCP 已连接" src="https://github.com/user-attachments/assets/e777078b-63f1-428f-b5c9-ff5a37aa8e45" />
+<img width="1800" height="1382" alt="Codex、Cursor、LM Studio 等 Agent Host 通过 HawkEye MCP 自动控制浏览器" src="https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a" />
 
 <img width="1500" height="900" alt="v1.0.6 浏览器级 Agent" src="https://github.com/user-attachments/assets/26994329-4e55-42c4-b48d-9a60153ae146" />
 
@@ -476,9 +476,9 @@ AI 任务台可注入内置 **渗透 / CTF 知识库**，也支持在高级设�
 
 ### 1. 鹰眼浏览器自动化 MCP（PRO）
 
-新增面向安全工作流的 HawkEye MCP，定位类似安全专版 Playwright MCP：一套协议同时提供浏览器导航 / 交互与鹰眼抓包、重放、变异、编解码、TLS、敏感信息和证据工具。本地 Server 仅监听回环地址，支持 stdio、Streamable HTTP 与 legacy SSE；用户需主动开启扩展桥接。
+新增面向安全工作流的 HawkEye MCP，定位类似安全专版 Playwright MCP：Codex、Cursor、LM Studio 等支持 MCP 的 Agent Host 接入 `hx0-hawkeye` 后，可由 Host 中的模型自动调用 `browser_navigate`、`browser_type`、`browser_snapshot` 以及鹰眼抓包、重放、变异、编解码、TLS、敏感信息和证据工具控制真实浏览器。本地 Server 仅监听回环地址，支持 stdio、Streamable HTTP 与 legacy SSE；用户需主动开启扩展桥接。该能力独立于扩展内 AI 任务台。
 
-<img width="366" height="201" alt="v1.0.6 鹰眼浏览器自动化 MCP 已连接" src="https://github.com/user-attachments/assets/e777078b-63f1-428f-b5c9-ff5a37aa8e45" />
+<img width="1800" height="1382" alt="Codex、Cursor、LM Studio 等 Agent Host 通过 HawkEye MCP 自动控制浏览器" src="https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a" />
 
 ### 2. 浏览器级 Agent（PRO）
 

@@ -8,17 +8,17 @@
 
 ![](https://img.shields.io/badge/Version-1.0.6-6D28D9) ![](https://img.shields.io/badge/PRO-Security_MCP-7C3AED) ![](https://img.shields.io/badge/Agent-Browser_level-2563EB) ![](https://img.shields.io/badge/Release-ZIP_only-0F766E)
 
-<img width="1600" height="900" alt="Hx0 HawkEye v1.0.6" src="https://github.com/user-attachments/assets/1ab5a1da-aa10-4429-b9e3-447f809268b7" />
+<img width="1672" height="940" alt="Hx0 HawkEye v1.0.6 · HawkEye MCP × Browser-level Agent" src="https://github.com/user-attachments/assets/33bc1d80-c7db-43ff-bf39-e0b424296664" />
 
 ## v1.0.6 highlights
 
-- **HawkEye Browser Automation MCP (PRO)**: positioned like a security-specialized Playwright MCP. Beyond navigation, clicks, input, snapshots, and screenshots, it exposes HawkEye capture, replay, mutation, codec, sensitive-data, TLS, and evidence tools over stdio, Streamable HTTP, and legacy SSE.
+- **HawkEye Browser Automation MCP (PRO)**: positioned like a security-specialized Playwright MCP. MCP-capable Agent Hosts such as Codex, Cursor, and LM Studio connect to `hx0-hawkeye`, letting the Host model autonomously call browser and HawkEye tools in the user's real tab. It supports stdio, Streamable HTTP, and legacy SSE and is separate from the in-extension AI Task Console.
 - **Browser-level Agent (PRO)**: plans and executes multi-turn navigation, complex control / iframe interaction, traffic analysis, replay verification, public-web research, and native downloads inside the user's real tab and login session—not merely chat or one-shot AI reporting. Agent Mode requires an active trial or Professional license.
 - **Community features opened in v1.0.6**: compared with v1.0.5, Smart Proxy Router, Full Deep Search, and built-in/custom sensitive-information matching plus keyword libraries are now available in Community.
 - **Firefox and Chrome performance redesign**: one-pass bounded DOM snapshots, early offscreen rejection, lifecycle-bound Firefox `webRequest` listeners, compact Agent/MCP transport, batched notifications, observer reuse, and resumable large results through `next_cursor`, without dropping task evidence.
 - **Two explicit Skill gates**: built-in pentest / CTF knowledge bases are updated for v1.0.6. Skills are off in every new Agent conversation. The user must first enable allowed Skills/sub-modules in Advanced Settings, then click `Skills` in the current Agent conversation; relevance matching can use only that allowlist.
 
-<img width="366" height="157" alt="v1.0.6 HawkEye Browser Automation MCP connected" src="https://github.com/user-attachments/assets/78773053-89b4-4a74-bdf6-e525ffab42c9" />
+<img width="1800" height="1382" alt="Codex, Cursor, or LM Studio controlling the browser through HawkEye MCP" src="https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a" />
 
 <img width="1500" height="900" alt="v1.0.6 Browser-level Agent" src="https://github.com/user-attachments/assets/b9491db0-727c-4a09-8020-0f87abd97efe" />
 
@@ -473,9 +473,9 @@ Fixed various Chrome / Firefox system issues; better coordination among intercep
 
 ### 1. HawkEye Browser Automation MCP (PRO)
 
-HawkEye now exposes a security-oriented browser MCP, positioned like a security-specialized Playwright MCP: one protocol combines browser navigation/interaction with HawkEye capture, replay, mutation, codec, TLS, sensitive-data, and evidence tools. The local server listens on loopback only, supports stdio, Streamable HTTP, and legacy SSE, and requires the user to enable the extension bridge.
+HawkEye now exposes a security-oriented browser MCP, positioned like a security-specialized Playwright MCP. MCP-capable Agent Hosts such as Codex, Cursor, and LM Studio connect to `hx0-hawkeye`; the Host model can then autonomously call `browser_navigate`, `browser_type`, `browser_snapshot`, and HawkEye capture, replay, mutation, codec, TLS, sensitive-data, and evidence tools in the real browser. The loopback-only server supports stdio, Streamable HTTP, and legacy SSE and requires the user to enable the extension bridge. This capability is separate from the in-extension AI Task Console.
 
-<img width="366" height="157" alt="v1.0.6 HawkEye Browser Automation MCP connected" src="https://github.com/user-attachments/assets/78773053-89b4-4a74-bdf6-e525ffab42c9" />
+<img width="1800" height="1382" alt="Codex, Cursor, or LM Studio controlling the browser through HawkEye MCP" src="https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a" />
 
 ### 2. Browser-level Agent (PRO)
 
