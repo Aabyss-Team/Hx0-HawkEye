@@ -8,7 +8,8 @@
 
 ![](https://img.shields.io/badge/Version-1.0.6-6D28D9) ![](https://img.shields.io/badge/PRO-Security_MCP-7C3AED) ![](https://img.shields.io/badge/Agent-Browser_level-2563EB) ![](https://img.shields.io/badge/Release-ZIP_only-0F766E)
 
-<img width="1672" height="940" alt="Hx0 HawkEye v1.0.6 · HawkEye MCP × Browser-level Agent" src="https://github.com/user-attachments/assets/33bc1d80-c7db-43ff-bf39-e0b424296664" />
+<img width="1672" height="941" alt="1.0.6-en" src="https://github.com/user-attachments/assets/b26de860-f2d3-47d2-93b0-671c5a034d76" />
+
 
 ## v1.0.6 highlights
 
