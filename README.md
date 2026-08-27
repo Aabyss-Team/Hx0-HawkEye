@@ -15,7 +15,7 @@
 
 ![](https://img.shields.io/badge/Version-1.0.6-6D28D9) ![](https://img.shields.io/badge/PRO-安全专版_MCP-7C3AED) ![](https://img.shields.io/badge/Agent-浏览器级-2563EB) ![](https://img.shields.io/badge/Release-ZIP_only-0F766E)
 
-![Hx0 HawkEye v1.0.6](./assets/v1.0.6/release-cover.png)
+<img width="1600" height="900" alt="Hx0 HawkEye v1.0.6" src="https://github.com/user-attachments/assets/1ab5a1da-aa10-4429-b9e3-447f809268b7" />
 
 ## v1.0.6 重点更新
 
@@ -24,12 +24,10 @@
 - **1.0.6 社区版能力开放**：相比 1.0.5，智能代理分流器、全量深度搜索、内置 / 自定义敏感信息匹配与关键词库已向社区版开放。
 - **Firefox 与 Chrome 性能重构**：DOM 快照改为单次线性遍历与有界输出，视口外元素早过滤；Firefox `webRequest` 监听器按状态动态注册 / 卸载；Agent / MCP 传输紧凑化、通知批处理、观察器复用、大结果支持 `next_cursor` 续读，不牺牲任务证据完整性。
 - **Skills 双重显式授权**：内置渗透 / CTF 知识库更新至 v1.0.6；Agent 新会话默认不启用 Skills。用户须先在「高级设置」启用允许的 Skill / 子模块，再点击当前 Agent 会话的 `Skills`；Agent 只能在该允许列表内按目标适时调用。
-- **中英文与隐私说明对齐**：同步审核弹窗、设置、AI 任务、Agent 、用户手册和**用户协议与隐私政策**；明确本地 MCP、第三方 Agent / AI Endpoint、AI 自动脱敏与用户关闭脱敏时的数据路径。
-- **付费产品发行保护**：GitHub 仅提供 Chrome / Firefox 两个经过混淆和净化的 ZIP 运行包；不包含源码、构建脚本、source map、调试文件、密钥或 CRX / XPI。
 
-![v1.0.6 Agent 与 Skills](./assets/v1.0.6/agent-skills-zh.png)
+<img width="1500" height="900" alt="v1.0.6 Agent 与 Skills" src="https://github.com/user-attachments/assets/fd3165e3-96a9-4299-a446-0cc5ea9bc684" />
 
-![v1.0.6 功能演示](./assets/v1.0.6/hawkeye-v1.0.6-demo.gif)
+<img width="1000" height="600" alt="v1.0.6 功能演示" src="https://github.com/user-attachments/assets/7416b33f-6293-4f2d-9561-ba948638c5c5" />
 
 ## 一、它是什么
 **告别繁琐代理，真正开箱即用。** Hx0 鹰眼是一款原生浏览器扩展（支持 Chrome / Firefox 及主流 Chromium 内核），直接在侧边栏为你提供完整的**抓包拦截（含 WebSocket）、流量重放、微型 Fuzz 与 AI 智能审计**闭环。
@@ -492,12 +490,10 @@ Firefox 重点去除常驻被动监听，让 `webRequest` 监听器只在实际�
 
 更新 19 个渗透子模块和 28 个 CTF 子模块的内置契约。Agent 新会话 Skills 默认关闭；用户必须同时满足「高级设置已启用」与「当前 Agent 会话已点击 Skills」。任一开关未开，Skill 正文都不会进入模型上下文，Agent 也不能绕过用户选择直接调用。
 
-### 5. 发行、隐私与双语质量
-
-弹窗、设置、AI 任务、Agent、用户手册与用户协议 / 隐私政策完成中英文同步审核。发行仓库只保留两个混淆 ZIP，不发布源码、CRX 或 XPI。
-
-### 6. 相比 1.0.5 的社区版能力开放
+### 5. 相比 1.0.5 的社区版能力开放
 
 智能代理分流器、全量深度搜索，以及敏感信息匹配（内置规则、自定义正则、关键词库与批量导入导出）在 1.0.6 起向社区版开放；AI 任务、AI Skills、浏览器级 Agent 与 HawkEye MCP 仍为专业版能力。
 
-![v1.0.6 AI Task](./assets/v1.0.6/ai-task-zh.png)
+<img width="1500" height="900" alt="v1.0.6 AI Task" src="https://github.com/user-attachments/assets/086c89c8-d0c8-4491-b0eb-e8a4dc5600c0" />
+
+<img width="359" height="319" alt="v1.0.6 Agent Skills 高级设置" src="https://github.com/user-attachments/assets/87504e65-9007-4e0b-a91e-6be4e2760f0f" />

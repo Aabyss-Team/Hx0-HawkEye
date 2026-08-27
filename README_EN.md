@@ -8,7 +8,7 @@
 
 ![](https://img.shields.io/badge/Version-1.0.6-6D28D9) ![](https://img.shields.io/badge/PRO-Security_MCP-7C3AED) ![](https://img.shields.io/badge/Agent-Browser_level-2563EB) ![](https://img.shields.io/badge/Release-ZIP_only-0F766E)
 
-![Hx0 HawkEye v1.0.6](./assets/v1.0.6/release-cover.png)
+<img width="1600" height="900" alt="Hx0 HawkEye v1.0.6" src="https://github.com/user-attachments/assets/1ab5a1da-aa10-4429-b9e3-447f809268b7" />
 
 ## v1.0.6 highlights
 
@@ -17,12 +17,10 @@
 - **Community features opened in v1.0.6**: compared with v1.0.5, Smart Proxy Router, Full Deep Search, and built-in/custom sensitive-information matching plus keyword libraries are now available in Community.
 - **Firefox and Chrome performance redesign**: one-pass bounded DOM snapshots, early offscreen rejection, lifecycle-bound Firefox `webRequest` listeners, compact Agent/MCP transport, batched notifications, observer reuse, and resumable large results through `next_cursor`, without dropping task evidence.
 - **Two explicit Skill gates**: built-in pentest / CTF knowledge bases are updated for v1.0.6. Skills are off in every new Agent conversation. The user must first enable allowed Skills/sub-modules in Advanced Settings, then click `Skills` in the current Agent conversation; relevance matching can use only that allowlist.
-- **Bilingual and privacy parity**: popup, Settings, AI Tasks, Agent, User Manual, and the **Terms & Privacy agreement** are audited together. Data paths for local MCP, third-party Agent/model endpoints, automatic AI redaction, and disabling redaction are disclosed explicitly.
-- **Paid-product release protection**: GitHub provides only two sanitized, obfuscated runtime ZIPs. No source, build scripts, source maps, debug files, secrets, CRX, or XPI are shipped.
 
-![v1.0.6 Agent and Skills](./assets/v1.0.6/agent-skills-en.png)
+<img width="1500" height="900" alt="v1.0.6 Agent and Skills" src="https://github.com/user-attachments/assets/291720eb-78ad-4854-b7cb-9d470d9dd314" />
 
-![v1.0.6 feature demo](./assets/v1.0.6/hawkeye-v1.0.6-demo.gif)
+<img width="1000" height="600" alt="v1.0.6 feature demo" src="https://github.com/user-attachments/assets/7416b33f-6293-4f2d-9561-ba948638c5c5" />
 
 ## 1. What it is
 **Skip the proxy hassle—truly ready out of the box.** Hx0 HawkEye is a native browser extension (Chrome / Firefox and mainstream Chromium) that gives you a full **capture, intercept (HTTP + WebSocket frames), replay, micro-Fuzz, and AI-assisted auditing** loop directly in the sidebar.
@@ -489,12 +487,10 @@ Firefox no longer keeps passive capture listeners alive unnecessarily: `webReque
 
 The 19 pentest and 28 CTF built-in sub-modules now include the v1.0.6 runtime contract. Skills are off in new Agent conversations. Both Advanced Settings enablement and the current conversation's Skills control must be on; otherwise Skill bodies never enter model context and Agent cannot bypass the user's selection.
 
-### 5. Release, privacy, and bilingual quality
-
-Popup, Settings, AI Tasks, Agent, User Manual, and Terms & Privacy were audited as one bilingual surface. The public repository ships only two obfuscated ZIPs, with no source, CRX, or XPI.
-
-### 6. Community capabilities opened since v1.0.5
+### 5. Community capabilities opened since v1.0.5
 
 Smart Proxy Router, Full Deep Search, and Sensitive Information Matching (built-in rules, custom regex, keyword libraries, and batch import/export) are available in Community starting with v1.0.6. AI Tasks, AI Skills, browser-level Agent, and HawkEye MCP remain Professional features.
 
-![v1.0.6 AI Task](./assets/v1.0.6/ai-task-en.png)
+<img width="1500" height="900" alt="v1.0.6 AI Task" src="https://github.com/user-attachments/assets/d11e39d3-8698-4f62-a289-cd93830f540b" />
+
+<img width="359" height="336" alt="v1.0.6 Agent Skills Advanced Settings" src="https://github.com/user-attachments/assets/748d0e62-2f13-446c-b212-45365cf0920c" />
