@@ -18,9 +18,9 @@
 - **Firefox and Chrome performance redesign**: one-pass bounded DOM snapshots, early offscreen rejection, lifecycle-bound Firefox `webRequest` listeners, compact Agent/MCP transport, batched notifications, observer reuse, and resumable large results through `next_cursor`, without dropping task evidence.
 - **Two explicit Skill gates**: built-in pentest / CTF knowledge bases are updated for v1.0.6. Skills are off in every new Agent conversation. The user must first enable allowed Skills/sub-modules in Advanced Settings, then click `Skills` in the current Agent conversation; relevance matching can use only that allowlist.
 
-<img width="1500" height="900" alt="v1.0.6 Agent and Skills" src="https://github.com/user-attachments/assets/291720eb-78ad-4854-b7cb-9d470d9dd314" />
+<img width="366" height="157" alt="v1.0.6 HawkEye Browser Automation MCP connected" src="https://github.com/user-attachments/assets/78773053-89b4-4a74-bdf6-e525ffab42c9" />
 
-<img width="1000" height="600" alt="v1.0.6 feature demo" src="https://github.com/user-attachments/assets/7416b33f-6293-4f2d-9561-ba948638c5c5" />
+<img width="1500" height="900" alt="v1.0.6 Browser-level Agent" src="https://github.com/user-attachments/assets/b9491db0-727c-4a09-8020-0f87abd97efe" />
 
 ## 1. What it is
 **Skip the proxy hassle—truly ready out of the box.** Hx0 HawkEye is a native browser extension (Chrome / Firefox and mainstream Chromium) that gives you a full **capture, intercept (HTTP + WebSocket frames), replay, micro-Fuzz, and AI-assisted auditing** loop directly in the sidebar.
@@ -475,9 +475,13 @@ Fixed various Chrome / Firefox system issues; better coordination among intercep
 
 HawkEye now exposes a security-oriented browser MCP, positioned like a security-specialized Playwright MCP: one protocol combines browser navigation/interaction with HawkEye capture, replay, mutation, codec, TLS, sensitive-data, and evidence tools. The local server listens on loopback only, supports stdio, Streamable HTTP, and legacy SSE, and requires the user to enable the extension bridge.
 
+<img width="366" height="157" alt="v1.0.6 HawkEye Browser Automation MCP connected" src="https://github.com/user-attachments/assets/78773053-89b4-4a74-bdf6-e525ffab42c9" />
+
 ### 2. Browser-level Agent (PRO)
 
 Agent Mode requires an active trial or Professional license. It starts from the user's real current HTTP(S) tab and supports multi-turn planning, approval modes, complex controls / iframe / Shadow DOM interaction, visual screenshots, attachments, traffic analysis, replay, codecs, autonomous public-web research, native downloads, durable long-context memory, and expandable tool evidence.
+
+<img width="1500" height="900" alt="v1.0.6 Browser-level Agent" src="https://github.com/user-attachments/assets/b9491db0-727c-4a09-8020-0f87abd97efe" />
 
 ### 3. Extreme performance and low resource use
 
@@ -490,7 +494,3 @@ The 19 pentest and 28 CTF built-in sub-modules now include the v1.0.6 runtime co
 ### 5. Community capabilities opened since v1.0.5
 
 Smart Proxy Router, Full Deep Search, and Sensitive Information Matching (built-in rules, custom regex, keyword libraries, and batch import/export) are available in Community starting with v1.0.6. AI Tasks, AI Skills, browser-level Agent, and HawkEye MCP remain Professional features.
-
-<img width="1500" height="900" alt="v1.0.6 AI Task" src="https://github.com/user-attachments/assets/d11e39d3-8698-4f62-a289-cd93830f540b" />
-
-<img width="359" height="336" alt="v1.0.6 Agent Skills Advanced Settings" src="https://github.com/user-attachments/assets/748d0e62-2f13-446c-b212-45365cf0920c" />

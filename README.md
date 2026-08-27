@@ -25,9 +25,9 @@
 - **Firefox 与 Chrome 性能重构**：DOM 快照改为单次线性遍历与有界输出，视口外元素早过滤；Firefox `webRequest` 监听器按状态动态注册 / 卸载；Agent / MCP 传输紧凑化、通知批处理、观察器复用、大结果支持 `next_cursor` 续读，不牺牲任务证据完整性。
 - **Skills 双重显式授权**：内置渗透 / CTF 知识库更新至 v1.0.6；Agent 新会话默认不启用 Skills。用户须先在「高级设置」启用允许的 Skill / 子模块，再点击当前 Agent 会话的 `Skills`；Agent 只能在该允许列表内按目标适时调用。
 
-<img width="1500" height="900" alt="v1.0.6 Agent 与 Skills" src="https://github.com/user-attachments/assets/fd3165e3-96a9-4299-a446-0cc5ea9bc684" />
+<img width="366" height="201" alt="v1.0.6 鹰眼浏览器自动化 MCP 已连接" src="https://github.com/user-attachments/assets/e777078b-63f1-428f-b5c9-ff5a37aa8e45" />
 
-<img width="1000" height="600" alt="v1.0.6 功能演示" src="https://github.com/user-attachments/assets/7416b33f-6293-4f2d-9561-ba948638c5c5" />
+<img width="1500" height="900" alt="v1.0.6 浏览器级 Agent" src="https://github.com/user-attachments/assets/26994329-4e55-42c4-b48d-9a60153ae146" />
 
 ## 一、它是什么
 **告别繁琐代理，真正开箱即用。** Hx0 鹰眼是一款原生浏览器扩展（支持 Chrome / Firefox 及主流 Chromium 内核），直接在侧边栏为你提供完整的**抓包拦截（含 WebSocket）、流量重放、微型 Fuzz 与 AI 智能审计**闭环。
@@ -478,9 +478,13 @@ AI 任务台可注入内置 **渗透 / CTF 知识库**，也支持在高级设�
 
 新增面向安全工作流的 HawkEye MCP，定位类似安全专版 Playwright MCP：一套协议同时提供浏览器导航 / 交互与鹰眼抓包、重放、变异、编解码、TLS、敏感信息和证据工具。本地 Server 仅监听回环地址，支持 stdio、Streamable HTTP 与 legacy SSE；用户需主动开启扩展桥接。
 
+<img width="366" height="201" alt="v1.0.6 鹰眼浏览器自动化 MCP 已连接" src="https://github.com/user-attachments/assets/e777078b-63f1-428f-b5c9-ff5a37aa8e45" />
+
 ### 2. 浏览器级 Agent（PRO）
 
 Agent 模式仅对有效试用或专业版授权开放。它以用户当前真实 HTTP(S) 标签页为任务起点，支持多轮计划、安全批准模式、复杂控件 / iframe / Shadow DOM 交互、视觉截图、附件、抓包研判、重放、编解码、自主联网研究、原生下载、长上下文记忆与可展开的工具证据。
+
+<img width="1500" height="900" alt="v1.0.6 浏览器级 Agent" src="https://github.com/user-attachments/assets/26994329-4e55-42c4-b48d-9a60153ae146" />
 
 ### 3. 极致性能与低占用
 
@@ -493,7 +497,3 @@ Firefox 重点去除常驻被动监听，让 `webRequest` 监听器只在实际�
 ### 5. 相比 1.0.5 的社区版能力开放
 
 智能代理分流器、全量深度搜索，以及敏感信息匹配（内置规则、自定义正则、关键词库与批量导入导出）在 1.0.6 起向社区版开放；AI 任务、AI Skills、浏览器级 Agent 与 HawkEye MCP 仍为专业版能力。
-
-<img width="1500" height="900" alt="v1.0.6 AI Task" src="https://github.com/user-attachments/assets/086c89c8-d0c8-4491-b0eb-e8a4dc5600c0" />
-
-<img width="359" height="319" alt="v1.0.6 Agent Skills 高级设置" src="https://github.com/user-attachments/assets/87504e65-9007-4e0b-a91e-6be4e2760f0f" />
