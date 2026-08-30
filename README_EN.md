@@ -27,7 +27,7 @@
 <img width="1500" height="900" alt="v1.0.6 Browser-level Agent" src="https://github.com/user-attachments/assets/b9491db0-727c-4a09-8020-0f87abd97efe" />
 
 ## 1. What it is
-**Skip the proxy hassle—truly ready out of the box.** Hx0 HawkEye is a native browser extension (Chrome / Firefox and mainstream Chromium) that gives you a full **capture, intercept (HTTP + WebSocket frames), replay, micro-Fuzz, and AI-assisted auditing** loop directly in the sidebar.
+**Skip the proxy hassle—truly ready out of the box.** Hx0 HawkEye is a lightweight security workbench for Chrome, Firefox, and mainstream Chromium browsers. Inside the user's real tabs and signed-in sessions, it unifies **traffic capture and interception/tampering (including WebSocket), replay, micro-Fuzz, sensitive-data / dark-link detection, AI-assisted security auditing, HawkEye MCP, and browser-level Agent workflows (PRO)** so manual analysis, external Agent Hosts, and in-extension automation share the same browser evidence and security tools.
 
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774276035508-0a9af8e0-4a11-4c83-9fe7-8ea82484d093.png)

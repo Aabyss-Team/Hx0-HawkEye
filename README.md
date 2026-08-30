@@ -33,7 +33,7 @@
 <img width="1500" height="900" alt="v1.0.6 浏览器级 Agent" src="https://github.com/user-attachments/assets/26994329-4e55-42c4-b48d-9a60153ae146" />
 
 ## 一、它是什么
-**告别繁琐代理，真正开箱即用。** Hx0 鹰眼是一款原生浏览器扩展（支持 Chrome / Firefox 及主流 Chromium 内核），直接在侧边栏为你提供完整的**抓包拦截（含 WebSocket）、流量重放、微型 Fuzz 与 AI 智能审计**闭环。
+**告别繁琐代理，真正开箱即用。** Hx0 鹰眼是一款面向 Chrome、Firefox 和主流 Chromium 浏览器的轻量级安全工作台。它在用户真实标签页与登录态中统一提供**抓包与拦截改包（含 WebSocket）、流量重放、微型 Fuzz、敏感信息 / 暗链检测、AI 安全审计、HawkEye MCP 与浏览器级 Agent（PRO）**，让人工分析、外部 Agent Host 和扩展内自动化共享同一套浏览器证据与安全工具。
 
 <!-- 这是一张图片，ocr 内容为： -->
 ![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774273422290-60039442-71ed-433c-847f-0f7d0bd25a30.png)
