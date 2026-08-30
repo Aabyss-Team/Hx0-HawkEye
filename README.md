@@ -1,4 +1,4 @@
-# 🦅 Hx0 鹰眼（Hx0 HawkEye）：全栈式轻量抓包与 AI 安全审计扩展
+# 🦅 Hx0 鹰眼（Hx0 HawkEye）— Chrome/Firefox 抓包拦截、MCP 与 AI Agent 安全工作台
 
 【[English](./README_EN.md) / 中文】
 

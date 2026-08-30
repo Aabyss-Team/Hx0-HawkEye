@@ -1,4 +1,4 @@
-# 🦅 Hx0 HawkEye: Full-stack lightweight capture & AI security auditing extension
+# 🦅 Hx0 HawkEye — Chrome/Firefox Traffic Capture, Interception, MCP & AI Agent Security Workbench
 
 
 【[中文](./README.md) / English】
