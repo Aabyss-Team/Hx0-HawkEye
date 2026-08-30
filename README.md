@@ -19,10 +19,13 @@
 
 ## v1.0.6 重点更新
 
+> **0830 更新包：** 在不降低抓包与拦截覆盖率的前提下，补强 Firefox 抓包监听初始化、请求头/请求体保留、智能 Web 编解码、Chrome/Firefox 可信输入及截图证据落盘；同步更新中英文用户手册、MCP/Agent 安装说明和主流 Browser MCP 对比。
+
 - **鹰眼浏览器自动化 MCP（PRO）**：定位类似面向安全专版的 Playwright MCP。Codex、Cursor、LM Studio 等 Agent Host 接入 `hx0-hawkeye` 后，可让 Host 中的模型自动调用浏览器与鹰眼工具控制真实标签页完成任务；支持 stdio、Streamable HTTP 和 legacy SSE，独立于扩展内 AI 任务台。
 - **浏览器级 Agent（PRO）**：直接在用户真实标签页与登录态中自主规划、多轮执行导航、复杂控件 / iframe 交互、抓包研判、重放验证、联网研究与原生下载，不是普通聊天或单次 AI 报告；Agent 模式仅在有效试用或专业版授权下可用。
 - **1.0.6 社区版能力开放**：相比 1.0.5，智能代理分流器、全量深度搜索、内置 / 自定义敏感信息匹配与关键词库已向社区版开放。
 - **Firefox 与 Chrome 性能重构**：DOM 快照改为单次线性遍历与有界输出，视口外元素早过滤；Firefox `webRequest` 监听器按状态动态注册 / 卸载；Agent / MCP 传输紧凑化、通知批处理、观察器复用、大结果支持 `next_cursor` 续读，不牺牲任务证据完整性。
+- **可信输入与证据落盘**：Chrome 优先使用 CDP `Input.dispatchKeyEvent` / `Input.dispatchMouseEvent`，Firefox 使用原生输入中继与聚焦回退；`browser_screenshot` 可在显式传入 `save_to_file: true` 时把图片保存到本地，默认仍只返回图片、不写磁盘。
 - **Skills 双重显式授权**：内置渗透 / CTF 知识库更新至 v1.0.6；Agent 新会话默认不启用 Skills。用户须先在「高级设置」启用允许的 Skill / 子模块，再点击当前 Agent 会话的 `Skills`；Agent 只能在该允许列表内按目标适时调用。
 
 <img width="1800" height="1382" alt="Codex、Cursor、LM Studio 等 Agent Host 通过 HawkEye MCP 自动控制浏览器" src="https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a" />
@@ -213,7 +216,7 @@ Hx0 鹰眼当前采用 **社区版 / 专业版 / 首次 30 分钟试用专业版
 - `Hx0-HawkEye-Chrome-V1.0.6-Official.Release.zip`
 - `Hx0-HawkEye-Firefox-V1.0.6-Official.Release.zip`
 
-本版**不发布 CRX / XPI**。Chrome 会限制或自动停用非商店来源的 CRX；Firefox 正式版要求签名 XPI。统一发布 ZIP 可以避免把不稳定的旁加载方式包装成“永久安装”，也便于核对包内只有混淆后的运行文件。ZIP 中不含源码、构建脚本、source map、密钥或调试文件。
+本版**不发布 CRX / XPI**。Chrome 会限制或自动停用非商店来源的 CRX；Firefox 正式版要求签名 XPI。统一发布 ZIP 可以避免把不稳定的旁加载方式包装成“永久安装”，也便于核对包内只有正式运行文件。ZIP 中不含源码、构建脚本、source map、密钥或调试文件。
 
 ### Chrome / Edge / Chromium
 
@@ -241,7 +244,15 @@ Hx0 鹰眼当前采用 **社区版 / 专业版 / 首次 30 分钟试用专业版
 - **侧边栏**：历史、拦截、重放、AI 任务、浏览器级 Agent 与页面脚本。
 - **用户手册**：完整操作、Chrome / Firefox 差异、MCP 接入、Skills、隐私与排障。
 ## 八、用户手册
-安装扩展后，在 **产品内** 打开《用户手册》即可查看完整使用教程，包括 **Chrome / Firefox 差异说明**、**常见问题**、**授权说明** 等（入口以当前版本界面为准）。
+安装扩展后，在 **产品内** 打开《用户手册》即可查看完整使用教程，包括 **MCP / Agent 安装使用**、**主流 Browser MCP 对比**、**Chrome / Firefox 差异**、**请求头/体排障**、**截图落盘**、**常见问题**和 **授权说明**。
+
+### MCP 和 Agent 一句话区分
+
+- **HawkEye MCP** 是本地工具桥，不包含 AI 模型：安装 Node.js 18+，在弹窗下载单文件 `hawkeye-mcp-server.mjs`，点击「复制通用配置」后添加到 Codex、Cursor、Claude Code 等 MCP Host。不需 `npm install`。
+- **内置 Agent 模式** 是鹰眼侧栏内的多轮规划/执行界面：在高级设置填 Base URL、API Key（如需）和 Model，再打开「抓包界面 → Agent 模式」；不需额外配置第三方 MCP Host。
+- **AI 任务** 用于有 Scope、Skills、安全门禁和结构化报告的可重复授权测试；它和自由对话式 Agent 的产品形态不同。
+
+与主流方案相比：[Playwright MCP](https://github.com/microsoft/playwright-mcp) 更偏跨浏览器测试/隔离自动化；[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) 更偏 Chrome DevTools 和性能调试；[Browser MCP](https://docs.browsermcp.io/) 更偏已登录 Chrome 的通用页面操作。HawkEye 的核心差异是把 **Chrome + Firefox 真实会话、抓包、拦截改包、重放/fuzz、敏感/暗链证据与 Agent** 放进同一条工作流。详细对比见产品内手册 **§3.2**。
 
 ---
 

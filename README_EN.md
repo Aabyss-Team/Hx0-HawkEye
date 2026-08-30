@@ -13,10 +13,13 @@
 
 ## v1.0.6 highlights
 
+> **0830 maintenance refresh:** without reducing capture or interception coverage, this build strengthens Firefox listener initialization and request header/body retention, smart web codecs, trusted Chrome/Firefox input, and screenshot evidence file saving. It also updates the bilingual manual, MCP/Agent setup, and the mainstream Browser MCP comparison.
+
 - **HawkEye Browser Automation MCP (PRO)**: positioned like a security-specialized Playwright MCP. MCP-capable Agent Hosts such as Codex, Cursor, and LM Studio connect to `hx0-hawkeye`, letting the Host model autonomously call browser and HawkEye tools in the user's real tab. It supports stdio, Streamable HTTP, and legacy SSE and is separate from the in-extension AI Task Console.
 - **Browser-level Agent (PRO)**: plans and executes multi-turn navigation, complex control / iframe interaction, traffic analysis, replay verification, public-web research, and native downloads inside the user's real tab and login session—not merely chat or one-shot AI reporting. Agent Mode requires an active trial or Professional license.
 - **Community features opened in v1.0.6**: compared with v1.0.5, Smart Proxy Router, Full Deep Search, and built-in/custom sensitive-information matching plus keyword libraries are now available in Community.
 - **Firefox and Chrome performance redesign**: one-pass bounded DOM snapshots, early offscreen rejection, lifecycle-bound Firefox `webRequest` listeners, compact Agent/MCP transport, batched notifications, observer reuse, and resumable large results through `next_cursor`, without dropping task evidence.
+- **Trusted input and evidence files**: Chrome prefers CDP `Input.dispatchKeyEvent` / `Input.dispatchMouseEvent`, while Firefox uses a native-input relay with focus fallback. `browser_screenshot` can save an image locally when `save_to_file: true` is explicitly supplied; the default remains image-only with no disk write.
 - **Two explicit Skill gates**: built-in pentest / CTF knowledge bases are updated for v1.0.6. Skills are off in every new Agent conversation. The user must first enable allowed Skills/sub-modules in Advanced Settings, then click `Skills` in the current Agent conversation; relevance matching can use only that allowlist.
 
 <img width="1800" height="1382" alt="Codex, Cursor, or LM Studio controlling the browser through HawkEye MCP" src="https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a" />
@@ -218,7 +221,7 @@ Download exactly one official package for your browser from [GitHub Releases](ht
 - `Hx0-HawkEye-Chrome-V1.0.6-Official.Release.zip`
 - `Hx0-HawkEye-Firefox-V1.0.6-Official.Release.zip`
 
-This release intentionally ships **no CRX or XPI**. Chrome restricts or disables non-store CRX installs, while release Firefox requires signed XPI packages. ZIP-only distribution avoids presenting fragile sideload paths as permanent installs and makes the sanitized, obfuscated runtime contents inspectable. The archives contain no source, build scripts, source maps, secrets, or debug files.
+This release intentionally ships **no CRX or XPI**. Chrome restricts or disables non-store CRX installs, while release Firefox requires signed XPI packages. ZIP-only distribution avoids presenting fragile sideload paths as permanent installs and keeps the packaged runtime contents inspectable. The archives contain no source, build scripts, source maps, secrets, or debug files.
 
 ### Chrome / Edge / Chromium
 
@@ -246,7 +249,15 @@ Regular Firefox does not permanently install unsigned extensions. This repositor
 - **Sidebar**: History, Intercept, Replay, AI Tasks, browser-level Agent, and Page Scripts.
 - **User Manual**: complete operation guide, browser differences, MCP setup, Skills, privacy, and troubleshooting.
 ## 8. User manual
-After install, open the **in-product User Manual** for full tutorials, **Chrome / Firefox differences**, **FAQ**, and **licensing** (exact entry depends on build).
+After install, open the **in-product User Manual** for full tutorials covering **MCP / Agent setup**, a **mainstream Browser MCP comparison**, **Chrome / Firefox differences**, **request header/body troubleshooting**, **screenshot file save**, **FAQ**, and **licensing**.
+
+### MCP vs Agent in one minute
+
+- **HawkEye MCP** is a local tool bridge, not an AI model. Install Node.js 18+, download the single `hawkeye-mcp-server.mjs` file from the popup, click **Copy universal config**, and add it to an MCP Host such as Codex, Cursor, or Claude Code. No `npm install` is required.
+- **Built-in Agent Mode** is HawkEye's multi-turn planning/execution UI. Configure Base URL, API key if required, and Model under Advanced settings, then open **Capture UI → Agent Mode**. It does not require a third-party MCP Host.
+- **AI Tasks** are repeatable authorized workflows with Scope, Skills, safety gates, and structured reports, rather than a free-form Agent conversation.
+
+For positioning: [Playwright MCP](https://github.com/microsoft/playwright-mcp) focuses on cross-browser test/isolated automation; [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) on Chrome DevTools and performance debugging; [Browser MCP](https://docs.browsermcp.io/) on general actions in an existing logged-in Chrome tab. HawkEye's core distinction is one workflow combining **real Chrome + Firefox sessions, capture, intercept/tamper, replay/fuzz, sensitive/dark-link evidence, and Agent execution**. See in-product Manual **§3.2** for the detailed comparison.
 
 ---
 
