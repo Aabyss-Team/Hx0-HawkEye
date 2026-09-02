@@ -13,6 +13,8 @@
 
 ## v1.0.6 highlights
 
+> **0902 maintenance refresh:** expands mainstream model compatibility with Zhipu GLM, Xiaomi MiMo, and SiliconFlow presets plus automatic Base URL billing-route detection; repairs legacy GLM/MiMo profile crossovers and improves request-error feedback. Context-window input now uses token presets/custom values, known vision models enable image input automatically, optional background broadcasts no longer raise `Receiving end does not exist` while the side panel is closed, and the bilingual manual is synchronized.
+
 > **0830 maintenance refresh:** without reducing capture or interception coverage, this build strengthens Firefox listener initialization and request header/body retention, smart web codecs, trusted Chrome/Firefox input, and screenshot evidence file saving. It also updates the bilingual manual, MCP/Agent setup, and the mainstream Browser MCP comparison.
 
 - **HawkEye Browser Automation MCP (PRO)**: positioned like a security-specialized Playwright MCP. MCP-capable Agent Hosts such as Codex, Cursor, and LM Studio connect to `hx0-hawkeye`, letting the Host model autonomously call browser and HawkEye tools in the user's real tab. It supports stdio, Streamable HTTP, and legacy SSE and is separate from the in-extension AI Task Console.

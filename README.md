@@ -19,6 +19,8 @@
 
 ## v1.0.6 重点更新
 
+> **0902 维护更新：** 完善主流模型兼容层，新增智谱 GLM、小米 MiMo、硅基流动预设与 Base URL 套餐端点自动识别，修复智谱/小米历史配置串号并补强请求错误回显；上下文窗口统一为 token 下拉/自定义，已知视觉模型自动开启图片输入；同时修复侧栏未打开时后台广播产生的 `Receiving end does not exist` 错误，并同步中英文用户手册。
+
 > **0830 更新包：** 在不降低抓包与拦截覆盖率的前提下，补强 Firefox 抓包监听初始化、请求头/请求体保留、智能 Web 编解码、Chrome/Firefox 可信输入及截图证据落盘；同步更新中英文用户手册、MCP/Agent 安装说明和主流 Browser MCP 对比。
 
 - **鹰眼浏览器自动化 MCP（PRO）**：定位类似面向安全专版的 Playwright MCP。Codex、Cursor、LM Studio 等 Agent Host 接入 `hx0-hawkeye` 后，可让 Host 中的模型自动调用浏览器与鹰眼工具控制真实标签页完成任务；支持 stdio、Streamable HTTP 和 legacy SSE，独立于扩展内 AI 任务台。
