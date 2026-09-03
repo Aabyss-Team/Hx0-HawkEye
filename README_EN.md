@@ -13,6 +13,8 @@
 
 ## v1.0.6 highlights
 
+> **0903 maintenance refresh:** adds local OpenSSL `Salted__` / CryptoJS passphrase decryption via `hawkeye_codec openssl_decrypt`, with explicit failures for unknown actions or a wrong password and without injecting crypto scripts or loading a CDN; Agent tool receipts and the batch AI / dark-link pages are tightened, the bilingual manual is synchronized, and Chrome / Firefox store packages are rebuilt.
+
 > **0902 maintenance refresh:** expands mainstream model compatibility with Zhipu GLM, Xiaomi MiMo, and SiliconFlow presets plus automatic Base URL billing-route detection; repairs legacy GLM/MiMo profile crossovers and improves request-error feedback. Context-window input now uses token presets/custom values, known vision models enable image input automatically, optional background broadcasts no longer raise `Receiving end does not exist` while the side panel is closed, and the bilingual manual is synchronized.
 
 > **0830 maintenance refresh:** without reducing capture or interception coverage, this build strengthens Firefox listener initialization and request header/body retention, smart web codecs, trusted Chrome/Firefox input, and screenshot evidence file saving. It also updates the bilingual manual, MCP/Agent setup, and the mainstream Browser MCP comparison.
