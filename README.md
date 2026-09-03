@@ -19,7 +19,7 @@
 
 ## v1.0.6 重点更新
 
-> **0903 维护更新：** 内置编解码补齐 OpenSSL `Salted__` / CryptoJS 口令密文本地解密（`hawkeye_codec openssl_decrypt`），未知动作或错误口令会明确失败，且不再向页面注入密码学脚本或加载外部 CDN；同步补强 Agent 工具回执与批量 AI / 暗链页，并更新中英文用户手册后重打 Chrome / Firefox 商店发行包。
+> **0904版本更新：** 本次重点优化 Agent 多模型兼容性与交互体验：新增按会话保存的深度思考开关，完善 DeepSeek、GLM-5.3-Flash 及本地/自定义模型适配，修复工具调用缺参和长文本溢出并统一 HawkEye Agent 标识；补齐 OpenSSL/CryptoJS AES 口令密文本地解密，修正未知动作误报成功，增强 DeepSeek 空响应重试、诊断及基于真实工具结果的兜底总结，同时同步中英文用户手册与 Chrome/Firefox 发行包。
 
 > **0902 维护更新：** 完善主流模型兼容层，新增智谱 GLM、小米 MiMo、硅基流动预设与 Base URL 套餐端点自动识别，修复智谱/小米历史配置串号并补强请求错误回显；上下文窗口统一为 token 下拉/自定义，已知视觉模型自动开启图片输入；同时修复侧栏未打开时后台广播产生的 `Receiving end does not exist` 错误，并同步中英文用户手册。
 
