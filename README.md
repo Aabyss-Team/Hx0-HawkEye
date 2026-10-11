@@ -12,49 +12,41 @@
 ![](https://img.shields.io/badge/能力-敏感信息检测-FF69B4)<!-- 这是一张图片，ocr 内容为： -->
 ![](https://img.shields.io/badge/能力-暗链检测-333333)<!-- 这是一张图片，ocr 内容为： -->
 ![](https://img.shields.io/badge/AI-BYOK_可选-orange)
-![](https://img.shields.io/badge/Version-1.0.6-6D28D9) ![](https://img.shields.io/badge/PRO-安全专版_MCP-7C3AED) ![](https://img.shields.io/badge/Agent-浏览器级-2563EB) ![](https://img.shields.io/badge/Release-ZIP_only-0F766E)
+![](https://img.shields.io/badge/Version-1.0.7-6D28D9) ![](https://img.shields.io/badge/PRO-安全专版_MCP-7C3AED) ![](https://img.shields.io/badge/Agent-浏览器级-2563EB) ![](https://img.shields.io/badge/Release-ZIP_only-0F766E)
 
-<img width="1672" height="941" alt="1.0.6" src="https://github.com/user-attachments/assets/d1e65fd3-66de-4f0d-8ce4-9f2ec8b438a7" />
+**1.0.7 正式版 · 看见请求，理解数据，让验证更连贯。**
 
+在抓包、拦截、重放与 AI 自动化的既有能力上，新增独立编解码工作台，并完善页面助手与证据工作流。新用户可从下方完整功能介绍开始；老用户可先看 1.0.7 更新亮点与实操。
 
-## v1.0.6 重点更新
+[1.0.7 更新亮点](#whats-new) · [完整功能介绍](#features) · [社区版 / 专业版](#editions) · [下载与安装](#install) · [三分钟上手](#quick-start) · [完整历史更新](#history)
 
-### 0930 版本更新
+![Hx0 鹰眼 1.0.7 正式版海报](https://github.com/user-attachments/assets/80af69a5-2f1a-40cd-b02d-fbeb71605d5d)
 
-- **Agent 对话控制**：可通过聊天管理抓包、拦截与放包、SOCKS/HTTP 代理、页面脚本、MCP、人设、Skills、历史，以及基础和高级设置。设置范围包括目标域名、抓包类型/后缀、内网/自签名 HTTPS 响应体、敏感信息与暗链规则、语言和 AI 配置；持续开关与临时任务的作用范围已明确。
-- **Agent 稳定性**：待批准弹窗不会因误点遮罩或 Esc 关闭，等待状态也可点击重新打开；侧栏关闭或后台中断后可从检查点恢复；对结果不明的提交、下载等操作先核验，避免重复执行。Skill 保存以真实回执为准；跨会话摘要记忆默认关闭，开启后才按相关性召回。
-- **模型与弹窗**：增加 Grok、MiniMax、Gemini、Ollama（本地），将 LM Studio 标为本地；更新模型候选与提供商密钥隔离。设置删除确认改为插件内置弹窗；统一快捷键按钮样式，修正英文人设与暗链设置卡片及规则长标题的显示。扩展说明与弹窗标语突出浏览器抓包分析及专业版 MCP/Agent。设置按开关展开/收起，扩展角标按当前站点抓包数更新。
-- **抓包、拦截与重放**：历史范围明确为“当前域名流量 / 当前标签页流量 / 全部抓包记录”，修正跨子域名的标签页筛选。重放台默认打开 Pretty，Pretty 和 Raw 中的修改都可重放；拦截队列自动刷新，改进 WebSocket 帧、批量重放及请求/响应体缺失诊断。Chrome 被动监听仍受浏览器可读取范围限制；Firefox 移除无效的对应开关。
-- **代理分流器**：首次开启且未填写上游代理时，直接展开配置并定位输入框；填写后保存即可自动启用，不再弹出“保存失败”。修正 Firefox SOCKS5 账号密码配置被错误拒绝的问题；已通过真实浏览器的本地认证代理验证。Chrome SOCKS 与 Firefox SOCKS4 仍不支持此认证方式。
-- **分析与界面**：改进 AI 分析、暗链检测的结果反馈，修正 PRO 标识遮挡和 macOS 深色模式文字对比度。
-- **MCP 与发行包**：本地 MCP Server 更新至 **1.0.13**，改善接入配置与启动诊断。Chrome / Firefox 正式 ZIP 内的扩展脚本已混淆；独立 `hawkeye-mcp-server.mjs` 保持可直接运行，便于排障。升级时替换扩展和 MJS，并重启 MCP Host。
+*功能示例使用真实浏览器截图；自建演示页采用虚构数据。用户提供的 Fuzz 截图已裁剪账号区域，所有新增实景图中的其他扩展、会话数据与操作痕迹已按需遮挡。*
 
-- **鹰眼浏览器自动化 MCP（PRO）**：定位类似面向安全专版的 Playwright MCP。Codex、Cursor、LM Studio 等 Agent Host 接入 `hx0-hawkeye` 后，可让 Host 中的模型自动调用浏览器与鹰眼工具控制真实标签页完成任务；支持 stdio、Streamable HTTP 和 legacy SSE，独立于扩展内 AI 任务台。
-- **浏览器级 Agent（PRO）**：直接在用户真实标签页与登录态中自主规划、多轮执行导航、复杂控件 / iframe 交互、抓包研判、重放验证、联网研究与原生下载，不是普通聊天或单次 AI 报告；Agent 模式仅在有效试用或专业版授权下可用。
-- **1.0.6 社区版能力开放**：相比 1.0.5，智能代理分流器、全量深度搜索、内置 / 自定义敏感信息匹配与关键词库已向社区版开放。
-- **Firefox 与 Chrome 性能重构**：DOM 快照改为单次线性遍历与有界输出，视口外元素早过滤；Firefox `webRequest` 监听器按状态动态注册 / 卸载；Agent / MCP 传输紧凑化、通知批处理、观察器复用、大结果支持 `next_cursor` 续读，不牺牲任务证据完整性。
-- **可信输入与证据落盘**：Chrome 优先使用 CDP `Input.dispatchKeyEvent` / `Input.dispatchMouseEvent`，Firefox 使用原生输入中继与聚焦回退；`browser_screenshot` 可在显式传入 `save_to_file: true` 时把图片保存到本地，默认仍只返回图片、不写磁盘。
-- **Skills 双重显式授权**：内置渗透 / CTF 知识库更新至 v1.0.6；Agent 新会话默认不启用 Skills。用户须先在「高级设置」启用允许的 Skill / 子模块，再点击当前 Agent 会话的 `Skills`；Agent 只能在该允许列表内按目标适时调用。
+<a id="whats-new"></a>
+## 1.0.7，更新了什么？
 
-### 更早的更新
+这一版将零散的数据处理，变成可复用的工作流；将页面上的线索，连接到可核验的结果。
 
-> **0906版本更新：** 本次重点优化 Agent 长任务执行与稳定性：修复切换标签页后仍操作旧页、关闭任务页面异常退出、文件发现误触发下载和检查点超限阻断新任务；完善目标/计划进度保留、中断恢复与防重复提交，优化历史同步，并将标题与记忆整理移至后台；增强联网搜索、页面数值证据与 Firefox 输入可靠性，新增 Ctrl+H 抓包界面快捷键，同时同步中英文用户手册与 Chrome/Firefox 发行包。
+| 核心更新 | 能解决什么问题 | 从哪里开始 |
+| --- | --- | --- |
+| **全新独立编解码工作台** | 147 项工具，最多 16 步组合配方；从输入到结果，逐步反馈 | 编解码 → 编解码与工具 |
+| **智能多层解码与 AI 辅助** | 识别编码、展示候选与还原路径；AI 建议在本地核验 | 编解码 → 智能解码 |
+| **文本 / JSON 比对与二进制还原** | 找出响应中的真实变化，将 Hex / Base64 恢复为原始文件 | 编解码 → 文本 / JSON 比对；输出 → 保存为文件 |
+| **二维码 / 条形码与 IP 网络工具** | 离线生成、识别码图，精确计算 IPv4 / IPv6 地址与网络范围 | 编解码 → 对应页签 |
+| **四个官方页面助手** | 页面情报、智能解码、智能渗透、钓鱼邮件研判，直接贴近当前页面 | 脚本 → 选择助手 → 注入当前页 |
+| **Agent 与 MCP 联动** | 44 项任务建议；目标 / 计划模式；工作台工具统一接入 | Agent 模式；基础设置 → 鹰眼浏览器自动化 MCP |
+| **三点微型 Fuzz** | 为多个参数分别配置数据，预览数量后执行有边界的验证 | 重放台 → 标记注入点 → 微型 Fuzz |
+| **新版本介绍与更新提醒** | 新老用户每个新构建展示一次特性介绍；联网时每日检查官方安装包 | 插件弹窗；页脚版本号上方红点 |
 
-> **0904版本更新：** 本次重点优化 Agent 多模型兼容性与交互体验：新增按会话保存的深度思考开关，完善 DeepSeek、GLM-5.3-Flash 及本地/自定义模型适配，修复工具调用缺参和长文本溢出并统一 HawkEye Agent 标识；补齐 OpenSSL/CryptoJS AES 口令密文本地解密，修正未知动作误报成功，增强 DeepSeek 空响应重试、诊断及基于真实工具结果的兜底总结，同时同步中英文用户手册与 Chrome/Firefox 发行包。
-
-> **0902 维护更新：** 完善主流模型兼容层，新增智谱 GLM、小米 MiMo、硅基流动预设与 Base URL 套餐端点自动识别，修复智谱/小米历史配置串号并补强请求错误回显；上下文窗口统一为 token 下拉/自定义，已知视觉模型自动开启图片输入；同时修复侧栏未打开时后台广播产生的 `Receiving end does not exist` 错误，并同步中英文用户手册。
-
-> **0830 更新包：** 在不降低抓包与拦截覆盖率的前提下，补强 Firefox 抓包监听初始化、请求头/请求体保留、智能 Web 编解码、Chrome/Firefox 可信输入及截图证据落盘；同步更新中英文用户手册、MCP/Agent 安装说明和主流 Browser MCP 对比。
-
-<img width="1800" height="1382" alt="Codex、Cursor、LM Studio 等 Agent Host 通过 HawkEye MCP 自动控制浏览器" src="https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a" />
-
-<img width="1500" height="900" alt="v1.0.6 浏览器级 Agent" src="https://github.com/user-attachments/assets/26994329-4e55-42c4-b48d-9a60153ae146" />
+---
 
 ## 一、它是什么
 **基础抓包无需配置系统代理。** Hx0 鹰眼是一款面向 Chrome、Firefox 和主流 Chromium 浏览器的轻量级安全工作台。它在用户真实标签页与登录态中统一提供**抓包与拦截改包（含 WebSocket）、流量重放、微型 Fuzz、敏感信息 / 暗链检测、AI 安全审计、HawkEye MCP 与浏览器级 Agent（PRO）**，让人工分析、外部 Agent Host 和扩展内自动化共享同一套浏览器证据与安全工具。
 
 <!-- 这是一张图片，ocr 内容为： -->
-<img width="1254" height="1254" alt="hb" src="https://github.com/user-attachments/assets/d9dac7bf-f524-4888-af6e-9c5615326051" />
+![Hx0 HawkEye overview](https://github.com/user-attachments/assets/f395d911-b3f6-4e42-a0a0-145bb0901e42)
 
 
 #### ⚡ 核心优势：为什么不用传统代理？
@@ -63,7 +55,7 @@
 + **浏览器内闭环**：加载扩展并设置目标后即可抓包，适合日常联调、接口排障及授权范围内的初筛。
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774269918968-23f970cf-1f27-44aa-bc69-e05b5551da1e.png)
+![](https://github.com/user-attachments/assets/1d68a72c-71b6-4d54-bcbd-c0598007419e)
 
 #### 🤖 杀手锏：全流程 AI 智能赋能 (BYOK)
 支持接入自有模型 API（BYOK），将 AI 无缝嵌入侧边栏工作流：
@@ -71,28 +63,28 @@
 + **智能用例与 Payload 生成**：在重放工作台自动梳理结构化测试思路；在微型 Fuzz 中结合上下文动态生成变异 Payload，告别臃肿的传统字典。
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774257395236-cc582664-756a-413d-9d6c-0ed8f36cab6a.png)
+![](https://github.com/user-attachments/assets/1543066f-cce2-415e-874e-7c23a77a8559)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774257742193-c672230d-4ea0-40ba-9747-06c858bfc9de.png)
+![](https://github.com/user-attachments/assets/0de10dee-0eca-43e5-ae95-0fb86d6e866e)
 
 + **单包深度解读**：对实际捕获到的请求与响应证据进行 AI 解析；原始响应体不可得时会说明缺失原因，不会把重放结果当作原始响应。
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774255462153-66d3b0c9-abac-4290-bcb8-91a7adceca38.png)
+![](https://github.com/user-attachments/assets/2363750e-46ff-4e68-8a3d-e2d5be5706d8)
 
 + **批量归纳与分析**：在独立工作台中勾选多条数据包，AI 自动从接口族、第三方调用中提取规律，辅助供应链、依赖面等横向风险初筛。
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774271731456-5f99fae9-fa00-4967-b9c4-4361b9172a86.png)
+![](https://github.com/user-attachments/assets/cc3a9584-7e49-4203-8424-37e614086659)
 
 + **暗链与静态威胁初筛**：结合内置规则与可选 AI 语义解读，批量整理可疑外链和第三方脚本线索；结果仍需人工核验。
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774258901614-db5c3228-94c3-478d-83ef-7ec7b558268d.png)
+![](https://github.com/user-attachments/assets/9bb26070-51da-420b-95fb-7d930b77f563)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774260323302-dbd7d1ed-c2a1-46bc-8b45-873f767c3e06.png)
+![](https://github.com/user-attachments/assets/55f01b83-f29e-4fd8-9376-fa13828783ab)
 
 ---
 
@@ -103,20 +95,21 @@
 
 ---
 
+<a id="features"></a>
 ## 三、功能介绍
 核心工作流：**抓包**（可选 **WebSocket**）→ **筛选** → **看详情** → **重放**（HTTP / **WebSocket 帧**，可 **AI 生成测试用例**）→ **微型 Fuzz**（HTTP / **WS**，可 **AI 生成 Payload**）→ **暗链检测 / AI 报文分析**（支持勾选多条后的 **批量 AI / 暗链工作台**）→ **AI 任务台**（专业版，多阶段自动化）。
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774260380190-0782f4db-26f4-4cc1-9cf1-7229ab6cd183.png)
+![](https://github.com/user-attachments/assets/cc2a0d0e-6405-4227-bf08-43572dc9fe7d)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774261939081-45f63827-3b75-42b6-8a60-ee9880984f1c.png)
+![](https://github.com/user-attachments/assets/35a61a1b-525d-4119-a689-6a73f33afaac)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774261970277-62c763f6-aad0-479e-87bf-48a56bfd0d64.png)
+![](https://github.com/user-attachments/assets/57a957fb-d012-4801-8cb4-e0d33420349c)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774262957215-d70ce779-0994-489f-976c-f171a159bdbb.png)
+![](https://github.com/user-attachments/assets/adb764e9-3466-481a-b58a-e521b3ea8218)
 
 | 模块 | 说明 |
 | --- | --- |
@@ -134,12 +127,217 @@
 | **敏感信息匹配** | 内置规则（证件、手机、银行卡、邮箱、Shiro/JWT/Swagger/UEditor/Druid 等指纹、IP、域名、CTF Flag 等）+ **自定义正则**、**关键词库**；支持批量导入/导出、一键清空。 |
 | **批量能力** | 批量导出、删除、**批量 AI 分析**、**批量暗链检测**（独立标签页工作台）、批量重放等。 |
 | **国际化** | 界面 **中文 / English** 切换。 |
+| **独立编解码工作台（1.0.7）** | 147 项工具入口、最多 16 步配方，支持参数配置、实时处理与配方导入 / 导出；基础与高级操作按对应权益校验。 |
+| **智能解码与数据比对（1.0.7）** | 多层候选与路径、本地核验 AI 建议；文本 / JSON 比对和原始字节文件还原；另有 IP、二维码 / 条形码工具。 |
+| **四个官方页面助手（1.0.7）** | 页面情报、智能解码、智能渗透与钓鱼邮件识别；可手动注入、配置匹配规则与使用脚本快捷菜单。 |
+| **新构建介绍与更新提醒（1.0.7）** | 11 张特性引导卡片，每个新构建展示一次；联网时每日检测对应浏览器官方 ZIP 的更新。 |
 
 
 **Chrome 与 Firefox** 在侧栏托管、响应体获取和拦截提示方面存在差异。Chrome 的“完整响应体（被动监听）”只对浏览器允许读取的请求生效；Firefox 不提供该开关。详细限制见扩展内用户手册。
 
+
+### 1.0.7 图文实操：从已有工作流继续进阶
+
+### 3.1 独立编解码工作台
+
+![1.0.7 编解码工作台：真实 Chrome 浏览器中的 SM3 → Base64 配方](https://github.com/user-attachments/assets/cd680463-df2c-4544-9233-8a29e32c39a2)
+
+**147 项工具，最多 16 步配方。** 搜索工具、加入步骤、调整顺序，输入变化即可实时处理；也可关闭实时处理，手动执行。每一步显示状态，失败时能够定位到具体步骤。
+
+试一次：
+
+1. 打开「编解码 → 编解码与工具」，输入 `flag{hello}`。
+2. 搜索并加入 **SM3**，再加入 **Base64 编码**。
+3. 查看输出，复制、作为新输入或保存结果；通过「导出」保存配方，后续再导入复用。
+
+这里先计算 SM3 摘要，再对摘要的十六进制文本进行 Base64 编码。**哈希是单向摘要，并非可以直接解密的密文。** 配方导出不包含输入文本和密钥。
+
+| 工具方向 | 代表能力 |
+| --- | --- |
+| 常用编码与文本 | Base32 / Base64 / URL / Hex、摩尔斯码、JSON、JWT、正则、文本处理 |
+| 摘要与校验 | MD5、SM3、SHA 系列、HMAC、CRC / Adler / BCC / LRC |
+| 参数化加解密 | AES、DES / Triple DES、RSA、SM2 / SM4 / SM9、RC4、Rabbit、OpenSSL |
+| 扩展编码与 CTF | Base62 / Base85 / ASCII85 / basE91 / Base92、UU / XX、Base100 Emoji、Bech32；古典密码与静态脚本还原 |
+| 日常实用工具 | 精确整数进制转换、Unix 时间换算、人民币大小写、颜色 / 单位换算、CSV / JSON |
+
+高级操作需要 PRO，并须提供正确的密钥、IV、模式或题目参数。SM9 使用兼容的 GmSSL DER 密钥，单次明文范围为 1–255 字节。JSFuck / AA / JJEncode 采用有界静态还原，不执行还原出的代码。
+
+### 3.2 智能解码与 AI 辅助分析
+
+![五层编码在真实浏览器中还原为 flag，并显示可复用的路径](https://github.com/user-attachments/assets/4278ae18-0752-410e-95f8-3cec069743c1)
+
+**PRO** 智能解码与工作台共用本地引擎，映射 **76 条解码 / 解析路径**。候选按可读性与格式特征排序，保留中间层，并可将已验证路径载入配方。
+
+1. 打开「编解码 → 智能解码」，点击「CTF 五层示例」。
+2. 保持最大层数为 `5`，点击「开始智能解码」。
+3. 查看 `Base64 → URL → Hex → Unicode → ROT13` 的路径与结果 `flag{ctf_5_layers}`；点击「载入解码路径」继续处理。
+
+基础摩尔斯码同样支持常用标点。下面这段输入可在工作台选择「摩尔斯电码 解码」，也可交给智能解码：
+
+```text
+..-. .-.. .- --. -....- -- --- .-. ... .
+```
+
+结果为 **`FLAG-MORSE`**，其中 `-....-` 是连字符。多层编码会继续沿共享引擎尝试，具体结果取决于输入格式、层数和必要参数。
+
+需要更深入判断时，点击「AI 辅助分析」。AI 提供编码特征、候选路线、可能原因与下一步核验建议；允许的解码路线在本地执行验证。没有解出时仍显示分析建议，并明确缺少哪些条件。**建议与已验证结果分开展示，不把模型推测当作明文。**
+
+密码、私钥、IV、矩阵、映射和本地字典不发送给 AI；AI 会接收有上限的输入节选及非密钥候选。配置入口为「高级设置 → AI 服务」。
+
+### 3.3 文本与 JSON 比对
+
+![JSON 结构比对：忽略对象字段顺序，定位 pending → paid 的变化](https://github.com/user-attachments/assets/7cf00db5-6c3d-43dc-8e52-3979b607b963)
+
+在「文本 / JSON 比对」粘贴两份响应，选择文本或 JSON 结构模式，点击「开始比对」。支持字符高亮、上一处 / 下一处差异、分页与完整差异导出。
+
+例如，左侧输入：
+
+```json
+{"order_id":"demo-107","status":"pending","amount":129,"role":"viewer"}
+```
+
+右侧输入：
+
+```json
+{"role":"viewer","amount":129,"status":"paid","order_id":"demo-107"}
+```
+
+JSON 模式忽略对象键顺序，保留数组顺序；因此这里定位的是 `status` 变化，而不是字段重排。大整数保留精度，适合订单号、ID 与接口回归排查。
+
+### 3.4 二进制数据与文件还原
+
+Hex / Base64 解码支持原始字节显示和「保存为文件」。例如，将图片的 Hex 数据解码后，按原始字节保存为 PNG，不必先转成可能损坏内容的 UTF-8 文本。
+
+操作：选择 Hex 或 Base64 解码 → 使用字节输出 → 检查结果 →「保存为文件」。支持分隔符识别、字节编辑与无损复用；导出的文件类型取决于实际数据，扩展名不会改变文件内容。
+
+### 3.5 二维码与条形码
+
+![官方仓库链接的二维码生成与本地图片识别入口](https://github.com/user-attachments/assets/c626997f-6d85-45a5-a4cc-1e941db83fc8)
+
+**PRO** 支持 QR 与 **9 类一维条形码** 的本地生成，导出 SVG / PNG；可导入图片、拖入网页图片或粘贴截图进行识别。
+
+试一次：打开「二维码 / 条形码」→ 选择 `QR Code` → 输入 `https://github.com/asaotomo/Hx0-HawkEye` → 点击「生成码图」。将码图拖入识别区，即可查看内容。
+
+识别每图返回首个结果，图片上限 6 MiB，解析超时 6 秒；模糊、遮挡或复杂背景可能导致无法识别。结果中的链接不会自动打开。
+
+### 3.6 IP 网络工具
+
+![IPv4 地址转换与网络计算，全部在本地完成](https://github.com/user-attachments/assets/efc18273-859b-4904-8574-b9e75d9b86f1)
+
+**PRO** 支持 IPv4 / IPv6 地址格式转换、前缀 / 掩码、网络范围和精确地址数量；分组展示结果，可单项复制或导出 JSON。
+
+试一次：选择 `IPv4`，输入 `192.168.1.23` 与前缀 `24`，点击「计算网络」。网络为 `192.168.1.0/24`，总地址数为 `256`，传统可用主机范围为 `192.168.1.1–192.168.1.254`。这是本地地址计算，不会扫描该网段。
+
+### 3.7 四个官方页面助手
+
+四个官方助手均属于 **PRO**，统一标题栏、复制 / 折叠 / 关闭、明暗主题和中英文设置。打开「脚本」，选择对应卡片，上方快捷选择框会同步；点击「注入当前页」运行。
+
+| 助手 | 适用场景 | 如何使用与查看结果 |
+| --- | --- | --- |
+| **页面情报助手** | 梳理页面表单、隐藏字段、链接、脚本端点与敏感线索 | 注入后查看分类数量；展开详情或筛选；重扫、保存 JSON |
+| **智能解码助手** | 页面选中文本、抓包详情或重放内容中的编码 | 打开面板 / 解码选区；先查看本地候选，再按需 AI 分析；可在工作台继续 |
+| **智能渗透助手** | 将当前页面、鹰眼流量、源码与轻量探测线索整理为分析 | 配置 AI 服务后手动运行；核对证据来源与待验证项；保存 Markdown |
+| **钓鱼邮件识别助手** | 已打开的网页邮件，或用户导入的 EML | 本地查看风险与证据；按需预览 AI 发送范围并复核；导出 HTML / 打印 PDF |
+
+页面情报扫描不等于确认漏洞；智能渗透报告中的推测仍需要授权范围内的进一步验证。大型页面和受限内容会有采集预算与诊断提示。
+
+![虚构 EML 的本地研判：风险提示、证据卡片、认证信息与固定操作栏](https://github.com/user-attachments/assets/1e8172c4-ba21-4f98-9775-fce4ba4ecf89)
+
+**邮件助手这样上手：**
+
+1. 在支持的网页邮箱打开一封邮件，使用助手菜单「打开 / 本地重扫」；不匹配或不支持的页面会给出原因。
+2. 也可点击「导入 EML」。若在普通演示页使用，先将该脚本的「注入范围」设为「手动执行」并保存，再注入。
+3. 查看本地证据与覆盖范围，按需点击「AI 深度分析」复核，或导出报告。
+
+支持 Gmail、QQ / 企业邮箱、Outlook、网易等常见邮箱的阅读页适配；页面改版、跨域正文或特殊布局可能影响提取，可改用 EML。EML 上限 5 MiB，不发送邮件、不执行附件。SPF / DKIM / DMARC 说明来自可获得的邮件头；离线分析不独立进行 DNS 查询或密码学验签。**未发现风险不代表绝对安全。**
+
+页面脚本也支持 `.user.js` 与普通 JavaScript 导入、编辑、检查与 AI 创建 / 优化，兼容常用 GM / GM4 API；完整油猴 API、部分 MAIN 世界行为与特殊脚本依赖仍有限制。
+
+### 3.8 浏览器级 Agent
+
+![Agent 首页与任务建议，覆盖 AI 解码、JSON 比对、配方和三点 Fuzz](https://github.com/user-attachments/assets/561597e7-c5c0-4623-a4bb-ab40eba404a4)
+
+**PRO** Agent 模式连接当前浏览器与鹰眼工具。首页有 **44 项任务建议**，每次展示 4 项，可「换一批」。支持目标模式、计划模式、深度思考、Skills、执行记录、检查点与恢复。
+
+第一次可以这样描述目标：
+
+> 读取当前本地演示页，整理接口、表单和隐藏字段，附上证据来源。只读，不登录、不提交表单。
+
+选择「计划模式」可先审阅步骤，再开始执行。公开资料研究会根据任务、网络与失败情况选择来源数量，并发读取可在 **1–7 页** 间调整；搜索正文最多 7 个结果，深入研究最多 15 页总预算。验证码、超时、网络故障或重复失败会限制进展，结果会说明证据缺口。
+
+高级设置中的 Skills 为全局允许列表，当前 Agent 会话还须启用 `Skills`。模型服务、页面访问权限与风险询问策略都需要按实际任务配置；重要操作与结论应核对。
+
+### 3.9 抓包、拦截与重放
+
+![本地测试页产生的真实 Fetch 请求进入历史列表](https://github.com/user-attachments/assets/64607436-82ef-4eba-9f1d-5c1b674bb8a9)
+
+基础设置中开启抓包，填写目标域名 / IP 与类型规则，刷新目标页。在历史列表按当前域名、当前标签页或全部记录查看，再按 Host / 方法 / 状态码 / 关键词筛选。
+
+详情支持 Pretty / Raw / Hex / Render；请求与响应可保留本地编辑稿。重放时修改参数并检查返回；WebSocket 支持帧观测、重放与命中规则时的拦截，帧重放需要可用连接。敏感匹配、自定义规则、关键词深搜与智能代理分流继续向社区版开放。
+
+**PRO 三点微型 Fuzz：** 在重放台选中文本，连续添加最多 3 个 `§...§` 注入点，为每个点分别填写 payload，选择组合方式，核对预览数量后执行。
+
+| 三个点各有 2 条 payload | 测试次数（不含基线） | 适合什么 |
+| --- | --- | --- |
+| 逐点测试 | 6 | 每次只改变一个点，定位影响 |
+| 按行同步 | 2 | 将每行作为一组参数；各点列表须等长 |
+| 全部组合 | 8 | 测试参数组合；笛卡尔积会迅速增长 |
+
+执行另发一次基线请求。界面可设置执行上限，HTTP、页面内及 WebSocket 使用共同的组合规划；外部 MCP Fuzz 保留更严格的范围与次数限制。
+
+三点操作示例：
+
+1. 在授权测试环境的重放请求中，依次选中要替换的三个值，点击「标记注入点」。界面显示 **3 / 3**，三个值被 `§` 包裹。
+2. 打开「微型 Fuzz」，切换「注入点 1 / 2 / 3」，为每个点分别填写数据，每行一条。
+3. 选择组合模式、并发与延迟，核对预览数量和执行上限，再开始测试。图中三个点各有 4 条数据，全部组合为 **4 × 4 × 4 = 64**，另加 1 条基线请求。
+4. 选中结果行，对照原请求检查实际替换值，再结合状态码、响应长度、耗时和正文判断差异。状态码为 200 并不代表发现漏洞。
+
+![重放台中已标记三个注入点；会话数据已遮挡](https://github.com/user-attachments/assets/1cd1980e-aeef-446f-9fe7-5d34455fae3a)
+
+![三个注入点的独立列表、64 组组合预览与请求响应对照](https://github.com/user-attachments/assets/edf0a1ae-05de-428d-871a-927f25475711)
+
+*以上为用户提供的真实界面截图，已裁剪账户区域并遮挡会话数据。请在自有或明确授权的测试环境练习这些步骤。*
+
+
+完整响应体的被动读取依赖浏览器调试接口；部分跨域 `no-cors` 响应仍受 Chromium 限制。Render 预览与普通重放也不绕过浏览器安全规则。
+
+### 3.10 HawkEye MCP 接入
+
+**PRO** 本地 MCP Server **1.0.14** 将真实浏览器会话、抓包、重放、分析和编解码工作台提供给支持 MCP 的客户端。支持 stdio、Streamable HTTP / SSE；Server 使用 Node.js 18 或更高版本，单文件可运行。
+
+Server 1.0.14 的默认完整工具集为 **52 项**，能力裁剪后可以更少。测试授权可精确到主机与端口；自定义 Fuzz 数据实际参与执行，重放 / Fuzz 回执可通过 `captureRecordId` 回查历史响应。拦截的请求与响应是两个阶段，放行请求后应继续检查响应队列。操作方法见扩展内手册 §3.1。
+
+
+1. 在插件「基础设置」打开「鹰眼浏览器自动化 MCP」。
+2. 在解压目录找到 `mcp-server/hawkeye-mcp-server.mjs`，按界面配置指引启动 / 连接。
+3. 将界面提供的配置复制到客户端，连接后确认可读取当前页面，再调用需要的工具。
+
+stdio 配置示例（将路径替换为本机实际绝对路径）：
+
+```json
+{
+  "mcpServers": {
+    "hx0-hawkeye": {
+      "command": "node",
+      "args": ["/absolute/path/mcp-server/hawkeye-mcp-server.mjs"]
+    }
+  }
+}
+```
+
+1.0.7 的目录查询、组合运行、比对、码图及工作台展示 / 导出能力统一接入 Agent、AI 任务和 MCP。连接第三方客户端后，工具结果的后续使用仍由该客户端及模型服务配置决定；不用时关闭桥接。
+
+### 3.11 版本介绍与更新提醒
+
+首次安装及老用户升级后，展示液态玻璃风格的 **11 张特性介绍卡片**，每个新构建仅展示一次；上一页 / 下一页、开始使用和关闭始终可见。
+
+网络可用时，每日至少尝试一次官方 GitHub 更新检查；离线或内网无法访问时安静跳过，不影响本地使用。发现新版本后，在页脚版本号上方显示红点，点击可访问官方项目页。
+
+更新判断不仅看 `1.0.7` 这样的版本号：优先比较数字版本与官方构建标识，兼容同版本多次发布。缺少标识的旧发布，只比较**当前浏览器对应的官方 ZIP 安装包**上传时间与内置构建时间；超过 24 小时时提示“官方可能发布了新安装包”。README 和发布描述的修改时间不参与判断，也不会自动下载或安装。
+
 ---
 
+<a id="editions"></a>
 ## 四、版本说明（社区版 / 专业版）
 
 Hx0 鹰眼当前采用 **社区版 / 专业版 / 首次 30 分钟试用专业版** 的分层策略：
@@ -160,12 +358,12 @@ Hx0 鹰眼当前采用 **社区版 / 专业版 / 首次 30 分钟试用专业版
 | **拦截开关、改包 / 放行 / 一键放行 / 一键丢弃（1.0.2 起社区版开放）** | ✅  | ✅ | 队列式拦截；**HTTP 与 WebSocket 帧**（命中 Host 等规则时）均可侧栏处理 |
 | 悬浮球、另存为新标签、语言切换 | ✅ | ✅ | 日常效率入口保留在社区版 |
 | **基础编解码**：MD5、SM3、SHA-1、SHA-256、ROT13、Base32 / Base64 / URL / Hex 编解码 | ✅ | ✅ | 社区版即可直接使用 |
-| **高级编解码**：SHA-512、HMAC-SHA256、Base64URL、Unicode、HTML、JSON、JWT、时间戳转换 | ❌ | ✅ | 面向更深的验证、签名与分析场景 |
+| **高级编解码**：SHA-512、HMAC-SHA256、Base64URL、Unicode、HTML、JSON、JWT | ❌ | ✅ | 面向更深的验证、签名与分析场景 |
 | **加密逻辑智能分析（1.0.1 新增）** | ❌ | ✅ | 结合当前请求上下文与同页 JS / HTML 线索，辅助判断编码、摘要、签名或混合加密链路 |
 | 页面内重放、页面内 Fuzz、**HTTP / WebSocket 微型 Fuzz**、标记注入点 | ❌ | ✅ | 适合动态页、WAF、实时信道与高频参数试探 |
 | 切换请求方法、目标域名切换 | ❌ | ✅ | 适合多环境联调与验证 |
 | **智能代理分流器（1.0.1 新增，1.0.6 起社区版开放）** | ✅ | ✅ | 位于基础设置页“抓包类型 / 后缀”下方，可按站点规则将命中请求转发到 Burp、Yakit 或其他上游代理，未命中请求保持原网络路径；Firefox 版额外支持“兼容模式 / 接管模式” |
-| **鹰眼浏览器自动化 MCP（1.0.6）** | ❌ | ✅ | 本地 Server 1.0.13；通过真实浏览器会话调用抓包、拦截、重放、分析及证据工具 |
+| **鹰眼浏览器自动化 MCP（1.0.6）** | ❌ | ✅ | 本地 Server 1.0.14；通过真实浏览器会话调用抓包、拦截、重放、分析及证据工具 |
 | **浏览器级 Agent / Agent 模式（1.0.6）** | ❌ | ✅ | 有效试用或专业版可用；支持聊天调整扩展配置、执行工具、检查点恢复；跨会话摘要记忆默认关闭 |
 | AI 分析设置、AI 结果分析、AI 分析、AI 生成用例 | ❌ | ✅ | AI 能力统一归于专业版 |
 | **AI 任务 / AI 任务台（1.0.2 起）** | ❌ | ✅ | 多阶段自动化：智能渗透、CTF 夺旗；**Skills 知识库注入**（1.0.3 完善默认推荐与手动优先策略）、**运行中补充线索**；**时间轴日志与可拖拽分栏**（1.0.5）；编排与工具链持续优化；联动历史、重放与验证并沉淀报告 |
@@ -176,6 +374,15 @@ Hx0 鹰眼当前采用 **社区版 / 专业版 / 首次 30 分钟试用专业版
 | 暗链与静态威胁检测、报告下载、高信誉顶级域 | ❌ | ✅ | 规则扫描、报告与降噪能力 |
 | **全量深度搜索、敏感信息匹配、自定义正则 / 关键词库（1.0.6 起社区版开放）** | ✅ | ✅ | 相比 1.0.5 下放到社区版；支持完整请求 / 响应深搜、内置规则、自定义正则、关键词库与批量导入导出 |
 | 批量导出、批量删除、批量重放、批量 AI 分析、批量暗链检测 | ❌ | ✅ | 批量工作台统一归于专业版 |
+| **独立编解码配方、文本 / JSON 比对（1.0.7）** | ✅ | ✅ | 最多 16 步；社区版可组合基础操作，高级操作仍需 PRO |
+| **Unix 时间与人民币大小写（1.0.7）** | ✅ | ✅ | 本地处理，作为工作台日常工具使用 |
+| **智能解码、IP / QR / 条形码及高级数据工具（1.0.7）** | ❌ | ✅ | 智能解码与 AI 建议在本地验证；AI 服务自行配置 |
+| **四个官方页面助手（1.0.7）** | ❌ | ✅ | 通过脚本工作台使用；页面与邮箱适配受匹配规则限制 |
+| **特性介绍与官方更新提醒（1.0.7）** | ✅ | ✅ | 可一键关闭介绍；只提示官方安装包更新，不自动安装 |
+
+147 是全部工具入口数量，并非社区版全部解锁的数量；组合配方中的每个操作按对应权益校验。AI 使用自选模型服务，订阅 PRO 不包含第三方模型费用。
+
+> `1.0.7` 版本：独立编解码工作台、16 步配方、智能解码、文本 / JSON 比对、二进制还原、二维码 / 条形码与 IP 工具；完善四个页面助手、三点 Fuzz、Agent / MCP 联动及新构建介绍与更新提醒。
 
 > `1.0.1` 版本最初新增两项专业版能力：`智能代理分流器` 与 `加密逻辑智能分析`；其中智能代理分流器已在 `1.0.6` 下放社区版。
 
@@ -241,29 +448,56 @@ Hx0 鹰眼当前采用 **社区版 / 专业版 / 首次 30 分钟试用专业版
 
 ---
 
-## 七、离线安装（v1.0.6 · ZIP only）
+<a id="install"></a>
+## 七、离线安装（v1.0.7 · ZIP only）
+
+| 浏览器 | 1.0.7 正式版安装包 |
+| --- | --- |
+| Chrome / Chromium | [下载 Chrome ZIP](./Hx0-HawkEye-Chrome-V1.0.7-Official.Release.zip) |
+| Firefox | [下载 Firefox ZIP](./Hx0-HawkEye-Firefox-V1.0.7-Official.Release.zip) |
+
+[SHA-256 校验值](./SHA256SUMS) · [官方项目](https://github.com/asaotomo/Hx0-HawkEye) · [官网](https://www.hx0.store/products/hawkeye)
 
 请只从本仓库 [Releases](https://github.com/asaotomo/Hx0-HawkEye/releases) 下载与浏览器对应的正式包：
 
-- `Hx0-HawkEye-Chrome-V1.0.6-Official.Release.zip`
-- `Hx0-HawkEye-Firefox-V1.0.6-Official.Release.zip`
+- `Hx0-HawkEye-Chrome-V1.0.7-Official.Release.zip`
+- `Hx0-HawkEye-Firefox-V1.0.7-Official.Release.zip`
 
 校验值（SHA-256）：
 
 ```text
-7c961915fbb72aa0f7d6e73447ae95e9b7a9171cdd65ca8e3bbd25052559492c  Hx0-HawkEye-Chrome-V1.0.6-Official.Release.zip
-fa6c9fd4ee77acd8a75b9c799c71e89dc8d96a3302c608ce932ccfe592afddad  Hx0-HawkEye-Firefox-V1.0.6-Official.Release.zip
+b25476afb54ef792a360292a2ba3b582567b12883c65e7d03c9be0e74cd90108  Hx0-HawkEye-Chrome-V1.0.7-Official.Release.zip
+c6609c26e5aa9f042f22123f5d28ea529cdb14a6611c2b895e3754ae998a1782  Hx0-HawkEye-Firefox-V1.0.7-Official.Release.zip
 ```
 
-本版**不发布 CRX / XPI**。Chrome 会限制或自动停用非商店来源的 CRX；Firefox 正式版要求签名 XPI。统一发布 ZIP 可以避免把不稳定的旁加载方式包装成“永久安装”，也便于核对包内只有正式运行文件。ZIP 不含未混淆的扩展开发源码、构建脚本、source map、密钥或调试文件；独立的 MCP Server MJS 保持可读，便于直接运行和排障。
+本版**不发布 CRX / XPI**。Chrome 会限制或自动停用非商店来源的 CRX；Firefox 正式版要求签名 XPI。统一发布 ZIP，便于核对包内运行文件并按浏览器选择加载方式；Developer Edition 的持久安装流程见下文。ZIP 不含未混淆的扩展开发源码、构建脚本、source map、密钥或调试文件；发行包中的独立 MCP Server MJS 也做兼容混淆，可用 Node.js 直接运行；报错可通过运行时诊断定位。
+
+
+
+解压完成后，确认所选目录直接包含以下文件；不要选 ZIP 文件，也不要选外面多套的一层目录：
+
+```text
+鹰眼安装目录/
+├── manifest.json       ← 安装时选择这一层目录
+├── _locales/
+├── src/
+└── mcp-server/
+```
+
+Chrome 配图来自独立的真实测试浏览器；Firefox 配图为步骤示意图。均不包含个人账号或其他扩展，可对照中英文按钮名称操作。
 
 ### Chrome / Edge / Chromium
 
 1. 解压 Chrome ZIP 到一个**固定目录**，不要在安装后删除或移动。
 2. 打开 `chrome://extensions/`（Edge 使用 `edge://extensions/`）。
 3. 开启**开发者模式**。
-4. 点击**加载已解压的扩展程序 / Load unpacked**。
+4. 点击**加载未打包的扩展程序（部分版本为“加载已解压的扩展程序”）/ Load unpacked**。
 5. 选择解压后直接包含 `manifest.json` 的目录，然后将扩展固定到工具栏。
+
+![Chrome 扩展管理页：开启开发者模式后，点击加载未打包的扩展程序](https://github.com/user-attachments/assets/b43bc41c-edc3-4240-8948-0c098ed4e63f)
+
+完成后应看到 **Hx0鹰眼 · 1.0.7** 卡片，并保持右下角启用开关打开。按钮位置可参照 [Chrome 官方安装说明](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world)。
+
 
 升级时先从旧版导出需要保留的数据，关闭相关侧栏；用新包内容替换原固定目录，再回到扩展管理页点击**重新加载**。不要同时加载两个不同目录的 HawkEye，以免产生不同扩展 ID 和相互独立的本地数据。
 
@@ -275,13 +509,46 @@ fa6c9fd4ee77acd8a75b9c799c71e89dc8d96a3302c608ce932ccfe592afddad  Hx0-HawkEye-Fi
 4. 选择解压目录中的 `manifest.json`。
 5. Firefox 重新启动后，按上述步骤重新临时载入。
 
-普通 Firefox 对未签名扩展不提供永久安装。本仓库不会通过关闭签名校验来伪装永久安装；如需组织级长期部署，请使用 Mozilla 官方签名/企业策略流程。
+![Firefox ZIP 临时安装步骤示意图](https://github.com/user-attachments/assets/0ec2e944-b7c6-47c3-a0f4-844211d3ac7e)
+
+选择 `manifest.json` 后，会在临时扩展列表看到 HawkEye。此方式重启后需重新载入，详见 [Mozilla 临时安装说明](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/)。
+
+
+### Firefox Developer Edition：持久安装
+
+如果希望**重启浏览器后仍保持安装**，可使用 [Firefox Developer Edition 官方下载](https://www.mozilla.org/firefox/developer/)。Mozilla 允许该版本安装未签名扩展；需设置签名选项，并通过附加组件管理页安装。[Mozilla 签名说明](https://extensionworkshop.com/documentation/publish/signing-and-distribution-overview/)
+
+1. 安装并启动 **Firefox Developer Edition**。菜单「帮助 → 关于 Firefox」中确认版本名称；普通正式版不适用下面的未签名持久安装方式。
+2. 下载本文的 **Firefox 正式 ZIP**，核对 SHA-256。复制一份，将文件后缀从 `.zip` 改成 `.xpi`，例如 `Hx0-HawkEye-Firefox-V1.0.7-Official.Release.xpi`。**不用解压，也不用重新压缩**；XPI 本身就是 ZIP 格式，改名后文件内容和摘要不变。Windows 先在资源管理器打开「查看 → 显示 → 文件扩展名」，避免得到 `.xpi.zip`。[Mozilla 打包说明](https://extensionworkshop.com/documentation/publish/package-your-extension/)
+3. 在 Developer Edition 地址栏输入 `about:config`，阅读并确认浏览器提示，搜索 `xpinstall.signatures.required`，将值设为 **false**。这会关闭该浏览器配置中的扩展签名校验；请只安装可信、已核对校验值的包。
+4. 打开 `about:addons` →「扩展」→ 齿轮菜单 →「**从文件安装附加组件 / Install Add-on From File**」，选择刚改名的 `.xpi`，确认安装及所需权限。**不要走 `about:debugging` 的临时载入入口**，也不要选择 `manifest.json`。
+5. 在扩展列表确认 **Hx0鹰眼 1.0.7** 已启用，关闭并重新启动 Developer Edition，再确认扩展仍在，并打开弹窗/侧栏。重启保留才是持久安装验证。
+6. 后续升级使用同一扩展 ID 的新版包，按上述从文件安装流程确认更新，再刷新已经打开的网页。临时安装、普通 Firefox 和 Developer Edition 的配置文件可能不同；迁移前请导出重要数据。
+
+![官方 Developer Edition 重启后，HawkEye 仍在已启用扩展列表](https://github.com/user-attachments/assets/dffb31b6-d1b3-42a5-85cf-858c094f2c6c)
+
+*实测截图来自独立配置文件。黄色“无法验证”提示说明安装包未经 Mozilla 签名，并非插件运行报错；已启用状态及重启后的保留已验证。*
+
+官方仍提供 ZIP；上述 `.xpi` 是你在本机对同一包的改名，并非 Mozilla 签名包。包内已带固定 Firefox 扩展 ID。持久安装表示可跨浏览器重启保留，不保证未来浏览器版本永远兼容；恢复签名校验后，未签名扩展可能停用。
+
+
+
+升级后请刷新已有目标页面，让旧内容脚本与悬浮球使用新扩展上下文。
+
+macOS / Linux 在发行目录校验：
+
+```sh
+shasum -a 256 -c SHA256SUMS
+```
+
+Windows 可用 `Get-FileHash -Algorithm SHA256` 计算 ZIP 摘要，并与校验文件中的对应条目核对。
 
 ### 安装后入口
 
 - **扩展图标弹窗**：抓包、拦截、目标范围、MCP 开关与高级设置。
-- **侧边栏**：历史、拦截、重放、AI 任务、浏览器级 Agent 与页面脚本。
+- **侧边栏**：历史、拦截、重放、AI 任务、浏览器级 Agent、页面脚本与独立编解码工作台。
 - **用户手册**：完整操作、Chrome / Firefox 差异、MCP 接入、Skills、隐私与排障。
+<a id="quick-start"></a>
 ## 八、用户手册
 安装扩展后，在 **产品内** 打开《用户手册》即可查看完整使用教程，包括 **MCP / Agent 安装使用**、**主流 Browser MCP 对比**、**Chrome / Firefox 差异**、**请求头/体排障**、**截图落盘**、**常见问题**和 **授权说明**。
 
@@ -293,6 +560,26 @@ fa6c9fd4ee77acd8a75b9c799c71e89dc8d96a3302c608ce932ccfe592afddad  Hx0-HawkEye-Fi
 
 与主流方案相比：[Playwright MCP](https://github.com/microsoft/playwright-mcp) 更偏跨浏览器测试/隔离自动化；[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) 更偏 Chrome DevTools 和性能调试；[Browser MCP](https://docs.browsermcp.io/) 更偏已登录 Chrome 的通用页面操作。HawkEye 的核心差异是把 **Chrome + Firefox 真实会话、抓包、拦截改包、重放/fuzz、敏感/暗链证据与 Agent** 放进同一条工作流。详细对比见产品内手册 **§3.2**。
 
+
+### 三分钟上手与常见问题
+
+1. **先看一条请求：** 打开目标页，开启抓包并限定域名，刷新页面；到「历史」查看一条请求 / 响应。
+2. **再处理一段数据：** 打开「编解码」，尝试 Base64 解码或本文的 SM3 → Base64 配方；复制并检查结果。
+3. **最后按需启用 AI：** 到「高级设置」配置模型服务，先运行只读目标，再逐步使用助手、Agent 或 MCP。
+
+完整中英文手册、版本对比、《用户协议与隐私政策》均可从插件内打开，已同步至 1.0.7。
+
+| 常见问题 | 处理建议 |
+| --- | --- |
+| AI 没有输出 / 未配置服务 | 先检查「高级设置 → AI 服务」的地址、模型与认证；查看可读错误提示。停止等待不保证服务端已经停止处理 |
+| 编码识别了，但没有明文 | 核对字符与分隔符、层数、密钥 / IV / 模式；哈希不能直接逆向，缺少参数时保留建议与待核验状态 |
+| 脚本菜单未注册或页面不匹配 | 选择正确脚本并保存；在支持的普通网页注入后重新读取菜单；特殊浏览器页面无法注入，邮件也可使用 EML |
+| 完整响应体为空 / 跨域失败 | 查看权限与响应体诊断；部分 `no-cors`、CSP、跨域及调试接口限制无法由扩展消除 |
+| Bing 搜索失败 / 重定向过多 | Agent 会识别错误页并尝试搜索入口回退，仍失败时保留诊断；上游站点、网络和 Cookie 状态仍可能影响访问 |
+| 更新后旧页面提示上下文失效 | 刷新目标页；新版本已加固旧悬浮球与失效调用处理 |
+
+1.0.7 同时优化了助手滚动与间距、脚本菜单等待状态与按钮布局、选择框同步、AI 独立结果卡片、Markdown 表格与宽表滚动、编辑器光标、取消与迟到结果处理。非法 URL 匹配规则与未处理回调错误已修复；网页自身的 Mixed Content 被浏览器阻止时，不会通过降低安全规则来强行加载。
+
 ---
 
 ## 九、安全与合规
@@ -302,6 +589,7 @@ fa6c9fd4ee77acd8a75b9c799c71e89dc8d96a3302c608ce932ccfe592afddad  Hx0-HawkEye-Fi
 + 完整数据范围、例外、保存与用户权利以扩展内中英文《**用户协议与隐私政策**》为准。
 + **Render** 等能力请在可信环境中使用；即使采用沙箱策略，仍需谨慎对待不可信响应内容。  
 + 商业场景请遵守产品 **许可与授权** 约定（以软件内说明为准）。
++ **1.0.7 本地数据处理**：编解码、比对、IP 计算及邮件基础检测在本地完成；智能解码密码、私钥、IV、矩阵、映射和字典不发送给 AI。邮件 AI 复核只在主动点击后发送预览范围内的邮件节选与证据。
 
 ---
 
@@ -309,7 +597,7 @@ fa6c9fd4ee77acd8a75b9c799c71e89dc8d96a3302c608ce932ccfe592afddad  Hx0-HawkEye-Fi
 
 新用户可先免费体验 **30 分钟专业版全功能**。试用结束后若未激活，将自动回落到社区版；如果体验满意，欢迎通过以下方式获取专业版激活码：
 
-**访问[激活码获取教程](https://www.yuque.com/u12459488/bzqpay/udkx5qy1x6guinz0?singleDoc)，限时免费领取激活码**
+**访问[激活码获取教程](https://www.yuque.com/u12459488/bzqpay/udkx5qy1x6guinz0?singleDoc)，获取方式与活动以官方当前说明为准。**
 
 ---
     
@@ -322,6 +610,9 @@ fa6c9fd4ee77acd8a75b9c799c71e89dc8d96a3302c608ce932ccfe592afddad  Hx0-HawkEye-Fi
 
 反馈请尽量附带：浏览器类型与版本、扩展版本、复现步骤与截图。
 
+
+也可通过 [GitHub Issues](https://github.com/asaotomo/Hx0-HawkEye/issues) 反馈。请同时附插件构建标识和可读错误信息；截图先遮挡账号、其他扩展、密钥与敏感流量。
+
 ---
 
 ## 十二、免责声明
@@ -331,25 +622,26 @@ fa6c9fd4ee77acd8a75b9c799c71e89dc8d96a3302c608ce932ccfe592afddad  Hx0-HawkEye-Fi
 
 ---
 
+<a id="history"></a>
 ## 十三、1.0.1 更新日志
 
-> 以下 1.0.1–1.0.5 条目记录当时的更新；当前行为与版本边界以本页 1.0.6（0930）说明为准。
+> 以下 1.0.1–1.0.6 条目及图片完整保留各版本当时的更新；当前行为与版本边界以本页 1.0.7 说明为准。
 
 本次 `V1.0.1` 主要围绕两项专业版能力完善：
 
 - **智能代理分流器（1.0.1 首发时为专业版，1.0.6 起社区版开放）**：在基础设置页 `抓包类型/后缀` 下方新增代理分流入口，可按站点规则把命中的浏览器请求转发到 Burp、Yakit 或其他上游代理，未命中的请求继续保持原有网络路径。适合把“浏览器原生会话抓包”与“代理深度调试”串成一个工作流，减少频繁切换系统代理的成本。
 
-  <img width="430" height="573" alt="image" src="https://github.com/user-attachments/assets/db12989b-7d10-4b11-9859-a9da61a79d03" />
+  ![image](https://github.com/user-attachments/assets/db12989b-7d10-4b11-9859-a9da61a79d03)
 
 - **加密逻辑智能分析（专业版）**：功能在AI分析按钮右侧，模型会结合当前请求的 URL、参数、请求头、Body、响应线索，以及同页 JS / HTML 中的函数名、字段名和提交流程，辅助判断前端是否做了编码、摘要、签名或混合加密，适合复核改包前后的签名链路变化。（一句话总结：让AI帮你猜加密/编码/签名逻辑，省去人肉逆向的时间。）
 
-  <img width="780" height="151" alt="image" src="https://github.com/user-attachments/assets/727c7ad7-c5e8-438f-a9e7-cc7f7afe5697" />
+  ![image](https://github.com/user-attachments/assets/727c7ad7-c5e8-438f-a9e7-cc7f7afe5697)
 
-  <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/2c431003-88c4-4b1f-90b3-07c749de443c" />
+  ![image](https://github.com/user-attachments/assets/2c431003-88c4-4b1f-90b3-07c749de443c)
 
-  <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/ea538cdc-b9ce-4bfa-be6f-c762edb54f91" />
+  ![image](https://github.com/user-attachments/assets/ea538cdc-b9ce-4bfa-be6f-c762edb54f91)
 
-  <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/1c145765-ab5e-41e5-b905-455964b64190" />
+  ![image](https://github.com/user-attachments/assets/1c145765-ab5e-41e5-b905-455964b64190)
   
 - **稳定性补充**：同步补强了普通抓包模式下的请求头补全与代理释放细节，降低普通模式、拦截模式与代理切换场景下的显示差异和冲突概率。
 - **侧栏和批量页面优化**：侧栏报文展示与交互优化（双端一致），批量页面整体布局优化。
@@ -366,7 +658,7 @@ fa6c9fd4ee77acd8a75b9c799c71e89dc8d96a3302c608ce932ccfe592afddad  Hx0-HawkEye-Fi
 
 本次 `V1.0.2` 围绕 **HTTP 重放增强**、**WebSocket 工作台**、**AI 任务台（含运行中补充线索与编排优化）** 及 **社区版拦截开放** 等重点升级，进一步提升 Web 安全测试、CTF 与日常抓包分析效率。
 
-<img width="1055" height="1491" alt="v1 0 2海报" src="https://github.com/user-attachments/assets/853169b7-01bb-4f13-8d44-81fa68567e78" />
+![v1 0 2海报](https://github.com/user-attachments/assets/853169b7-01bb-4f13-8d44-81fa68567e78)
 
 ## 主要更新
 
@@ -390,18 +682,18 @@ fa6c9fd4ee77acd8a75b9c799c71e89dc8d96a3302c608ce932ccfe592afddad  Hx0-HawkEye-Fi
 - **智能渗透模式**  
   面向常规 Web 安全测试场景，AI 会基于目标站点、历史流量和页面上下文，自动进行信息收集、入口分析、攻击建模、漏洞探测和结果研判。
 
-  <img width="3912" height="2070" alt="909110ca03be628642c272a91c8c7cc6" src="https://github.com/user-attachments/assets/e42f8720-613a-429b-952d-dd93fbb24a22" />
+  ![909110ca03be628642c272a91c8c7cc6](https://github.com/user-attachments/assets/e42f8720-613a-429b-952d-dd93fbb24a22)
 
 
-  <img width="3912" height="2070" alt="91bcbb07d5a3bd6db6ef5f9baea3563e" src="https://github.com/user-attachments/assets/fdaee4df-15b7-489d-8ecd-0462d7e9619d" />
+  ![91bcbb07d5a3bd6db6ef5f9baea3563e](https://github.com/user-attachments/assets/fdaee4df-15b7-489d-8ecd-0462d7e9619d)
 
 
 - **CTF 夺旗模式**  
   面向 CTF Web 题目，AI 会围绕题目入口、提示、响应特征和可疑参数自动规划解题路径，尝试构造利用请求，并在命中 Flag 后生成复盘报告。
 
-  <img width="3912" height="2070" alt="31c644c1426fc64801d7d1caac178e13" src="https://github.com/user-attachments/assets/c100544b-7ca3-4616-bb1a-7a45ddbeb64c" />
+  ![31c644c1426fc64801d7d1caac178e13](https://github.com/user-attachments/assets/c100544b-7ca3-4616-bb1a-7a45ddbeb64c)
 
-  <img width="3912" height="2070" alt="89ef599acf45a623a3dcd065a48c9119" src="https://github.com/user-attachments/assets/cd57e1c5-1a77-4d93-b3ea-5e124937b06e" />
+  ![89ef599acf45a623a3dcd065a48c9119](https://github.com/user-attachments/assets/cd57e1c5-1a77-4d93-b3ea-5e124937b06e)
 
 
 AI 任务模块会记录执行过程、请求证据、关键 payload、Flag 命中结果和最终分析报告；**运行中**可通过工具栏 **「补充线索」** 队列化注入后续轮次，**不替代**启动前任务背景；底层 **多阶段自适应编排** 持续加固（工具链、预算与可读性等）。详见用户手册 §10。
@@ -412,19 +704,19 @@ AI 任务模块会记录执行过程、请求证据、关键 payload、Flag 命�
 
 社区版用户可以使用拦截模式完成请求暂停、查看、修改、放行等基础操作，更方便地进行手工测试、参数调试和请求验证。
 
-<img width="1956" height="1035" alt="image" src="https://github.com/user-attachments/assets/0f4cb847-e564-40c1-84f3-b6bc2b7a73c5" />
+![image](https://github.com/user-attachments/assets/0f4cb847-e564-40c1-84f3-b6bc2b7a73c5)
 
 ### 4. WebSocket 抓包、重放、微型 Fuzz 与拦截改包
 
 弹窗勾选 **WebSocket** 后，侧栏可按类型筛选；握手多为 `GET 101`，数据帧为 **`WS`**（**`OUT`** / **`IN`**）。**帧重放** 与 HTTP 共用重放工作台，依赖页内 **`OPEN`** 连接；**`§...§` + 微型 Fuzz** 以下一条入站帧为响应。**拦截** 下支持 **帧级** 编辑/放行/丢弃。定位为浏览器内页面 JS 创建的 WebSocket，非系统级 MITM；细节见用户手册 §5。
 
-<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/392bcbfd-4356-459d-a6eb-0c2d58ff8bcd" />
+![image](https://github.com/user-attachments/assets/392bcbfd-4356-459d-a6eb-0c2d58ff8bcd)
 
 ### 5. AI 任务：运行中「补充线索」
 
 任务**执行中**展开 **补充线索**，将新观察到的参数、回显、入口或 CTF hint 等写入并 **提交**；内容按时间戳 **排队**，在后续轮次以 **「运行中用户补充线索」** **追加**至模型上下文，用于纠偏、收窄；单次与队列有长度上限。**勿**粘贴真实口令；脱敏与授权要求同全文。
-<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/a81e5507-1561-413e-971d-db82ae7fbf0e" />
-<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/e6ddb672-c912-4099-9ad7-fdd82fe6efc9" />
+![image](https://github.com/user-attachments/assets/a81e5507-1561-413e-971d-db82ae7fbf0e)
+![image](https://github.com/user-attachments/assets/e6ddb672-c912-4099-9ad7-fdd82fe6efc9)
 
 ### 6. AI 任务：编排与执行框架优化
 
@@ -440,10 +732,10 @@ AI 任务模块会记录执行过程、请求证据、关键 payload、Flag 命�
 
 AI 任务台可注入内置 **渗透 / CTF 知识库**，也支持在高级设置 **导入外部 SKILL.md 或技能目录**；任务面板可按需勾选库与子模块，启动后作为上下文辅助多阶段自动化测试与研判。
 
-<img width="1956" height="1040" alt="image" src="https://github.com/user-attachments/assets/63206722-eef8-4e76-ab67-64d631c17644" />
+![image](https://github.com/user-attachments/assets/63206722-eef8-4e76-ab67-64d631c17644)
 
 
-<img width="438" height="563" alt="image" src="https://github.com/user-attachments/assets/6d56a214-5d1c-4181-b421-fc1783f03c40" />
+![image](https://github.com/user-attachments/assets/6d56a214-5d1c-4181-b421-fc1783f03c40)
 
 
 ### 2. 抓包与拦截体验优化
@@ -454,7 +746,7 @@ AI 任务台可注入内置 **渗透 / CTF 知识库**，也支持在高级设�
 
 单击弹窗 **状态徽章** 打开「软件激活」，新增 **在线激活** Tab，支持订阅或永久会员；权益联网同步并 **缓存到本机**，断网后可在有效期内继续使用专业版。与原有 **离线激活码** 并行，开通与续费更方便。
 
-<img width="438" height="563" alt="image" src="https://github.com/user-attachments/assets/71313a25-a59d-4c02-80cf-9ee6ef6a75e2" />
+![image](https://github.com/user-attachments/assets/71313a25-a59d-4c02-80cf-9ee6ef6a75e2)
 
 ---
 
@@ -466,9 +758,9 @@ AI 任务台可注入内置 **渗透 / CTF 知识库**，也支持在高级设�
 
 支持导入 `.user.js` 油猴脚本，侧栏统一管理、一键注入；可用 AI 从流量创建或优化脚本，并与抓包、重放、敏感扫描等能力联动。人写脚本、AI 写脚本、AI 任务调度脚本三条路径打通。
 
-<img width="1548" height="941" alt="image" src="https://github.com/user-attachments/assets/152c24a6-cf8e-41dd-a41e-641b11da5fb7" />
+![image](https://github.com/user-attachments/assets/152c24a6-cf8e-41dd-a41e-641b11da5fb7)
 
-<img width="3080" height="1716" alt="e327bce7470c8582ba612072f9e9019b" src="https://github.com/user-attachments/assets/943ef6ca-0fb7-4047-9abf-789482b149c4" />
+![e327bce7470c8582ba612072f9e9019b](https://github.com/user-attachments/assets/943ef6ca-0fb7-4047-9abf-789482b149c4)
 
 
 
@@ -496,25 +788,25 @@ AI 任务台可注入内置 **渗透 / CTF 知识库**，也支持在高级设�
 
 执行日志改为 **时间轴卡片流**（阶段 / AI / 测试 / 工具调用分色展示，工具调用可展开 JSON）；日志与报告 **左右分栏可拖拽**；启动前 **任务背景 AI 理解**；报告输出 **漏洞清单 + 请求/响应证据**；内置 `crypto.logic.analyze` 与 `codec.transform` 高级加解密。
 
-<img width="3080" height="1788" alt="7adc70c64d50d5272a58d6aec4db0c55" src="https://github.com/user-attachments/assets/83e16c37-e808-438b-8b01-c9be189381e1" />
+![7adc70c64d50d5272a58d6aec4db0c55](https://github.com/user-attachments/assets/83e16c37-e808-438b-8b01-c9be189381e1)
 
 
 ### 2. Skills 知识库加厚 + AI 生成技能
 
 内置子模块扩容至 **渗透 19 + CTF 28**；主 Skill 新增 **「智能启用」** 开关；高级设置新增 **AI 生成技能**，可生成单个 Skill 或技能集合并保存为独立 Skill、内置库子模块或追加到已有导入 Skill。
 
-<img width="1038" height="816" alt="image" src="https://github.com/user-attachments/assets/559350c7-dcbe-4552-9936-88cb0ea9b066" />
+![image](https://github.com/user-attachments/assets/559350c7-dcbe-4552-9936-88cb0ea9b066)
 
-<img  height="740" alt="3b62bafea675b0fe0e2b790e8e4e689e" src="https://github.com/user-attachments/assets/b00e9183-4e18-4bb1-9561-042afe4494ab" />
+![3b62bafea675b0fe0e2b790e8e4e689e](https://github.com/user-attachments/assets/b00e9183-4e18-4bb1-9561-042afe4494ab)
 
-<img  height="740" alt="cc4666c5f38a35d7174ebe3c357c2ef4" src="https://github.com/user-attachments/assets/e377d19c-b6c8-404c-9eb3-56e7b2c006d5" />
+![cc4666c5f38a35d7174ebe3c357c2ef4](https://github.com/user-attachments/assets/e377d19c-b6c8-404c-9eb3-56e7b2c006d5)
 
 
 ### 3. 编解码能力补齐
 
 重放台补齐 **AES / DES / RSA / SM** 与智能套娃解码；内置页面脚本 **「智能解码助手」**（默认启用）：选中文本即尝试常见解码与哈希识别；高级 AES / 套娃仍走重放台或详情内联「加密&编码」。
 
-<img width="1600" height="1164" alt="e958884a06b31b7830f092368ce2931f" src="https://github.com/user-attachments/assets/41721abe-97fd-4eeb-a2c0-95b8bf7b20a1" />
+![e958884a06b31b7830f092368ce2931f](https://github.com/user-attachments/assets/41721abe-97fd-4eeb-a2c0-95b8bf7b20a1)
 
 ### 4. 体验优化与问题修复
 
@@ -530,17 +822,17 @@ AI 任务台可注入内置 **渗透 / CTF 知识库**，也支持在高级设�
 
 新增面向安全工作流的 HawkEye MCP，定位类似安全专版 Playwright MCP：Codex、Cursor、LM Studio 等支持 MCP 的 Agent Host 接入 `hx0-hawkeye` 后，可由 Host 中的模型自动调用 `browser_navigate`、`browser_type`、`browser_snapshot` 以及鹰眼抓包、重放、变异、编解码、TLS、敏感信息和证据工具控制真实浏览器。本地 Server 仅监听回环地址，支持 stdio、Streamable HTTP 与 legacy SSE；用户需主动开启扩展桥接。该能力独立于扩展内 AI 任务台。
 
-<img width="1800" height="1382" alt="Codex、Cursor、LM Studio 等 Agent Host 通过 HawkEye MCP 自动控制浏览器" src="https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a" />
+![Codex、Cursor、LM Studio 等 Agent Host 通过 HawkEye MCP 自动控制浏览器](https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a)
 
 ### 2. 浏览器级 Agent（PRO）
 
 Agent 模式仅对有效试用或专业版授权开放。它以用户当前真实 HTTP(S) 标签页为任务起点，支持多轮计划、安全批准模式、复杂控件 / iframe / Shadow DOM 交互、视觉截图、附件、抓包研判、重放、编解码、自主联网研究、原生下载、长上下文记忆与可展开的工具证据。
 
-<img width="1500" height="900" alt="v1.0.6 浏览器级 Agent" src="https://github.com/user-attachments/assets/26994329-4e55-42c4-b48d-9a60153ae146" />
+![v1.0.6 浏览器级 Agent](https://github.com/user-attachments/assets/26994329-4e55-42c4-b48d-9a60153ae146)
 
-<img width="3096" height="1882" alt="ee4d555e47df0404083987143a76c727" src="https://github.com/user-attachments/assets/cb8d9460-bb90-4bc8-be5f-5ea635b95bfb" />
+![ee4d555e47df0404083987143a76c727](https://github.com/user-attachments/assets/cb8d9460-bb90-4bc8-be5f-5ea635b95bfb)
 
-<img width="3096" height="1882" alt="1570653742b0ce10142f775ebe5171af" src="https://github.com/user-attachments/assets/ed512839-09b8-4307-a8f0-bb620fc305fb" />
+![1570653742b0ce10142f775ebe5171af](https://github.com/user-attachments/assets/ed512839-09b8-4307-a8f0-bb620fc305fb)
 
 
 ### 3. 极致性能与低占用
@@ -561,3 +853,18 @@ Firefox 重点去除常驻被动监听，让 `webRequest` 监听器只在实际�
 - 重放台默认使用 Pretty；在 Pretty 或 Raw 中编辑都能重放。WebSocket 帧、批量重放、AI 分析及暗链检测的反馈得到改进。
 - 设置中的删除确认改用内置弹窗，Firefox 快捷键按钮样式与 Chrome 一致；切换英文后同步更新人设内容，暗链设置卡片在低弹窗高度下可完整滚动，规则标题也可换行。Agent 待批准操作可从等待状态重新打开，遮罩和 Esc 不再误关批准弹窗。
 - 本地 MCP Server 1.0.13 改善安装示例及连接诊断。Chrome / Firefox 正式 ZIP 中的扩展脚本均已混淆。
+
+---
+
+## 十九、1.0.7 更新日志
+
+- **独立编解码工作台**：147 项工具、最多 16 步配方；基础数据处理与高级参数化操作统一入口。
+- **智能解码与实用数据工具**：多层路径、本地核验 AI 建议、摩尔斯标点、文本 / JSON 比对、二进制文件还原、IP 与二维码 / 条形码。
+- **四个官方页面助手**：完善滚动、间距、脚本选择同步、快捷菜单、AI 结果与分析建议；邮件助手支持本地 EML 演示与研判。
+- **Agent / MCP 与微型 Fuzz**：44 项任务建议、按任务调整并发网页数量、Markdown 表格显示及三点 Fuzz；本地 MCP Server 1.0.14。
+- **新版本体验**：11 张引导卡片，新老用户每个新构建展示一次；每日联网检测官方安装包，同版本构建也可比较。
+- **稳定性与排障**：修复非法 URL 匹配、未处理回调、旧扩展上下文调用与取消后的迟到结果；完善搜索错误识别及回退。
+
+详细操作见上方 [1.0.7 图文实操](#features) 与 [快速上手](#quick-start)。原有 1.0.1–1.0.6 更新日志已完整保留在本页，也可下载 [独立历史归档](./CHANGELOG_ARCHIVE.md)。
+
+<!-- HX0_BUILD_INFO {"schema":1,"builds":{"Chrome":{"version":"1.0.7","platform":"Chrome","buildId":"915703e2f7190443358d95de121c4b6350bef5142758bb339e8d46f0fcf47df7","builtAt":"2026-10-11T22:25:33.876Z"},"Firefox":{"version":"1.0.7","platform":"Firefox","buildId":"4c836c4ec69e7da6ff41d906263eb63780983d608d8ea3e4e4edce87bd0d6cd5","builtAt":"2026-10-11T22:25:33.876Z"}}} -->

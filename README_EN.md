@@ -6,49 +6,41 @@
 
 ![](https://img.shields.io/badge/Network-No_system_proxy-success)  ![](https://img.shields.io/badge/UI-Sidebar_integrated-5865F2)  ![](https://img.shields.io/badge/Session-Same_origin_XHR_Fetch_WS-00A86B)  ![](https://img.shields.io/badge/Capture-Intercept-4285F4)  ![](https://img.shields.io/badge/Capability-Traffic_replay-blue)  ![](https://img.shields.io/badge/Capability-Micro_Fuzz-8B5CF6)  ![](https://img.shields.io/badge/Capability-Sensitive_data-FF69B4)  ![](https://img.shields.io/badge/Capability-Dark_link_scan-333333)  ![](https://img.shields.io/badge/AI-BYOK_optional-orange)
 
-![](https://img.shields.io/badge/Version-1.0.6-6D28D9) ![](https://img.shields.io/badge/PRO-Security_MCP-7C3AED) ![](https://img.shields.io/badge/Agent-Browser_level-2563EB) ![](https://img.shields.io/badge/Release-ZIP_only-0F766E)
+![](https://img.shields.io/badge/Version-1.0.7-6D28D9) ![](https://img.shields.io/badge/PRO-Security_MCP-7C3AED) ![](https://img.shields.io/badge/Agent-Browser_level-2563EB) ![](https://img.shields.io/badge/Release-ZIP_only-0F766E)
 
-<img width="1672" height="941" alt="1.0.6-en" src="https://github.com/user-attachments/assets/b26de860-f2d3-47d2-93b0-671c5a034d76" />
+**1.0.7 official release · Inspect requests. Understand data. Keep verification connected.**
 
+Built on capture, intercept, replay and AI automation, this release adds an independent codec workbench and refines page assistants and evidence workflows. New users can explore the complete feature overview below; existing users can start with the 1.0.7 highlights and walkthroughs.
 
-## v1.0.6 highlights
+[1.0.7 highlights](#whats-new) · [All features](#features) · [Community / PRO](#editions) · [Download and install](#install) · [Quick start](#quick-start) · [Full release history](#history)
 
-### 0930 release update
+![Hx0 HawkEye 1.0.7 release poster](https://github.com/user-attachments/assets/c8a626d3-47ce-4d36-b656-1fe96292dc49)
 
-- **Agent chat control:** Manage capture, interception and release, SOCKS/HTTP proxy routing, page scripts, MCP, personas, Skills, history, and basic/advanced settings through chat. Settings include target hosts, capture types/suffixes, private/self-signed HTTPS bodies, sensitive-data and dark-link rules, language, and AI profiles. Persistent switches and temporary tasks have defined scopes.
-- **Agent reliability:** Pending approvals stay open when the backdrop or Escape is pressed; the waiting indicator can reopen an approval after dismissal. Recover from checkpoints after sidebar closure or background interruption. Verify uncertain submissions and downloads before retrying. Skill saves use actual receipts; cross-chat summary memory is off by default and retrieved by relevance only after opt-in.
-- **Models and popup:** Adds Grok, MiniMax, Gemini, and Ollama (local), labels LM Studio as local, updates model candidates, and isolates provider keys. Settings confirmations use extension dialogs; shortcut buttons, English persona fields, and dark-link settings remain scrollable in short popups and longer rule names display correctly in Chrome and Firefox. Extension and popup descriptions lead with browser traffic capture and analysis while identifying Pro MCP/Agent features. Popup sections follow their switches, and the toolbar badge tracks captured traffic for the active site.
-- **Capture, intercept, and replay:** History scopes now distinguish current domain, current tab, and all records, with cross-subdomain tab filtering fixed. Replay opens in Pretty by default and applies edits made in Pretty or Raw. Intercept queues refresh automatically; WebSocket frames, batch replay, and missing body diagnostics are improved. Chrome passive listening remains limited to bodies the browser exposes; Firefox no longer shows its ineffective counterpart.
-- **Smart Proxy Router:** On first enable without an upstream proxy, the popup opens the configuration and focuses the upstream field. Saving a completed profile then enables routing without a misleading failure dialog. Firefox SOCKS5 username/password profiles are no longer rejected and were verified in a real browser against a local authenticated proxy. Chrome SOCKS and Firefox SOCKS4 remain unsupported for this authentication method.
-- **Analysis and UI:** Improves AI analysis and dark-link feedback, unclipped PRO badges, and text contrast in macOS dark mode.
-- **MCP and packages:** Local MCP Server **1.0.13** improves setup and startup diagnostics. Official Chrome/Firefox ZIPs contain obfuscated extension scripts; the standalone `hawkeye-mcp-server.mjs` stays directly runnable for troubleshooting. Replace the extension and MJS, then restart the MCP host when upgrading.
+*Feature figures show real browser UI. Local demonstration pages use fictional data. User-provided Fuzz screenshots are cropped; unrelated extensions, accounts, session data and interaction indicators are masked where present.*
 
-- **HawkEye Browser Automation MCP (PRO)**: positioned like a security-specialized Playwright MCP. MCP-capable Agent Hosts such as Codex, Cursor, and LM Studio connect to `hx0-hawkeye`, letting the Host model autonomously call browser and HawkEye tools in the user's real tab. It supports stdio, Streamable HTTP, and legacy SSE and is separate from the in-extension AI Task Console.
-- **Browser-level Agent (PRO)**: plans and executes multi-turn navigation, complex control / iframe interaction, traffic analysis, replay verification, public-web research, and native downloads inside the user's real tab and login session—not merely chat or one-shot AI reporting. Agent Mode requires an active trial or Professional license.
-- **Community features opened in v1.0.6**: compared with v1.0.5, Smart Proxy Router, Full Deep Search, and built-in/custom sensitive-information matching plus keyword libraries are now available in Community.
-- **Firefox and Chrome performance redesign**: one-pass bounded DOM snapshots, early offscreen rejection, lifecycle-bound Firefox `webRequest` listeners, compact Agent/MCP transport, batched notifications, observer reuse, and resumable large results through `next_cursor`, without dropping task evidence.
-- **Trusted input and evidence files**: Chrome prefers CDP `Input.dispatchKeyEvent` / `Input.dispatchMouseEvent`, while Firefox uses a native-input relay with focus fallback. `browser_screenshot` can save an image locally when `save_to_file: true` is explicitly supplied; the default remains image-only with no disk write.
-- **Two explicit Skill gates**: built-in pentest / CTF knowledge bases are updated for v1.0.6. Skills are off in every new Agent conversation. The user must first enable allowed Skills/sub-modules in Advanced Settings, then click `Skills` in the current Agent conversation; relevance matching can use only that allowlist.
+<a id="whats-new"></a>
+## What's new in 1.0.7?
 
-### Earlier updates
+This release turns individual data operations into reusable workflows, and connects page signals to results you can verify.
 
-> **0906 release update:** This update focuses on long-running Agent tasks and reliability: it fixes actions targeting the old tab after a switch, failures after closing the task tab, unintended downloads during file discovery, and checkpoint limits blocking new tasks. It improves Goal/Plan progress retention, interruption recovery and duplicate-submission protection, reduces history synchronization, and moves title and memory maintenance to the background. It also strengthens web research, page-metric evidence and Firefox input handling, adds the Ctrl+H capture-UI shortcut, and synchronizes the bilingual manual and Chrome/Firefox release packages.
+| Core update | What it helps you do | Where to start |
+| --- | --- | --- |
+| **Dedicated codec workbench** | Combine 147 operations into recipes of up to 16 steps, with feedback for each step | Codec → Codec & tools |
+| **Smart multilayer decoding and AI assistance** | Identify formats, inspect candidates and paths, verify AI proposals locally | Codec → Smart decoding |
+| **Text / JSON comparison and binary recovery** | Find meaningful response changes; recover original files from Hex / Base64 | Codec → Text / JSON comparison; Output → Save to file |
+| **QR / barcodes and IP network tools** | Generate and read codes offline; calculate IPv4 / IPv6 addresses and ranges precisely | Codec → corresponding tab |
+| **Four official page assistants** | Page intelligence, decoding, pentest analysis and phishing mail review alongside the page | Scripts → select assistant → Inject into current page |
+| **Agent and MCP integration** | 44 task ideas, goal / plan modes, shared access to workbench operations | Agent Mode; Basic settings → HawkEye Browser Automation MCP |
+| **Three-point micro Fuzz** | Configure multiple parameters and preview a bounded test before running it | Replay → mark injection points → micro Fuzz |
+| **Feature tour and update indicator** | A one-time tour for each new build; daily checks for official packages when reachable | Extension popup; red dot above the footer version |
 
-> **0904 release update:** This update improves Agent model compatibility and interaction: it adds a per-conversation deep-thinking toggle, refines DeepSeek, GLM-5.3-Flash, and local/custom model support, fixes missing tool-call arguments and long-text overflow, and unifies the HawkEye Agent label. It also adds local OpenSSL/CryptoJS AES passphrase decryption, rejects unsupported codec actions instead of falsely reporting success, strengthens DeepSeek empty-response retries and diagnostics with fallbacks grounded in actual tool results, and synchronizes the bilingual manual and Chrome/Firefox release packages.
-
-> **0902 maintenance refresh:** expands mainstream model compatibility with Zhipu GLM, Xiaomi MiMo, and SiliconFlow presets plus automatic Base URL billing-route detection; repairs legacy GLM/MiMo profile crossovers and improves request-error feedback. Context-window input now uses token presets/custom values, known vision models enable image input automatically, optional background broadcasts no longer raise `Receiving end does not exist` while the side panel is closed, and the bilingual manual is synchronized.
-
-> **0830 maintenance refresh:** without reducing capture or interception coverage, this build strengthens Firefox listener initialization and request header/body retention, smart web codecs, trusted Chrome/Firefox input, and screenshot evidence file saving. It also updates the bilingual manual, MCP/Agent setup, and the mainstream Browser MCP comparison.
-
-<img width="1800" height="1382" alt="Codex, Cursor, or LM Studio controlling the browser through HawkEye MCP" src="https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a" />
-
-<img width="1500" height="900" alt="v1.0.6 Browser-level Agent" src="https://github.com/user-attachments/assets/b9491db0-727c-4a09-8020-0f87abd97efe" />
+---
 
 ## 1. What it is
 **Basic capture needs no system proxy configuration.** Hx0 HawkEye is a lightweight security workbench for Chrome, Firefox, and mainstream Chromium browsers. Inside the user's real tabs and signed-in sessions, it unifies **traffic capture and interception/tampering (including WebSocket), replay, micro-Fuzz, sensitive-data / dark-link detection, AI-assisted security auditing, HawkEye MCP, and browser-level Agent workflows (PRO)** so manual analysis, external Agent Hosts, and in-extension automation share the same browser evidence and security tools.
 
 <!-- 这是一张图片，ocr 内容为： -->
-<img width="1254" height="1254" alt="hb-en" src="https://github.com/user-attachments/assets/876837b2-6b4d-487d-88bc-a4a9f7ae2553" />
+![Hx0 HawkEye overview](https://github.com/user-attachments/assets/b7692007-a1a4-43ee-8072-9a3831404993)
 
 
 #### ⚡ Core advantage: why not a classic proxy?
@@ -57,7 +49,7 @@
 + **Browser-based workflow**: load the extension and set target rules to start capturing for development, API triage, and **authorized** first-pass review.
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774275081238-a9d3306e-b723-4e0f-846b-38ef9a50ca02.png)
+![](https://github.com/user-attachments/assets/c94f0426-8bfb-4c8c-afa0-bece07a583af)
 
 #### 🤖 Differentiator: end-to-end AI (BYOK)
 Bring your own model API (BYOK) and embed AI into the sidebar workflow:
@@ -65,36 +57,36 @@ Bring your own model API (BYOK) and embed AI into the sidebar workflow:
 + **Smart cases & payload generation**: structured test ideas in the replay workbench; context-aware mutated payloads in micro Fuzz—without bloated static wordlists.
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774275467560-2fe55566-6241-4482-b932-f1bd41dcd726.png)
+![](https://github.com/user-attachments/assets/0224c67f-68f8-4784-b8d7-70bc5bc595d3)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774275500332-6fb4554b-861f-4e98-81ee-dbe1bf42d005.png)
+![](https://github.com/user-attachments/assets/fff2297b-b156-4dd7-b94d-cd3927e244ca)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774276635896-103172aa-4680-4c76-b96a-d31a1dfce8b0.png)
+![](https://github.com/user-attachments/assets/d763a097-c650-4f8a-b4fd-a18a13144dba)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774276656535-f6f1c42d-6fdf-499e-a7eb-2122ef98d4d6.png)
+![](https://github.com/user-attachments/assets/7cc11ab1-c3d9-42c8-95ca-6d223cb51aaf)
 
 + **Single-request analysis**: AI uses the request and response evidence actually captured; when an original response body is unavailable, diagnostics explain the gap rather than treating replay as the original response.
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774275567642-5018496d-2b53-4674-bd7a-3d65d0806658.png)
+![](https://github.com/user-attachments/assets/9897a393-41fc-4a20-a4a5-525e5704796e)
 
 + **Batch synthesis**: select multiple packets in a dedicated workbench; AI extracts patterns across APIs and third-party calls to support supply-chain / dependency-surface **first-pass** review.
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774275663993-07154b5a-c440-4b22-820c-c3645a284671.png)
+![](https://github.com/user-attachments/assets/a34486fd-3638-4b19-9991-b10c39179bd6)
 
 + **Dual-engine static hunting**: **built-in dark-link rules + AI contextual interpretation** for batch replay across pages and broad static coverage.
 
 
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774275800441-dc18805d-35b8-46a5-a983-afef8e05450a.png)
+![](https://github.com/user-attachments/assets/5c60dfe2-aeca-48fc-8e26-5b59c28200c1)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774275958382-e5751509-132f-4ebc-8736-0f6e642048ec.png)
+![](https://github.com/user-attachments/assets/41bdefd6-3c29-4e53-9a5f-e0cf6a95720b)
 
 ---
 
@@ -105,23 +97,24 @@ With **SPAs, heavy XHR/Fetch, and WebSocket**, engineers constantly switch betwe
 
 ---
 
+<a id="features"></a>
 ## 3. Features
 Core flow: **Capture** (optional **WebSocket**) → **Filter** → **Detail** → **Replay** (HTTP / **WebSocket frames**; optional **AI test cases**) → **Micro Fuzz** (HTTP / **WS**; optional **AI payloads**) → **Dark-link / AI packet analysis** (including **batch AI / dark-link workbenches** after multi-select) → **AI Task Console** (Pro, multi-stage automation).
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774276082646-8aad5093-4c32-4595-9c6b-a5378a0f564d.png)
+![](https://github.com/user-attachments/assets/67fa397b-ff68-4713-abe6-f58358515576)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774276530139-e52d8423-756d-4ad1-83f2-7ceb512d6508.png)
+![](https://github.com/user-attachments/assets/bca01d9f-e391-41c0-b238-482ff2286af1)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774276559659-94bcce01-2393-4383-84db-91ba9453bb99.png)
+![](https://github.com/user-attachments/assets/410628b4-05b7-42c2-95a0-b83becb95fbb)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774276602069-b749ad60-8ba6-49a1-8129-acca2f9b1aaf.png)
+![](https://github.com/user-attachments/assets/310b0cb7-d813-4cca-a389-7a1b55850a6a)
 
 <!-- 这是一张图片，ocr 内容为： -->
-![](https://cdn.nlark.com/yuque/0/2026/png/12839102/1774276735904-99b04e61-1646-479c-85bf-92b9998bece0.png)
+![](https://github.com/user-attachments/assets/74ac68db-1903-4207-ba73-1e27106a2131)
 
 | Module | Description |
 | --- | --- |
@@ -139,12 +132,217 @@ Core flow: **Capture** (optional **WebSocket**) → **Filter** → **Detail** �
 | **Sensitive matching** | Built-in rules (IDs, phones, cards, email, Shiro/JWT/Swagger/UEditor/Druid fingerprints, IP, domain, CTF flags, etc.) plus **custom regex** and **keyword lists**; import/export, clear-all. |
 | **Batch** | Bulk export/delete, **batch AI**, **batch dark-link** (separate tab), batch replay, etc. |
 | **i18n** | UI **中文 / English**. |
+| **Independent codec workbench (1.0.7)** | 147 operation entries, recipes of up to 16 steps, parameters, live processing and recipe import / export; each basic or advanced operation checks its edition entitlement. |
+| **Smart decoding and data comparison (1.0.7)** | Multi-layer candidates and paths, locally verified AI suggestions, text / JSON comparison and original-byte file recovery; IP, QR and barcode tools are also available. |
+| **Four official page assistants (1.0.7)** | Page intelligence, smart decoding, penetration analysis and phishing mail review, with manual injection, match rules and script shortcuts. |
+| **Build tour and update notices (1.0.7)** | 11 feature cards shown once per new build; daily checks for the official ZIP matching the browser when online. |
 
 
 **Chrome and Firefox** differ in sidebar hosting, response-body capture, and intercept prompts. Chrome passive listening works only when the browser exposes a body; Firefox has no equivalent switch. See the in-extension manual for limits.
 
+
+### 1.0.7 illustrated walkthroughs: extend your existing workflow
+
+### 3.1 Dedicated codec workbench
+
+![The 1.0.7 codec workbench running a real SM3 → Base64 recipe in Chrome](https://github.com/user-attachments/assets/270ea917-ee23-48da-8483-cd21b69b071b)
+
+**147 operations. Up to 16 steps per recipe.** Search for operations, add steps and reorder them. Run automatically as input changes, or disable Auto run and execute manually. Each step shows its status, so failures can be traced to the relevant operation.
+
+Try it:
+
+1. Open **Codec → Codec & tools** and enter `flag{hello}`.
+2. Add **SM3**, then **Base64 Encode**.
+3. Inspect the output, copy it, use it as new input or save it. Export the recipe and import it again when needed.
+
+This example hashes the input with SM3, then Base64-encodes the hexadecimal digest text. **A hash is a one-way digest, not a ciphertext that can simply be decrypted.** Recipe exports exclude input text and keys.
+
+| Operation group | Examples |
+| --- | --- |
+| Common encoding and text | Base32 / Base64 / URL / Hex, Morse, JSON, JWT, regex and text processing |
+| Digests and checksums | MD5, SM3, SHA variants, HMAC, CRC / Adler / BCC / LRC |
+| Parameterized cryptography | AES, DES / Triple DES, RSA, SM2 / SM4 / SM9, RC4, Rabbit and OpenSSL |
+| Extended encodings and CTF | Base62 / Base85 / ASCII85 / basE91 / Base92, UU / XX, Base100 Emoji, Bech32; classical ciphers and static script decoding |
+| Everyday utilities | Precise integer base conversion, Unix timestamps, Chinese RMB amounts, colors / units and CSV / JSON |
+
+Advanced operations require PRO and the correct keys, IVs, modes or challenge parameters. SM9 uses compatible GmSSL DER keys and accepts 1–255 plaintext bytes per operation. JSFuck / AA / JJEncode use bounded static decoding without executing the recovered code.
+
+### 3.2 Smart decoding and AI assistance
+
+![A real five-layer decode with its reusable path and recovered flag](https://github.com/user-attachments/assets/a9f179fc-ad5c-4cb1-a165-1a0d91d850d0)
+
+**PRO** Smart decoding shares the workbench's local engine and maps **76 decoding / parsing paths**. Candidates are ranked by readability and format signals, with intermediate layers retained. Verified paths can be loaded into a recipe.
+
+1. Open **Codec → Smart decoding** and choose **CTF five-layer example**.
+2. Keep maximum depth at `5` and start smart decoding.
+3. Inspect `Base64 → URL → Hex → Unicode → ROT13` and the result `flag{ctf_5_layers}`. Use **Load decoder path** to continue in the recipe workbench.
+
+Basic Morse supports common punctuation too. Select **Morse Decode** in the workbench, or pass this input to Smart decoding:
+
+```text
+..-. .-.. .- --. -....- -- --- .-. ... .
+```
+
+The result is **`FLAG-MORSE`**; `-....-` represents a hyphen. Multilayer input continues through the shared engine, subject to its format, depth and required parameters.
+
+For further assessment, choose **AI assistance**. AI can explain format signals, propose paths and give likely causes and next verification steps. Allowed proposals run through local tools. When no path succeeds, the analysis still provides suggestions and identifies missing conditions. **Advice and verified results are shown separately; a model hypothesis is not presented as recovered plaintext.**
+
+Passwords, private keys, IVs, matrices, mappings and local dictionaries are not sent to AI. Bounded input excerpts and non-key candidates may be sent. Configure the provider under **Advanced → AI service**.
+
+### 3.3 Text and JSON comparison
+
+![JSON structural comparison ignores object key order and highlights pending → paid](https://github.com/user-attachments/assets/35ad636b-07d1-4449-985a-cdbc8ded1911)
+
+Paste two responses into **Text / JSON comparison**, choose text or JSON structural mode, and run the comparison. Character highlighting, previous / next difference navigation, pagination and complete diff export are available.
+
+Original:
+
+```json
+{"order_id":"demo-107","status":"pending","amount":129,"role":"viewer"}
+```
+
+Modified:
+
+```json
+{"role":"viewer","amount":129,"status":"paid","order_id":"demo-107"}
+```
+
+JSON mode ignores object key order and preserves array order. Here it identifies the change to `status`, rather than the reordered fields. Large integers retain their precision for order IDs and API regression checks.
+
+### 3.4 Binary data and file recovery
+
+Hex / Base64 decoding supports raw-byte output and **Save to file**. For example, decode an image's hexadecimal representation and save the original PNG bytes without converting them through potentially destructive UTF-8 text.
+
+Choose Hex or Base64 decode → select byte output → inspect the result → **Save to file**. Separator detection, byte editing and lossless reuse are supported. The file type depends on the actual bytes; choosing an extension does not change its contents.
+
+### 3.5 QR codes and barcodes
+
+![Generating a QR code for the official repository, with local image decoding](https://github.com/user-attachments/assets/7a74efc7-5b81-4bc3-bea5-753ac668296e)
+
+**PRO** supports local generation of QR and **9 one-dimensional barcode types**, with SVG / PNG export. Import an image, drag a webpage image or paste a screenshot to read a code.
+
+Try **QR / Barcodes → QR Code**, enter `https://github.com/asaotomo/Hx0-HawkEye` and generate the code. Drag it into the image decoding area to inspect the content.
+
+Each image returns the first recognized result, with a 6 MiB image limit and a 6-second decoding timeout. Blur, occlusion or complex backgrounds may prevent recognition. Decoded links are not opened automatically.
+
+### 3.6 IP network tools
+
+![IPv4 conversion and network calculations performed locally](https://github.com/user-attachments/assets/97227dfc-c5a6-48a7-a303-cc0bc7ca1ac4)
+
+**PRO** supports IPv4 / IPv6 format conversions, prefixes / masks, ranges and precise address counts. Results are grouped into cards, with individual copying and JSON export.
+
+Try **IPv4**, address `192.168.1.23`, prefix `24`, then calculate. The network is `192.168.1.0/24`, with `256` total addresses and the conventional usable host range `192.168.1.1–192.168.1.254`. This is a local calculation; it does not scan the network.
+
+### 3.7 Four official page assistants
+
+All four official assistants require **PRO** and share consistent headers, copy / collapse / close controls, light / dark themes and language settings. Open **Scripts**, select an assistant card and use **Inject into current page**. The toolbar selector stays synchronized with the selected card.
+
+| Assistant | Use case | How to use the output |
+| --- | --- | --- |
+| **Page Intelligence Assistant** | Forms, hidden fields, links, script endpoints and sensitive signals | Inspect category counts, expand or filter details, rescan and save JSON |
+| **Smart Decode Assistant** | Encoded page selections, capture details and replay content | Open the panel / decode the selection, inspect local candidates, optionally use AI or continue in the workbench |
+| **Smart Pentest Assistant** | Analysis from the page, HawkEye traffic, source and lightweight checks | Configure AI, run manually, review evidence and unverified findings, save Markdown |
+| **Phishing Mail Guard** | An opened webmail message or an imported EML | Review local risk evidence, optionally preview and request AI review, export HTML / print to PDF |
+
+Page Intelligence findings do not establish a vulnerability. Pentest hypotheses need further verification within the authorized scope. Large pages and restricted content are subject to collection budgets and diagnostic messages.
+
+![Local review of a fictional EML: risk signals, evidence, authentication information and fixed controls](https://github.com/user-attachments/assets/15f797c2-f1d4-4b13-93cd-636e67588a8f)
+
+**Start with Mail Guard:**
+
+1. Open a message in a supported webmail service and use **Open / local rescan**. Unsupported or unmatched pages show an explanation.
+2. Alternatively, choose **Import EML**. On an ordinary demonstration page, first set the script's injection scope to **Manual**, save it and inject it.
+3. Review local evidence and coverage. Request **AI deep review** if needed, or export a report.
+
+Reading-page adapters cover common services including Gmail, QQ / enterprise mail, Outlook and NetEase. Page redesigns, cross-origin bodies or special layouts may affect extraction; EML is an alternative. EML files are limited to 5 MiB. The assistant does not send mail or execute attachments. SPF / DKIM / DMARC details come from available message headers; offline analysis does not independently perform DNS checks or cryptographic signature verification. **No detected risk does not prove safety.**
+
+The scripts workbench also imports `.user.js` and ordinary JavaScript, with editing, checks and AI creation / optimization. Common GM / GM4 APIs are supported; full Tampermonkey API coverage, some MAIN-world behaviors and special dependencies remain limited.
+
+### 3.8 Browser-level Agent
+
+![Agent home with task ideas for AI decoding, JSON comparison, recipes and three-point Fuzz](https://github.com/user-attachments/assets/616ffa38-4914-48f7-a3d1-5f90a19941bf)
+
+**PRO** Agent Mode connects the current browser to HawkEye tools. Its **44 task ideas** appear four at a time, with **Show more**. Goal mode, plan mode, deep thinking, Skills, execution records, checkpoints and recovery are available.
+
+Start with a clear, read-only goal:
+
+> Inspect the current local demo page. List its endpoints, forms and hidden fields with evidence sources. Read only; do not log in or submit forms.
+
+Use **Plan mode** to review the steps before execution. Public-web research selects source counts according to the task, network and failures, adjusting concurrent page reads within **1–7 pages**. Search can read up to 7 result bodies; deeper research has a total budget of up to 15 pages. CAPTCHAs, timeouts, network problems or repeated failures can limit progress, and results identify evidence gaps.
+
+Advanced settings define the global Skills allowlist; the current Agent conversation must also enable `Skills`. Configure the model service, page access and risk confirmation policy for the task, and verify important actions and conclusions.
+
+### 3.9 Capture, interception and replay
+
+![Real Fetch requests from the local fixture appear in capture history](https://github.com/user-attachments/assets/50195e76-f397-4551-8b61-e599cdc0ebbb)
+
+Enable capture in Basic settings, set the target domain / IP and type rules, then reload the target page. History supports current-domain, current-tab and all-record views, plus Host / method / status / keyword filters.
+
+Details include Pretty / Raw / Hex / Render, with local edit drafts for requests and responses. Modify parameters in Replay and inspect the response. WebSocket supports frame observation, replay and rule-matched interception; frame replay needs an available connection. Sensitive matching, custom rules, deep keyword search and smart proxy routing remain available in Community.
+
+**PRO three-point micro Fuzz:** select text in Replay, add up to three `§...§` injection points, configure a payload list for each point, choose the combination mode and check the preview before running.
+
+| Three points, two payloads each | Tests, excluding baseline | Best suited to |
+| --- | --- | --- |
+| Sequential | 6 | Change one point at a time to isolate effects |
+| Parallel / row-synchronized | 2 | Treat each row as a parameter set; lists must have equal lengths |
+| Cartesian | 8 | Test combinations; counts grow quickly |
+
+One extra baseline request is sent. Set an execution limit in the UI. HTTP, in-page and WebSocket Fuzz share the planner; external MCP Fuzz retains stricter target and execution limits.
+
+Three-point walkthrough:
+
+1. Select each value in an authorized replay request and choose **Mark injection point**. The counter reaches **3 / 3** and each value is wrapped in `§`.
+2. Open **Micro Fuzz** and configure each injection-point tab separately, one payload per line.
+3. Choose the mode, concurrency and delay. Check the preview and execution limit before starting. Four values at each of three points give **4 × 4 × 4 = 64** Cartesian combinations, plus one baseline request.
+4. Select a result and inspect the actual substituted request alongside the status, response length, timing and body. HTTP 200 alone does not indicate a vulnerability.
+
+![Three marked injection points in Replay; session data masked](https://github.com/user-attachments/assets/1cd1980e-aeef-446f-9fe7-5d34455fae3a)
+
+![Independent payload lists, 64 combinations and request/response inspection](https://github.com/user-attachments/assets/edf0a1ae-05de-428d-871a-927f25475711)
+
+*User-provided screenshots of the real Chinese UI. Account regions were cropped and session data masked locally. Practice these steps on systems you own or are authorized to test.*
+
+
+Passive full-body capture uses browser debugging APIs. Some cross-origin `no-cors` responses remain restricted by Chromium. Render and ordinary replay do not bypass browser security rules.
+
+### 3.10 HawkEye MCP integration
+
+**PRO** local MCP Server **1.0.14** exposes the real browser session, capture, replay, analysis and codec workbench to compatible clients. It supports stdio and Streamable HTTP / SSE. The single-file server runs with Node.js 18 or newer.
+
+Server 1.0.14 exposes **52 tools** in the default full profile, or fewer with capability filtering. Testing scope can specify both host and port. Custom Fuzz payloads are executed as supplied; replay/Fuzz receipts include a `captureRecordId` for historical response lookup. Request and response interception are separate stages: check the response queue after releasing a request. See §3.1 in the extension manual.
+
+
+1. Enable **HawkEye Browser Automation MCP** in the extension's Basic settings.
+2. Find `mcp-server/hawkeye-mcp-server.mjs` in the extracted package and follow the connection instructions in the UI.
+3. Copy the supplied configuration to the client. Confirm it can read the current page before using further tools.
+
+Example stdio configuration; replace the path with your actual absolute path:
+
+```json
+{
+  "mcpServers": {
+    "hx0-hawkeye": {
+      "command": "node",
+      "args": ["/absolute/path/mcp-server/hawkeye-mcp-server.mjs"]
+    }
+  }
+}
+```
+
+In 1.0.7, catalog lookup, recipe execution, comparison, code generation / decoding and workbench display / export connect to Agent, AI Tasks and MCP. A third-party client's handling of tool results depends on that client's and model service's configuration. Disable the bridge when not in use.
+
+### 3.11 Feature introductions and updates
+
+New installations and upgrades display **11 liquid-glass feature cards**, once per new build. Previous / next, Get started and Close controls remain visible.
+
+When the official GitHub service is reachable, the extension attempts an update check at least daily. Offline or unreachable intranet environments are skipped quietly, without interrupting local work. An available update adds a red dot above the footer version link, which opens the official project.
+
+Detection goes beyond a version string such as `1.0.7`: it prioritizes numeric versions and official build identifiers, including multiple releases with the same version. For older releases without identifiers, it compares the upload time of the **official ZIP for the current browser** with the embedded build time. A difference exceeding 24 hours produces a “possibly updated package” notice. README edits and release-description edits do not count, and packages are not downloaded or installed automatically.
+
 ---
 
+<a id="editions"></a>
 ## 4. Editions (Community / Pro)
 
 Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **30-minute first-install Pro trial**.
@@ -165,12 +363,12 @@ Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **
 | **Interception Toggle, Modify / Forward / Forward All / Drop All (Community since v1.0.2)**                      | ✅                 | ✅                    | Queue-based intercept for **HTTP** and **WebSocket frames** when host rules match                                                                                                                                                                                                                                                                                                   |
 | Floating Action Button, Open as New Tab, Language Switching                                                       | ✅                 | ✅                    | Daily productivity features remain available in the Community Edition                                                                                                                                                                                                                                                  |
 | **Basic Encoding & Decoding**: MD5, SM3, SHA-1, SHA-256, ROT13, Base32 / Base64 / URL / Hex                       | ✅                 | ✅                    | Directly available in the Community Edition                                                                                                                                                                                                                                                                            |
-| **Advanced Encoding & Decoding**: SHA-512, HMAC-SHA256, Base64URL, Unicode, HTML, JSON, JWT, Timestamp Conversion | ❌                 | ✅                    | Designed for advanced verification, signing, and analysis workflows                                                                                                                                                                                                                                                    |
+| **Advanced Encoding & Decoding**: SHA-512, HMAC-SHA256, Base64URL, Unicode, HTML, JSON, JWT | ❌                 | ✅                    | Designed for advanced verification, signing, and analysis workflows                                                                                                                                                                                                                                                    |
 | **Intelligent Encryption Logic Analysis (Added in v1.0.1)**                                                       | ❌                 | ✅                    | Combines request context with related JS / HTML clues to help identify encoding, hashing, signatures, or hybrid encryption workflows                                                                                                                                                                                   |
 | In-Page Replay, In-Page Fuzzing, **HTTP / WebSocket Micro Fuzz**, Injection Point Marking                                           | ❌                 | ✅                    | Suitable for dynamic pages, WAF testing, real-time channels, and high-frequency parameter probing                                                                                                                                                                                                                                   |
 | Switch HTTP Method, Switch Target Domain                                                                          | ❌                 | ✅                    | Useful for multi-environment debugging and verification                                                                                                                                                                                                                                                                |
 | **Intelligent Proxy Router (v1.0.1; Community since v1.0.6)**                                                     | ✅                 | ✅                    | Located below “Capture Type / Suffix” in Settings. Requests matching site rules can be automatically forwarded to upstream proxies such as Burp Suite or Yakit, while unmatched traffic continues using the original network path. The Firefox version additionally supports “Compatibility Mode” and “Takeover Mode”. |
-| **HawkEye Browser Automation MCP (v1.0.6)**                                                                        | ❌                 | ✅                    | Local Server 1.0.13 uses the real browser session for capture, intercept, replay, analysis, and evidence tools |
+| **HawkEye Browser Automation MCP (v1.0.6)**                                                                        | ❌                 | ✅                    | Local Server 1.0.14 uses the real browser session for capture, intercept, replay, analysis, and evidence tools |
 | **Browser-level Agent / Agent Mode (v1.0.6)**                                                                      | ❌                 | ✅                    | Available during an active trial or with Pro; chat can change extension settings and use tools, with checkpoint recovery; cross-chat summary memory is off by default |
 | AI Analysis Settings, AI Result Analysis, AI Analysis, AI Test Case Generation                                    | ❌                 | ✅                    | All AI-related capabilities are included in the Professional Edition                                                                                                                                                                                                                                                   |
 | **AI Task Console (since v1.0.2)**                                                                                    | ❌                 | ✅                    | Multi-stage automation: Intelligent Penetration and CTF modes; **Skills knowledge-base injection** (v1.0.3: smarter defaults and manual-selection priority), **in-task supplementary hints**; **timeline log with draggable split** (v1.0.5); tighter orchestration and tool chains; ties history, replay, and evidence into reports                                                                                                                                |
@@ -181,6 +379,15 @@ Hx0 HawkEye currently uses a three-state model: **Community**, **Pro**, and a **
 | Hidden Link & Static Threat Detection, Report Export, High-Reputation Top-Level Domains                           | ❌                 | ✅                    | Rule scanning, reporting, and advanced noise-reduction capabilities                                                                                                                                                                                                                                                    |
 | **Full Deep Search, Sensitive Matching, Custom Regex / Keyword Libraries (Community since v1.0.6)**              | ✅                 | ✅                    | Moved to Community compared with v1.0.5; includes full request/response search, built-in rules, custom regex, keyword libraries, and batch import/export                                                                                                                                                                |
 | Batch Export, Batch Delete, Batch Replay, Batch AI Analysis, Batch Hidden-Link Detection                          | ❌                 | ✅                    | Unified batch-processing workflow exclusive to the Professional Edition                                                                                                                                                                                                                                                |
+| **Independent recipes and text / JSON comparison (1.0.7)** | ✅ | ✅ | Up to 16 steps; Community can combine basic operations, while advanced operations still require PRO |
+| **Unix time and RMB uppercase tools (1.0.7)** | ✅ | ✅ | Local daily utilities in the codec workbench |
+| **Smart decoding, IP / QR / barcodes and advanced data tools (1.0.7)** | ❌ | ✅ | Decode paths and AI suggestions are verified locally; configure your own model service |
+| **Four official page assistants (1.0.7)** | ❌ | ✅ | Use the script workbench; page and mailbox support depends on match rules |
+| **Feature tour and official update notices (1.0.7)** | ✅ | ✅ | Dismiss the tour in one click; package updates are indicated, never installed automatically |
+
+147 is the total operation-entry count, not the number unlocked in Community. Every recipe step checks the corresponding entitlement. PRO does not include third-party model-service fees.
+
+> `1.0.7`: independent codec workbench, 16-step recipes, smart decoding, text / JSON comparison, binary recovery, QR / barcodes and IP utilities; refined page assistants, three-point Fuzz, Agent / MCP integration, build tours and update notices.
 
 > Version `1.0.1` initially introduced two Professional features: `Intelligent Proxy Router` and `Intelligent Encryption Logic Analysis`; the router moved to Community in `1.0.6`.
 
@@ -246,21 +453,43 @@ Compared across shape, session, workflow, and specialties: **Hx0 HawkEye**, **Bu
 
 ---
 
-## 7. Offline install (v1.0.6 · ZIP only)
+<a id="install"></a>
+## 7. Offline install (v1.0.7 · ZIP only)
+
+| Browser | 1.0.7 official package |
+| --- | --- |
+| Chrome / Chromium | [Download Chrome ZIP](./Hx0-HawkEye-Chrome-V1.0.7-Official.Release.zip) |
+| Firefox | [Download Firefox ZIP](./Hx0-HawkEye-Firefox-V1.0.7-Official.Release.zip) |
+
+[SHA-256 checksums](./SHA256SUMS) · [Official repository](https://github.com/asaotomo/Hx0-HawkEye) · [Product website](https://www.hx0.store/products/hawkeye)
 
 Download exactly one official package for your browser from [GitHub Releases](https://github.com/asaotomo/Hx0-HawkEye/releases):
 
-- `Hx0-HawkEye-Chrome-V1.0.6-Official.Release.zip`
-- `Hx0-HawkEye-Firefox-V1.0.6-Official.Release.zip`
+- `Hx0-HawkEye-Chrome-V1.0.7-Official.Release.zip`
+- `Hx0-HawkEye-Firefox-V1.0.7-Official.Release.zip`
 
 Checksums (SHA-256):
 
 ```text
-7c961915fbb72aa0f7d6e73447ae95e9b7a9171cdd65ca8e3bbd25052559492c  Hx0-HawkEye-Chrome-V1.0.6-Official.Release.zip
-fa6c9fd4ee77acd8a75b9c799c71e89dc8d96a3302c608ce932ccfe592afddad  Hx0-HawkEye-Firefox-V1.0.6-Official.Release.zip
+b25476afb54ef792a360292a2ba3b582567b12883c65e7d03c9be0e74cd90108  Hx0-HawkEye-Chrome-V1.0.7-Official.Release.zip
+c6609c26e5aa9f042f22123f5d28ea529cdb14a6611c2b895e3754ae998a1782  Hx0-HawkEye-Firefox-V1.0.7-Official.Release.zip
 ```
 
-This release intentionally ships **no CRX or XPI**. Chrome restricts or disables non-store CRX installs, while release Firefox requires signed XPI packages. ZIP-only distribution avoids presenting fragile sideload paths as permanent installs and keeps the packaged runtime contents inspectable. The archives contain no unobfuscated extension development source, build scripts, source maps, secrets, or debug files; the standalone MCP Server MJS remains readable for direct use and troubleshooting.
+This release intentionally ships **no CRX or XPI**. Chrome restricts or disables non-store CRX installs, while release Firefox requires signed XPI packages. ZIP-only distribution keeps runtime contents inspectable and allows browser-specific installation; see the Developer Edition persistence steps below. The archives contain no unobfuscated extension development source, build scripts, source maps, secrets, or debug files; the standalone MCP Server MJS is also obfuscated for distribution and runs directly with Node.js, with runtime diagnostics available for troubleshooting.
+
+
+
+After extraction, select the directory that directly contains these files. Do not select the ZIP itself or an extra outer directory:
+
+```text
+HawkEye installation directory/
+├── manifest.json       ← Select this directory level
+├── _locales/
+├── src/
+└── mcp-server/
+```
+
+The Chrome figure is a real isolated-browser screenshot; the Firefox figure is a step diagram. Neither contains personal accounts or unrelated extensions. Follow the equivalent button names below.
 
 ### Chrome / Edge / Chromium
 
@@ -269,6 +498,11 @@ This release intentionally ships **no CRX or XPI**. Chrome restricts or disables
 3. Enable **Developer mode**.
 4. Click **Load unpacked**.
 5. Select the extracted directory that directly contains `manifest.json`, then pin HawkEye to the toolbar.
+
+![Chrome extension manager: Developer mode and Load unpacked](https://github.com/user-attachments/assets/b43bc41c-edc3-4240-8948-0c098ed4e63f)
+
+The installed card should show **Hx0 HawkEye · 1.0.7** with its switch enabled. See the [official Chrome instructions](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world) for the equivalent controls.
+
 
 Before upgrading, export anything important and close HawkEye sidebars. Replace the old fixed-folder contents with the new release, then click **Reload** on the extensions page. Do not load two HawkEye directories at once; different extension IDs keep separate local data.
 
@@ -280,13 +514,46 @@ Before upgrading, export anything important and close HawkEye sidebars. Replace 
 4. Select `manifest.json` in the extracted directory.
 5. Load it again after every Firefox restart.
 
-Regular Firefox does not permanently install unsigned extensions. This repository does not recommend disabling signature enforcement to imitate permanent installation; organization-wide deployment should use Mozilla signing or enterprise policy.
+![Firefox temporary installation step diagram](https://github.com/user-attachments/assets/0ec2e944-b7c6-47c3-a0f4-844211d3ac7e)
+
+After selecting `manifest.json`, HawkEye appears under temporary extensions. Reload it after restarting Firefox. See [Mozilla’s temporary installation guide](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/).
+
+
+### Firefox Developer Edition: persistent installation
+
+For an installation that **survives browser restarts**, use [Firefox Developer Edition](https://www.mozilla.org/firefox/developer/). Mozilla permits unsigned extensions in this edition after changing the signature preference. [Mozilla signing guidance](https://extensionworkshop.com/documentation/publish/signing-and-distribution-overview/)
+
+1. Install and launch **Firefox Developer Edition**. Confirm the edition under Help → About Firefox. This unsigned persistent-install method does not apply to regular release Firefox.
+2. Download the **Firefox official ZIP** above and verify its SHA-256. Make a copy and change `.zip` to `.xpi`, for example `Hx0-HawkEye-Firefox-V1.0.7-Official.Release.xpi`. **Do not extract or re-compress it.** XPI uses ZIP format; renaming keeps its bytes and checksum unchanged. On Windows, enable View → Show → File name extensions first to avoid `.xpi.zip`. [Mozilla packaging guidance](https://extensionworkshop.com/documentation/publish/package-your-extension/)
+3. Open `about:config` in Developer Edition, read and accept the browser notice, find `xpinstall.signatures.required`, and set it to **false**. This disables extension-signature enforcement in that browser profile; install only trusted packages whose checksums you have verified.
+4. Open `about:addons` → Extensions → gear menu → **Install Add-on From File**, select the renamed `.xpi`, and confirm installation and permissions. Use this file-install path rather than the temporary `about:debugging` path; do not select `manifest.json` here.
+5. Verify that **Hx0 HawkEye 1.0.7** is enabled. Quit and restart Developer Edition, then verify it remains installed and opens its popup/sidebar.
+6. To upgrade, install the new package with the same add-on ID through the file-install flow, confirm the update, and reload existing web pages. Temporary installs and different Firefox editions/profiles may keep separate data; export important data before migrating.
+
+![Official Developer Edition: HawkEye remains enabled after restart](https://github.com/user-attachments/assets/dffb31b6-d1b3-42a5-85cf-858c094f2c6c)
+
+*Real screenshot from an isolated profile. The yellow verification notice indicates an unsigned package, rather than an extension runtime failure. Enabled status and retention after restart were verified.*
+
+The official download remains ZIP-only; your locally renamed XPI is not Mozilla-signed. The package includes a stable Firefox add-on ID. Persistent means retained across restarts, not guaranteed compatibility with every future browser release. Restoring signature enforcement can disable unsigned extensions.
+
+
+
+After upgrading, reload existing target pages so their content scripts and floating controls use the new extension context.
+
+Verify in the release directory on macOS / Linux:
+
+```sh
+shasum -a 256 -c SHA256SUMS
+```
+
+On Windows, use `Get-FileHash -Algorithm SHA256` and compare each ZIP digest with its entry in the checksum file.
 
 ### After install
 
 - **Toolbar popup**: capture/intercept, target scope, MCP control, and Advanced Settings.
-- **Sidebar**: History, Intercept, Replay, AI Tasks, browser-level Agent, and Page Scripts.
+- **Sidebar**: History, Intercept, Replay, AI Tasks, browser-level Agent, Page Scripts, and the independent Codec workbench.
 - **User Manual**: complete operation guide, browser differences, MCP setup, Skills, privacy, and troubleshooting.
+<a id="quick-start"></a>
 ## 8. User manual
 After install, open the **in-product User Manual** for full tutorials covering **MCP / Agent setup**, a **mainstream Browser MCP comparison**, **Chrome / Firefox differences**, **request header/body troubleshooting**, **screenshot file save**, **FAQ**, and **licensing**.
 
@@ -298,6 +565,26 @@ After install, open the **in-product User Manual** for full tutorials covering *
 
 For positioning: [Playwright MCP](https://github.com/microsoft/playwright-mcp) focuses on cross-browser test/isolated automation; [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) on Chrome DevTools and performance debugging; [Browser MCP](https://docs.browsermcp.io/) on general actions in an existing logged-in Chrome tab. HawkEye's core distinction is one workflow combining **real Chrome + Firefox sessions, capture, intercept/tamper, replay/fuzz, sensitive/dark-link evidence, and Agent execution**. See in-product Manual **§3.2** for the detailed comparison.
 
+
+### Three-minute quick start and common issues
+
+1. **Inspect one request:** open the target, enable capture with a domain limit, reload it and inspect a request / response in History.
+2. **Process some data:** open Codec and try Base64 decoding or the SM3 → Base64 recipe above. Copy and check the result.
+3. **Add AI when needed:** configure the model service in Advanced settings, begin with a read-only goal, then use assistants, Agent or MCP as appropriate.
+
+The complete bilingual manual, edition comparison and User Agreement / Privacy Policy are available inside the extension and updated for 1.0.7.
+
+| Common issue | What to check |
+| --- | --- |
+| No AI output / service not configured | Check the provider endpoint, model and authentication in Advanced → AI service; inspect the readable error. Stopping the wait does not guarantee server-side processing stops |
+| Format recognized, no plaintext | Check characters, separators, depth, keys / IVs / modes. Hashes cannot simply be reversed; missing conditions remain unverified |
+| No script menu / page does not match | Select and save the correct script, inject on a supported ordinary page and reread menus. Browser-internal pages may prohibit injection; use EML for mail when appropriate |
+| Empty full response / cross-origin failure | Check permissions and response-body diagnostics. Some `no-cors`, CSP, cross-origin and debugging API restrictions cannot be removed by the extension |
+| Bing errors / excessive redirects | Agent recognizes error pages and attempts search-entry fallback, retaining diagnostics if it fails. Upstream behavior, network and Cookie state can still affect access |
+| Invalid extension context after an update | Reload the target page. Handling of stale floating controls and invalid calls has been hardened |
+
+Version 1.0.7 also improves assistant scrolling / spacing, menu loading states and button alignment, synchronized script selection, separate AI result cards, Markdown tables / wide-table scrolling, editor cursor handling and cancellation / late-result isolation. Invalid URL match patterns and unhandled callback errors are fixed. The extension does not weaken browser security to load a page's blocked Mixed Content.
+
 ---
 
 ## 9. Security & compliance
@@ -307,6 +594,7 @@ For positioning: [Playwright MCP](https://github.com/microsoft/playwright-mcp) f
 + See the in-extension bilingual **Terms & Privacy agreement** for the complete data scope, exceptions, retention, and user rights.
 + Use **Render** and similar features in trusted environments; sandboxing reduces but does not remove risk from malicious responses.  
 + Commercial use: follow **license** terms in the product.
++ **1.0.7 local data tools:** Codec, comparison, IP calculations and basic mail checks run locally. Smart-decoding passwords, private keys, IVs, matrices, mappings and dictionaries are not sent to AI. Mail AI review sends only the previewed excerpt and evidence after an explicit click.
 
 ---
 
@@ -314,7 +602,7 @@ For positioning: [Playwright MCP](https://github.com/microsoft/playwright-mcp) f
 
 New users can first use the **full Pro trial for 30 minutes**. When the trial ends without activation, the product automatically falls back to **Community**. If the experience fits your workflow, you can obtain a Pro activation code through the following methods:
 
-**Visit [the activation code tutorial](https://www.yuque.com/u12459488/bzqpay/udkx5qy1x6guinz0?singleDoc) to get your activation code for free for a limited time.**
+**Visit [the activation code tutorial](https://www.yuque.com/u12459488/bzqpay/udkx5qy1x6guinz0?singleDoc) for current activation options and official promotion details.**
 
 ---
 
@@ -327,6 +615,9 @@ New users can first use the **full Pro trial for 30 minutes**. When the trial en
 
 Please include browser + version, extension version, repro steps, and screenshots when reporting issues.
 
+
+You can also report through [GitHub Issues](https://github.com/asaotomo/Hx0-HawkEye/issues). Include the build identifier and readable error details; mask accounts, unrelated extensions, secrets and sensitive traffic in screenshots first.
+
 ---
 
 ## 12. Disclaimer
@@ -335,29 +626,30 @@ The authors and contributors **assume no liability** for **unauthorized testing*
 
 ---
 
+<a id="history"></a>
 ## 13. 1.0.1 Changelog
 
-> The v1.0.1–v1.0.5 sections record their original releases. For current behavior and edition boundaries, use the v1.0.6 (0930) guidance on this page.
+> The v1.0.1–v1.0.6 sections and images retain their original release details in full. For current behavior and edition boundaries, use the v1.0.7 guidance on this page.
 
 This `1.0.1` update primarily focuses on the enhancement of two professional edition capabilities:
 
 - **Smart Proxy Dispatcher (Professional Edition)**: Added a proxy dispatch entry below the `Capture Type / Suffix`on the basic settings page. It can forward browser requests matching site rules to Burp, Yakit, or other upstream proxies, while unmatched requests continue on their original network path. This is suitable for integrating "native browser session capture" and "in-depth proxy debugging" into a single workflow, reducing the overhead of frequently switching system proxies.
   
 
-<img width="430" height="599" alt="image" src="https://github.com/user-attachments/assets/64221294-63da-4aff-aeec-69250f0b6650" />
+![image](https://github.com/user-attachments/assets/64221294-63da-4aff-aeec-69250f0b6650)
 
 
 - **Encryption Logic Intelligent Analysis (Professional Edition)**: Located to the right of the AI Analysis button. The model combines clues from the current request's URL, parameters, headers, body, and response, along with function names, field names, and submission flows from JS/HTML on the same page, to help determine if encoding, hashing, signing, or hybrid encryption is implemented on the front-end. It is suitable for reviewing changes in signature chains before and after packet modification.（In a nutshell: Let AI help you guess encryption, encoding, or signature logic, saving you the time of manual reverse engineering.）
 
-  <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/f6a6e38e-21c2-4531-b6a9-56234e43e043" />
+  ![image](https://github.com/user-attachments/assets/f6a6e38e-21c2-4531-b6a9-56234e43e043)
 
-  <img width="1531" height="929" alt="image" src="https://github.com/user-attachments/assets/718d6ad7-1f99-4c99-b3c7-108afdd48ac0" />
+  ![image](https://github.com/user-attachments/assets/718d6ad7-1f99-4c99-b3c7-108afdd48ac0)
 
-  <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/213b5822-bcf7-404c-baa7-69111dd1116b" />
+  ![image](https://github.com/user-attachments/assets/213b5822-bcf7-404c-baa7-69111dd1116b)
 
-  <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/b762a1cc-6054-4d17-9fa1-0adec61f35b8" />
+  ![image](https://github.com/user-attachments/assets/b762a1cc-6054-4d17-9fa1-0adec61f35b8)
 
-  <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/e255ea62-6817-4ad3-815e-c1f7b40c77e2" />
+  ![image](https://github.com/user-attachments/assets/e255ea62-6817-4ad3-815e-c1f7b40c77e2)
 
   
 - **Stability Improvements**: Concurrently strengthened details related to request header completion and proxy release in the standard capture mode, reducing display discrepancies and the probability of conflicts when switching between standard mode, intercept mode, and proxy settings.
@@ -373,7 +665,7 @@ This `1.0.1` update primarily focuses on the enhancement of two professional edi
 
 This `v1.0.2` release strengthens **HTTP replay headers**, adds a **WebSocket workbench**, expands the **AI Task Console** (**in-task hints** + **orchestration improvements**), and brings **intercept** to the Community Edition—boosting Web assessments, CTF workflows, and daily capture analysis.
 
-<img width="1055" height="1491" alt="v1 0 2海报-en" src="https://github.com/user-attachments/assets/98ec2d5e-e410-40c3-92fd-088a87f2d467" />
+![v1 0 2海报-en](https://github.com/user-attachments/assets/98ec2d5e-e410-40c3-92fd-088a87f2d467)
 
 
 ## Main Updates
@@ -398,12 +690,12 @@ The AI Task Module currently supports two modes:
 - **Intelligent Penetration Mode**
   Designed for standard Web security testing scenarios. Based on the target site, historical traffic, and page context, the AI can automatically perform information gathering, entry-point analysis, attack modeling, vulnerability probing, and result evaluation.
   
-<img width="3912" height="2070" alt="a7d48640ee2e4fed8032b4cf48229b23" src="https://github.com/user-attachments/assets/707007d2-7dc9-48c2-8981-8e7732219690" />
+![a7d48640ee2e4fed8032b4cf48229b23](https://github.com/user-attachments/assets/707007d2-7dc9-48c2-8981-8e7732219690)
 
 - **CTF Capture-the-Flag Mode**
   Designed for Web-based CTF challenges. The AI automatically plans solving strategies around challenge entry points, hints, response behaviors, and suspicious parameters. It attempts to construct exploitation requests and generates a post-analysis report after successfully capturing the Flag.
 
-  <img width="3912" height="2070" alt="27e66bc42b733225d16ceccd9e78eed7" src="https://github.com/user-attachments/assets/a00c9dc2-8203-4a2a-aadd-ee32971d0138" />
+  ![27e66bc42b733225d16ceccd9e78eed7](https://github.com/user-attachments/assets/a00c9dc2-8203-4a2a-aadd-ee32971d0138)
 
 The AI Task module records execution, evidence, key payloads, Flag hits, and final reports; while **running**, use toolbar **Supplementary hints** to **queue** context for later turns **without replacing** the pre-launch brief. The underlying **multi-stage adaptive orchestration** is continuously hardened (tool chain, budgets, readability). See in-product User Manual §10.
 
@@ -413,20 +705,20 @@ Interception Mode is now officially available for Community Edition users (**HTT
 
 Community Edition users can now pause, inspect, modify, and forward requests through Interception Mode, making manual testing, parameter debugging, and request verification much more convenient.
 
-<img width="1956" height="1035" alt="image" src="https://github.com/user-attachments/assets/6154a019-fbbe-45d6-bbbf-3b68227db08b" />
+![image](https://github.com/user-attachments/assets/6154a019-fbbe-45d6-bbbf-3b68227db08b)
 
 ### 4. WebSocket Capture, Replay, Micro Fuzz, and Intercept
 
 Enable **WebSocket** under capture types, then filter by type in the sidebar; handshakes often show as `GET 101`, frames as **`WS`** (**`OUT`** / **`IN`**). **Frame replay** shares the HTTP workbench and needs an **`OPEN`** page socket; **`§...§` + Micro Fuzz** uses the next inbound frame as the response. **Intercept** supports **per-frame** edit/forward/drop. Scope is page-created WebSockets inside the browser—not a system MITM. Details: User Manual §5.
 
-<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/d7a6f0fa-4894-4e30-a729-2c962aad194a" />
+![image](https://github.com/user-attachments/assets/d7a6f0fa-4894-4e30-a729-2c962aad194a)
 
 ### 5. AI Tasks: In-Task Supplementary Hints
 
 While a task **runs**, expand **Supplementary hints**, enter newly noticed parameters, reflections, paths, or CTF hints, and **Submit**; entries are **queued** with timestamps and appended as **runtime user supplementary hints** for later model turns, with per-turn and queue size caps. **Do not** paste real secrets; redaction and authorization rules match the full AI workflow.
 
-<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/6634413a-4d35-4e2f-b286-5c7a88c29c84" />
-<img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/c40d4f83-6d44-46a6-b8e3-d170f274c2f7" />
+![image](https://github.com/user-attachments/assets/6634413a-4d35-4e2f-b286-5c7a88c29c84)
+![image](https://github.com/user-attachments/assets/c40d4f83-6d44-46a6-b8e3-d170f274c2f7)
 
 ### 6. AI Tasks: Orchestration and Execution Improvements
 
@@ -442,9 +734,9 @@ This `v1.0.3` release brings three main updates:
 
 The **AI Task Console** can inject built-in **penetration / CTF knowledge bases**, or **import external SKILL.md files and skill folders** from Advanced Settings. Pick libraries and submodules in the task panel—they are injected as context to support multi-stage automated testing and triage.
 
-<img width="438" height="575" alt="image" src="https://github.com/user-attachments/assets/82d7170f-cd6b-4e38-9b78-49a788af2b3a" />
+![image](https://github.com/user-attachments/assets/82d7170f-cd6b-4e38-9b78-49a788af2b3a)
 
-<img width="1956" height="1040" alt="image" src="https://github.com/user-attachments/assets/9f970717-f7df-4dc6-910f-74c70b989cad" />
+![image](https://github.com/user-attachments/assets/9f970717-f7df-4dc6-910f-74c70b989cad)
 
 
 ### 2. Capture & Intercept Experience Improvements
@@ -455,7 +747,7 @@ Smoother **capture / intercept** workflows in the sidebar: cleaner filtering and
 
 **Single-click** the popup **status badge** to open Software activation with a new **Online** tab for subscription or lifetime membership. Benefits sync online and are **cached locally**, so Pro features continue offline while the cache/subscription remains valid—alongside the existing **offline activation code** path for easier checkout and renewal.
 
-<img width="438" height="575" alt="image" src="https://github.com/user-attachments/assets/e2a80834-6d66-4ffa-bcf3-8151b322de59" />
+![image](https://github.com/user-attachments/assets/e2a80834-6d66-4ffa-bcf3-8151b322de59)
 
 ---
 
@@ -467,9 +759,9 @@ This `v1.0.4` release brings four main updates:
 
 Import `.user.js` userscripts and manage them in the sidebar with one-click inject. AI can create or optimize scripts from traffic and tie them into capture, replay, and sensitive scanning. Human-written scripts, AI-written scripts, and AI-orchestrated scripts share one workflow.
 
-<img width="3046" height="1688" alt="041bc1f31c42a9d53fedf9c92b972b9a" src="https://github.com/user-attachments/assets/067a5dab-9e00-4cd9-a964-012d5733f8d5" />
+![041bc1f31c42a9d53fedf9c92b972b9a](https://github.com/user-attachments/assets/067a5dab-9e00-4cd9-a964-012d5733f8d5)
 
-<img width="3096" height="1882" alt="f48bb626b893c2efe11b0cdf9c8e69b9" src="https://github.com/user-attachments/assets/1e805ed7-b7ab-4fc8-a6b3-a9e779ce5507" />
+![f48bb626b893c2efe11b0cdf9c8e69b9](https://github.com/user-attachments/assets/1e805ed7-b7ab-4fc8-a6b3-a9e779ce5507)
 
 
 ### 2. AI Task Smart Script Dispatch (Pro)
@@ -496,24 +788,24 @@ This `v1.0.5` release brings four main updates:
 
 Execution log redesigned as a **timeline card stream** (color-coded stage / AI / test / tool-call cards; expandable tool JSON); **draggable split** between log and report; **task background AI understanding** before launch; reports include **vulnerability inventory + request/response evidence**; built-in `crypto.logic.analyze` and `codec.transform` for advanced crypto workflows.
 
-<img width="1526" height="891" alt="image" src="https://github.com/user-attachments/assets/a1e25ad7-7aa1-4b01-a42f-adec0a4dbcc6" />
+![image](https://github.com/user-attachments/assets/a1e25ad7-7aa1-4b01-a42f-adec0a4dbcc6)
 
 ### 2. Thicker Skills Library + AI Generate Skill
 
 Built-in sub-modules expanded to **19 pentest + 28 CTF**; **Smart Enable** toggle per main Skill; **AI Generate Skill** in Advanced Settings—create a single skill or collection and save as standalone Skill, built-in sub-module, or append to an imported skill.
 
-<img width="2084" height="1700" alt="ac1eb01ce372ddf86b80d79ce4ac610b" src="https://github.com/user-attachments/assets/889cea2a-0751-434b-bab7-d2ff84bf4a0e" />
+![ac1eb01ce372ddf86b80d79ce4ac610b](https://github.com/user-attachments/assets/889cea2a-0751-434b-bab7-d2ff84bf4a0e)
 
-<img width="450" height="570" alt="a9c5841467cee3adc1a220001c27b2b5" src="https://github.com/user-attachments/assets/15b6d6a5-8718-4442-a8d1-6a4a71be5a6a" />
+![a9c5841467cee3adc1a220001c27b2b5](https://github.com/user-attachments/assets/15b6d6a5-8718-4442-a8d1-6a4a71be5a6a)
 
-<img width="450" height="570" alt="image" src="https://github.com/user-attachments/assets/68b436cd-5b20-466a-b425-dd7bb22750ed" />
+![image](https://github.com/user-attachments/assets/68b436cd-5b20-466a-b425-dd7bb22750ed)
 
 
 ### 3. Codec Capabilities Completed
 
 Replay workbench adds **AES / DES / RSA / SM** and smart nested decode; built-in **Smart Decode Assistant** (enabled by default): select text on any page for common decode and hash hints; advanced AES / nested chains still go through replay or inline packet codec.
 
-<img width="1024" height="523" alt="image" src="https://github.com/user-attachments/assets/c0ffab9d-2de8-4e67-8d24-2f24dc5250e9" />
+![image](https://github.com/user-attachments/assets/c0ffab9d-2de8-4e67-8d24-2f24dc5250e9)
 
 
 ### 4. UX Improvements and Bug Fixes
@@ -528,13 +820,13 @@ Fixed various Chrome / Firefox system issues; better coordination among intercep
 
 HawkEye now exposes a security-oriented browser MCP, positioned like a security-specialized Playwright MCP. MCP-capable Agent Hosts such as Codex, Cursor, and LM Studio connect to `hx0-hawkeye`; the Host model can then autonomously call `browser_navigate`, `browser_type`, `browser_snapshot`, and HawkEye capture, replay, mutation, codec, TLS, sensitive-data, and evidence tools in the real browser. The loopback-only server supports stdio, Streamable HTTP, and legacy SSE and requires the user to enable the extension bridge. This capability is separate from the in-extension AI Task Console.
 
-<img width="1800" height="1382" alt="Codex, Cursor, or LM Studio controlling the browser through HawkEye MCP" src="https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a" />
+![Codex, Cursor, or LM Studio controlling the browser through HawkEye MCP](https://github.com/user-attachments/assets/ff0c2671-6559-4f38-b6f5-2a6a50c5375a)
 
 ### 2. Browser-level Agent (PRO)
 
 Agent Mode requires an active trial or Professional license. It starts from the user's real current HTTP(S) tab and supports multi-turn planning, approval modes, complex controls / iframe / Shadow DOM interaction, visual screenshots, attachments, traffic analysis, replay, codecs, autonomous public-web research, native downloads, durable long-context memory, and expandable tool evidence.
 
-<img width="1500" height="900" alt="v1.0.6 Browser-level Agent" src="https://github.com/user-attachments/assets/b9491db0-727c-4a09-8020-0f87abd97efe" />
+![v1.0.6 Browser-level Agent](https://github.com/user-attachments/assets/b9491db0-727c-4a09-8020-0f87abd97efe)
 
 ### 3. Extreme performance and low resource use
 
@@ -554,3 +846,18 @@ Smart Proxy Router, Full Deep Search, and Sensitive Information Matching (built-
 - Replay opens in Pretty by default; edits in Pretty or Raw are sent. WebSocket frames, batch replay, AI analysis, and dark-link results have clearer feedback.
 - Settings delete confirmations use in-extension dialogs. Firefox shortcut buttons match Chrome; English persona content updates when switching language, and dark-link settings remain scrollable in short popups and rule names wrap. Pending Agent approvals can be reopened from the waiting indicator, while backdrop and Escape no longer dismiss the approval dialog.
 - Local MCP Server 1.0.13 improves setup and connection diagnostics. Extension scripts in the official Chrome and Firefox ZIPs are obfuscated.
+
+---
+
+## 19. 1.0.7 changelog
+
+- **Independent codec workbench:** 147 operation entries and recipes of up to 16 steps, with one workspace for basic data processing and advanced parameterized operations.
+- **Smart decoding and practical data tools:** multi-layer paths, locally verified AI suggestions, Morse punctuation, text / JSON comparison, binary-file recovery, IP and QR / barcode tools.
+- **Four official page assistants:** refined scrolling, spacing, synchronized selection, shortcuts, AI results and analysis suggestions; mail review includes local EML support.
+- **Agent / MCP and micro Fuzz:** 44 task ideas, task-dependent page concurrency, Markdown-table rendering and three-point Fuzz; local MCP Server 1.0.14.
+- **Release experience:** 11 onboarding cards, shown once per new build for new and existing users; daily online checks of official packages, including same-version builds.
+- **Stability and diagnostics:** fixes for invalid URL patterns, unhandled callbacks, stale extension-context calls and late results after cancellation; improved search-error detection and fallback.
+
+See the illustrated [feature walkthroughs](#features) and [quick start](#quick-start). The full 1.0.1–1.0.6 changelogs remain on this page; a [separate history archive](./CHANGELOG_ARCHIVE_EN.md) is also available.
+
+<!-- HX0_BUILD_INFO {"schema":1,"builds":{"Chrome":{"version":"1.0.7","platform":"Chrome","buildId":"915703e2f7190443358d95de121c4b6350bef5142758bb339e8d46f0fcf47df7","builtAt":"2026-10-11T22:25:33.876Z"},"Firefox":{"version":"1.0.7","platform":"Firefox","buildId":"4c836c4ec69e7da6ff41d906263eb63780983d608d8ea3e4e4edce87bd0d6cd5","builtAt":"2026-10-11T22:25:33.876Z"}}} -->
