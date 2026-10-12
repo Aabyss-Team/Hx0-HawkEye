@@ -10,8 +10,6 @@
 
 **1.0.7 official release · Inspect requests. Understand data. Keep verification connected.**
 
-**2026-10-13 official build:** replaces the previous 1.0.7 packages with Agent concurrency, context and attachment updates, plus reliability fixes. The version remains 1.0.7. Existing users should replace their installed package with this build.
-
 Built on capture, intercept, replay and AI automation, this release adds an independent codec workbench and refines page assistants and evidence workflows. New users can explore the complete feature overview below; existing users can start with the 1.0.7 highlights and walkthroughs.
 
 [1.0.7 highlights](#whats-new) · [All features](#features) · [Community / PRO](#editions) · [Download and install](#install) · [Quick start](#quick-start) · [Full release history](#history)
