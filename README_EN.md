@@ -10,6 +10,8 @@
 
 **1.0.7 official release · Inspect requests. Understand data. Keep verification connected.**
 
+**2026-10-13 official build:** replaces the previous 1.0.7 packages with Agent concurrency, context and attachment updates, plus reliability fixes. The version remains 1.0.7. Existing users should replace their installed package with this build.
+
 Built on capture, intercept, replay and AI automation, this release adds an independent codec workbench and refines page assistants and evidence workflows. New users can explore the complete feature overview below; existing users can start with the 1.0.7 highlights and walkthroughs.
 
 [1.0.7 highlights](#whats-new) · [All features](#features) · [Community / PRO](#editions) · [Download and install](#install) · [Quick start](#quick-start) · [Full release history](#history)
@@ -30,9 +32,23 @@ This release turns individual data operations into reusable workflows, and conne
 | **Text / JSON comparison and binary recovery** | Find meaningful response changes; recover original files from Hex / Base64 | Codec → Text / JSON comparison; Output → Save to file |
 | **QR / barcodes and IP network tools** | Generate and read codes offline; calculate IPv4 / IPv6 addresses and ranges precisely | Codec → corresponding tab |
 | **Four official page assistants** | Page intelligence, decoding, pentest analysis and phishing mail review alongside the page | Scripts → select assistant → Inject into current page |
-| **Agent and MCP integration** | 44 task ideas, goal / plan modes, shared access to workbench operations | Agent Mode; Basic settings → HawkEye Browser Automation MCP |
+| **Agent and MCP integration** | 44 task ideas, @ context references, image / code attachments, real bookmarks and file delivery; 4 concurrent chats | [Agent workspace and attachments](#agent-workspace); Basic settings → HawkEye Browser Automation MCP |
 | **Three-point micro Fuzz** | Configure multiple parameters and preview a bounded test before running it | Replay → mark injection points → micro Fuzz |
 | **Feature tour and update indicator** | A one-time tour for each new build; daily checks for official packages when reachable | Extension popup; red dot above the footer version |
+
+<a id="agent-concurrency"></a>
+### Concurrent Agent chats and status icons
+
+Chrome and Firefox support up to **4 different chats running at once**. Follow-up tasks inside one chat run in order. A fifth execution task waits for a free slot and starts automatically when capacity becomes available. Creating or switching chats keeps other tasks running; Stop affects the current chat only. Each task retains its target tab. Browser operations on the same tab run in order, while operations on different tabs can run concurrently.
+
+- Running chats show a spinner in the card’s right-hand slot, vertically centered across the title and timestamp. Tasks waiting for a slot, a reply or approval, paused tasks, and completed tasks do not spin.
+- The spinner and delete **×** share one position. Hover or keyboard focus reveals Delete in that position, rather than stacking two icons. Delete still deletes the chat; it is separate from Stop.
+- A new task typed during a run can enter that chat’s waiting queue. Send now stops the current execution in that chat and submits the selected task while other chats keep running. The queue item is removed only after background acceptance; failed submissions remain retryable and retain their attachments. If all four execution slots are occupied, an accepted task waits for a free slot.
+- Page Intel, Smart Pentest, Smart Decode, and Phishing Mail Guard are synchronized across both browsers. Reinjecting Smart Decode no longer opens an empty panel without a selection. Legacy floating-panel coordinates no longer override the new bottom-right default; genuine manual drag positions are retained.
+
+Extension JavaScript remains obfuscated in release packages. **The MCP file `mcp-server/hawkeye-mcp-server.mjs` ships as readable, unobfuscated source**, ready to run, inspect, or debug with Node.js. It is a local tool service and contains no model. Reopen Agent after updating the extension, and refresh existing webpages to replace injected assistants.
+
+
 
 ---
 
@@ -135,7 +151,7 @@ Core flow: **Capture** (optional **WebSocket**) → **Filter** → **Detail** �
 | **Independent codec workbench (1.0.7)** | 147 operation entries, recipes of up to 16 steps, parameters, live processing and recipe import / export; each basic or advanced operation checks its edition entitlement. |
 | **Smart decoding and data comparison (1.0.7)** | Multi-layer candidates and paths, locally verified AI suggestions, text / JSON comparison and original-byte file recovery; IP, QR and barcode tools are also available. |
 | **Four official page assistants (1.0.7)** | Page intelligence, smart decoding, penetration analysis and phishing mail review, with manual injection, match rules and script shortcuts. |
-| **Build tour and update notices (1.0.7)** | 11 feature cards shown once per new build; daily checks for the official ZIP matching the browser when online. |
+| **Build tour and update notices (1.0.7)** | 13 feature cards shown once per new build; daily checks for the official ZIP matching the browser when online. |
 
 
 **Chrome and Firefox** differ in sidebar hosting, response-body capture, and intercept prompts. Chrome passive listening works only when the browser exposes a body; Firefox has no equivalent switch. See the in-extension manual for limits.
@@ -264,6 +280,21 @@ The scripts workbench also imports `.user.js` and ordinary JavaScript, with edit
 
 **PRO** Agent Mode connects the current browser to HawkEye tools. Its **44 task ideas** appear four at a time, with **Show more**. Goal mode, plan mode, deep thinking, Skills, execution records, checkpoints and recovery are available.
 
+<a id="agent-workspace"></a>
+#### Workspace, references and attachment updates
+
+1. **Agent workspace and task ideas**: Reopening the sidebar restores its last tab. New ideas cover real bookmark organization, folder classification and filename plans, static page recreation and attachment revisions.
+2. **Model menu and @ references**: Unified searchable cards and AI chip icons support per-model image-input settings. Reference selections, tabs, bookmarks, attachments, generated files and enabled Skills anywhere in the composer, with distinct icons and softly colored badges.
+3. **Images and code attachments**: Paste or drop webpage images, text and code files. Detect text encodings and deduplicate/name images. Explicit Skills use no attachment slots and their real bodies/modules load on demand. QR/barcode attachments and current-page images/canvases/SVG use local scanning independently of model vision. Multi-code long images return ordered results and pixel regions. Matching MCP tools also expose scanning and real bookmarks.
+4. **Files and live code editing**: Compact cards deliver reports/code with meaningful names. Invalid JS/JSON is repaired before delivery. Both preview and edit show line numbers and highlighting; green Run checks the source page. Background refresh preserves drafts, caret and scroll position.
+5. **Real bookmarks and local pages**: Read, page, classify, move and rename actual browser bookmarks with backups and protected roots/non-empty folders. Read permitted file:// pages. Folder classification uses supplied listings and does not move original disk files.
+6. **Smart decoding and assistant placement**: Ordinary language selections stay quiet; digits, braces and encoded material continue to open local decoding. Four assistants anchor to the visible page’s bottom-right corner, stay visible alongside a sidebar and retain dragged positions where possible.
+7. **Questions and Agent stability**: Missing scope, goals or parameters open specific choices with custom answers; recommendations require confirmation. Improves editor synchronization, reference imports and historical code source binding, with updated bilingual manuals, personas and builtin Skills whose names/descriptions follow the UI language.
+
+Type `@` anywhere in the composer to open the context menu shown below. Model image-input settings are saved per model; local QR and barcode scanning also works with model vision disabled.
+
+![Agent context menu: selected webpage text, tabs, Skills, browser bookmarks and local file uploads](https://github.com/user-attachments/assets/3d170d35-9553-41cc-bce1-d131d10fabb5)
+
 Start with a clear, read-only goal:
 
 > Inspect the current local demo page. List its endpoints, forms and hidden fields with evidence sources. Read only; do not log in or submit forms.
@@ -310,7 +341,7 @@ Passive full-body capture uses browser debugging APIs. Some cross-origin `no-cor
 
 **PRO** local MCP Server **1.0.14** exposes the real browser session, capture, replay, analysis and codec workbench to compatible clients. It supports stdio and Streamable HTTP / SSE. The single-file server runs with Node.js 18 or newer.
 
-Server 1.0.14 exposes **52 tools** in the default full profile, or fewer with capability filtering. Testing scope can specify both host and port. Custom Fuzz payloads are executed as supplied; replay/Fuzz receipts include a `captureRecordId` for historical response lookup. Request and response interception are separate stages: check the response queue after releasing a request. See §3.1 in the extension manual.
+Server 1.0.14 exposes **53 tools** in the default full profile, or fewer with capability filtering. Testing scope can specify both host and port. Custom Fuzz payloads are executed as supplied; replay/Fuzz receipts include a `captureRecordId` for historical response lookup. Request and response interception are separate stages: check the response queue after releasing a request. See §3.1 in the extension manual.
 
 
 1. Enable **HawkEye Browser Automation MCP** in the extension's Basic settings.
@@ -334,7 +365,7 @@ In 1.0.7, catalog lookup, recipe execution, comparison, code generation / decodi
 
 ### 3.11 Feature introductions and updates
 
-After installation or an upgrade, the feature tour introduces the main features and their entry points. Start using HawkEye after the tour, or close it at any time.
+After installation or an upgrade, the feature tour introduces the main features and their entry points. Start using HawkEye after the tour, or close it at any time. The 13 cards now include two Agent updates: concurrent chats with queued follow-ups, and @ references with attachments and file delivery.
 
 When the official GitHub service is reachable, the extension attempts an update check at least daily. Offline or unreachable intranet environments are skipped quietly, without interrupting local work. An available update adds a red dot above the footer version link, which opens the official project.
 
@@ -471,8 +502,8 @@ Download exactly one official package for your browser from [GitHub Releases](ht
 Checksums (SHA-256):
 
 ```text
-b25476afb54ef792a360292a2ba3b582567b12883c65e7d03c9be0e74cd90108  Hx0-HawkEye-Chrome-V1.0.7-Official.Release.zip
-c6609c26e5aa9f042f22123f5d28ea529cdb14a6611c2b895e3754ae998a1782  Hx0-HawkEye-Firefox-V1.0.7-Official.Release.zip
+ecb6e1f66b1714042cefbe0e5c3e7395bf26e008769cdc21ae58b34f7b0b2de3  Hx0-HawkEye-Chrome-V1.0.7-Official.Release.zip
+1410ebfedfd778d71aeb509b1bcb2b76ff1a5b77f7a8a281b8a8b6d2707f37de  Hx0-HawkEye-Firefox-V1.0.7-Official.Release.zip
 ```
 
 This release provides **two ZIP packages: Chrome and Firefox**. Extract and load the Chrome package in Chrome / Edge, or load the Firefox package temporarily. For a Firefox installation that survives restarts, follow the Developer Edition guide below.
@@ -855,9 +886,9 @@ Smart Proxy Router, Full Deep Search, and Sensitive Information Matching (built-
 - **Smart decoding and practical data tools:** multi-layer paths, locally verified AI suggestions, Morse punctuation, text / JSON comparison, binary-file recovery, IP and QR / barcode tools.
 - **Four official page assistants:** refined scrolling, spacing, synchronized selection, shortcuts, AI results and analysis suggestions; mail review includes local EML support.
 - **Agent / MCP and micro Fuzz:** 44 task ideas, task-dependent page concurrency, Markdown-table rendering and three-point Fuzz; local MCP Server 1.0.14.
-- **Release experience:** 11 onboarding cards, shown once per new build for new and existing users; daily online checks of official packages, including same-version builds.
+- **Release experience:** 13 onboarding cards, shown once per new build for new and existing users; daily online checks of official packages, including same-version builds.
 - **Stability and diagnostics:** improved target URL matching, page interaction after upgrades and cancellation feedback; clearer search failures and fallback options.
 
 See the illustrated [feature walkthroughs](#features) and [quick start](#quick-start). The 1.0.1–1.0.6 changelogs are on this page; a [separate history archive](./CHANGELOG_ARCHIVE_EN.md) is also available.
 
-<!-- HX0_BUILD_INFO {"schema":1,"builds":{"Chrome":{"version":"1.0.7","platform":"Chrome","buildId":"915703e2f7190443358d95de121c4b6350bef5142758bb339e8d46f0fcf47df7","builtAt":"2026-10-11T22:25:33.876Z"},"Firefox":{"version":"1.0.7","platform":"Firefox","buildId":"4c836c4ec69e7da6ff41d906263eb63780983d608d8ea3e4e4edce87bd0d6cd5","builtAt":"2026-10-11T22:25:33.876Z"}}} -->
+<!-- HX0_BUILD_INFO {"schema":1,"builds":{"Chrome":{"version":"1.0.7","platform":"Chrome","buildId":"9d8ce49d564238d0e67c1f3ee64148c3cc153d372abac69f602da379fabfc177","builtAt":"2026-10-12T22:39:07.242Z"},"Firefox":{"version":"1.0.7","platform":"Firefox","buildId":"bc0aafddbd6cf70d59bba263aa98fe8710e616cb35156531a0c93885d86ecfd0","builtAt":"2026-10-12T22:39:07.242Z"}}} -->
