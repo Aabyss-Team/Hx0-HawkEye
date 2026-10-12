@@ -10,7 +10,7 @@
 
 **1.0.7 official release · Inspect requests. Understand data. Keep verification connected.**
 
-Built on capture, intercept, replay and AI automation, this release adds an independent codec workbench and refines page assistants and evidence workflows. New users can explore the complete feature overview below; existing users can start with the 1.0.7 highlights and walkthroughs.
+Built on capture, intercept, replay and AI automation, this release adds an independent codec workbench and refines page assistants and evidence workflows. Agent also supports concurrent chats, context references, attachments and file delivery. New users can explore the complete feature overview below; existing users can start with the 1.0.7 highlights and walkthroughs.
 
 [1.0.7 highlights](#whats-new) · [All features](#features) · [Community / PRO](#editions) · [Download and install](#install) · [Quick start](#quick-start) · [Full release history](#history)
 
@@ -30,7 +30,9 @@ This release turns individual data operations into reusable workflows, and conne
 | **Text / JSON comparison and binary recovery** | Find meaningful response changes; recover original files from Hex / Base64 | Codec → Text / JSON comparison; Output → Save to file |
 | **QR / barcodes and IP network tools** | Generate and read codes offline; calculate IPv4 / IPv6 addresses and ranges precisely | Codec → corresponding tab |
 | **Four official page assistants** | Page intelligence, decoding, pentest analysis and phishing mail review alongside the page | Scripts → select assistant → Inject into current page |
-| **Agent and MCP integration** | 44 task ideas, @ context references, image / code attachments, real bookmarks and file delivery; 4 concurrent chats | [Agent workspace and attachments](#agent-workspace); Basic settings → HawkEye Browser Automation MCP |
+| **Agent and MCP integration** | 44 task ideas, goal/plan modes and resumable work; 4 concurrent chats, @ references and shared workbench tools | [Agent workspace and attachments](#agent-workspace); Basic settings → HawkEye Browser Automation MCP |
+| **Context, attachments and file delivery** | Per-model image settings, real bookmarks, image/code inputs, local scanning, live editing and report downloads | Agent → model menu / @ references / ＋ attachments |
+| **Queued Agent follow-ups** | Send now retains messages and attachments until accepted; other chats keep running | Agent → waiting queue → Send now |
 | **Three-point micro Fuzz** | Configure multiple parameters and preview a bounded test before running it | Replay → mark injection points → micro Fuzz |
 | **Feature tour and update indicator** | A one-time tour for each new build; daily checks for official packages when reachable | Extension popup; red dot above the footer version |
 
