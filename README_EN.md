@@ -16,7 +16,7 @@ Built on capture, intercept, replay and AI automation, this release adds an inde
 
 ![Hx0 HawkEye 1.0.7 release poster](https://github.com/user-attachments/assets/c8a626d3-47ce-4d36-b656-1fe96292dc49)
 
-*Feature figures show real browser UI. Local demonstration pages use fictional data. User-provided Fuzz screenshots are cropped; unrelated extensions, accounts, session data and interaction indicators are masked where present.*
+*Sample data illustrates the workflow.*
 
 <a id="whats-new"></a>
 ## What's new in 1.0.7?
@@ -297,11 +297,11 @@ Three-point walkthrough:
 3. Choose the mode, concurrency and delay. Check the preview and execution limit before starting. Four values at each of three points give **4 × 4 × 4 = 64** Cartesian combinations, plus one baseline request.
 4. Select a result and inspect the actual substituted request alongside the status, response length, timing and body. HTTP 200 alone does not indicate a vulnerability.
 
-![Three marked injection points in Replay; session data masked](https://github.com/user-attachments/assets/1cd1980e-aeef-446f-9fe7-5d34455fae3a)
+![Three marked injection points in Replay](https://github.com/user-attachments/assets/1cd1980e-aeef-446f-9fe7-5d34455fae3a)
 
 ![Independent payload lists, 64 combinations and request/response inspection](https://github.com/user-attachments/assets/edf0a1ae-05de-428d-871a-927f25475711)
 
-*User-provided screenshots of the real Chinese UI. Account regions were cropped and session data masked locally. Practice these steps on systems you own or are authorized to test.*
+*Practice these steps on systems you own or are authorized to test.*
 
 
 Passive full-body capture uses browser debugging APIs. Some cross-origin `no-cors` responses remain restricted by Chromium. Render and ordinary replay do not bypass browser security rules.
@@ -334,11 +334,11 @@ In 1.0.7, catalog lookup, recipe execution, comparison, code generation / decodi
 
 ### 3.11 Feature introductions and updates
 
-New installations and upgrades display **11 liquid-glass feature cards**, once per new build. Previous / next, Get started and Close controls remain visible.
+After installation or an upgrade, the feature tour introduces the main features and their entry points. Start using HawkEye after the tour, or close it at any time.
 
 When the official GitHub service is reachable, the extension attempts an update check at least daily. Offline or unreachable intranet environments are skipped quietly, without interrupting local work. An available update adds a red dot above the footer version link, which opens the official project.
 
-Detection goes beyond a version string such as `1.0.7`: it prioritizes numeric versions and official build identifiers, including multiple releases with the same version. For older releases without identifiers, it compares the upload time of the **official ZIP for the current browser** with the embedded build time. A difference exceeding 24 hours produces a “possibly updated package” notice. README edits and release-description edits do not count, and packages are not downloaded or installed automatically.
+Update notices track the **official ZIP for your browser**. Editing the README or release description alone does not trigger an update notice. When a possible update is shown, review the official release page before downloading and installing it.
 
 ---
 
@@ -475,7 +475,7 @@ b25476afb54ef792a360292a2ba3b582567b12883c65e7d03c9be0e74cd90108  Hx0-HawkEye-Ch
 c6609c26e5aa9f042f22123f5d28ea529cdb14a6611c2b895e3754ae998a1782  Hx0-HawkEye-Firefox-V1.0.7-Official.Release.zip
 ```
 
-This release intentionally ships **no CRX or XPI**. Chrome restricts or disables non-store CRX installs, while release Firefox requires signed XPI packages. ZIP-only distribution keeps runtime contents inspectable and allows browser-specific installation; see the Developer Edition persistence steps below. The archives contain no unobfuscated extension development source, build scripts, source maps, secrets, or debug files; the standalone MCP Server MJS is also obfuscated for distribution and runs directly with Node.js, with runtime diagnostics available for troubleshooting.
+This release provides **two ZIP packages: Chrome and Firefox**. Extract and load the Chrome package in Chrome / Edge, or load the Firefox package temporarily. For a Firefox installation that survives restarts, follow the Developer Edition guide below.
 
 
 
@@ -489,7 +489,7 @@ HawkEye installation directory/
 └── mcp-server/
 ```
 
-The Chrome figure is a real isolated-browser screenshot; the Firefox figure is a step diagram. Neither contains personal accounts or unrelated extensions. Follow the equivalent button names below.
+Choose the instructions for your browser below. The Firefox temporary-install figure is a step diagram.
 
 ### Chrome / Edge / Chromium
 
@@ -532,7 +532,7 @@ For an installation that **survives browser restarts**, use [Firefox Developer E
 
 ![Official Developer Edition: HawkEye remains enabled after restart](https://github.com/user-attachments/assets/dffb31b6-d1b3-42a5-85cf-858c094f2c6c)
 
-*Real screenshot from an isolated profile. The yellow verification notice indicates an unsigned package, rather than an extension runtime failure. Enabled status and retention after restart were verified.*
+*The yellow verification notice indicates an unsigned package. Confirm HawkEye is enabled and remains installed after restarting the browser.*
 
 The official download remains ZIP-only; your locally renamed XPI is not Mozilla-signed. The package includes a stable Firefox add-on ID. Persistent means retained across restarts, not guaranteed compatibility with every future browser release. Restoring signature enforcement can disable unsigned extensions.
 
@@ -629,7 +629,7 @@ The authors and contributors **assume no liability** for **unauthorized testing*
 <a id="history"></a>
 ## 13. 1.0.1 Changelog
 
-> The v1.0.1–v1.0.6 sections and images retain their original release details in full. For current behavior and edition boundaries, use the v1.0.7 guidance on this page.
+> The sections below describe earlier features and updates, with screenshots of the UI at the time. Follow the v1.0.7 guidance on this page for current controls and edition boundaries.
 
 This `1.0.1` update primarily focuses on the enhancement of two professional edition capabilities:
 
@@ -830,11 +830,11 @@ Agent Mode requires an active trial or Professional license. It starts from the 
 
 ### 3. Extreme performance and low resource use
 
-Firefox no longer keeps passive capture listeners alive unnecessarily: `webRequest` listeners exist only while their feature state requires them. DOM snapshots, ref assignment, list rows, capture notifications, MutationObserver reuse, Agent transport, and MCP transport now use one-pass traversal, caches, batching, compact envelopes, and bounded pagination. Large results remain resumable through `next_cursor`, preserving evidence while reducing transfer and memory cost.
+Lower Firefox background resource use and improved large-page reading, capture-list updates and Agent / MCP responsiveness. Large results can be read in pages, keeping workflows responsive without losing evidence.
 
 ### 4. Default-off Skills and a strict allowlist
 
-The 19 pentest and 28 CTF built-in sub-modules now include the v1.0.6 runtime contract. Skills are off in new Agent conversations. Both Advanced Settings enablement and the current conversation's Skills control must be on; otherwise Skill bodies never enter model context and Agent cannot bypass the user's selection.
+Updated the built-in knowledge for 19 pentest and 28 CTF sub-modules. Skills are off in new Agent conversations. Both Advanced Settings enablement and the current conversation's Skills control must be on; otherwise Skill bodies never enter model context and Agent cannot bypass the user's selection.
 
 ### 5. Community capabilities opened since v1.0.5
 
@@ -845,7 +845,7 @@ Smart Proxy Router, Full Deep Search, and Sensitive Information Matching (built-
 - Capture history distinguishes current domain, current tab, and all records. Cross-subdomain requests remain visible under the originating tab. Intercept queues refresh automatically, and missing original request or response bodies show diagnostics.
 - Replay opens in Pretty by default; edits in Pretty or Raw are sent. WebSocket frames, batch replay, AI analysis, and dark-link results have clearer feedback.
 - Settings delete confirmations use in-extension dialogs. Firefox shortcut buttons match Chrome; English persona content updates when switching language, and dark-link settings remain scrollable in short popups and rule names wrap. Pending Agent approvals can be reopened from the waiting indicator, while backdrop and Escape no longer dismiss the approval dialog.
-- Local MCP Server 1.0.13 improves setup and connection diagnostics. Extension scripts in the official Chrome and Firefox ZIPs are obfuscated.
+- Local MCP Server 1.0.13 improves setup and connection diagnostics.
 
 ---
 
@@ -856,8 +856,8 @@ Smart Proxy Router, Full Deep Search, and Sensitive Information Matching (built-
 - **Four official page assistants:** refined scrolling, spacing, synchronized selection, shortcuts, AI results and analysis suggestions; mail review includes local EML support.
 - **Agent / MCP and micro Fuzz:** 44 task ideas, task-dependent page concurrency, Markdown-table rendering and three-point Fuzz; local MCP Server 1.0.14.
 - **Release experience:** 11 onboarding cards, shown once per new build for new and existing users; daily online checks of official packages, including same-version builds.
-- **Stability and diagnostics:** fixes for invalid URL patterns, unhandled callbacks, stale extension-context calls and late results after cancellation; improved search-error detection and fallback.
+- **Stability and diagnostics:** improved target URL matching, page interaction after upgrades and cancellation feedback; clearer search failures and fallback options.
 
-See the illustrated [feature walkthroughs](#features) and [quick start](#quick-start). The full 1.0.1–1.0.6 changelogs remain on this page; a [separate history archive](./CHANGELOG_ARCHIVE_EN.md) is also available.
+See the illustrated [feature walkthroughs](#features) and [quick start](#quick-start). The 1.0.1–1.0.6 changelogs are on this page; a [separate history archive](./CHANGELOG_ARCHIVE_EN.md) is also available.
 
 <!-- HX0_BUILD_INFO {"schema":1,"builds":{"Chrome":{"version":"1.0.7","platform":"Chrome","buildId":"915703e2f7190443358d95de121c4b6350bef5142758bb339e8d46f0fcf47df7","builtAt":"2026-10-11T22:25:33.876Z"},"Firefox":{"version":"1.0.7","platform":"Firefox","buildId":"4c836c4ec69e7da6ff41d906263eb63780983d608d8ea3e4e4edce87bd0d6cd5","builtAt":"2026-10-11T22:25:33.876Z"}}} -->

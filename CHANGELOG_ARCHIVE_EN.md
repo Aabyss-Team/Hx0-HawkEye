@@ -2,11 +2,11 @@
 
 [Back to 1.0.7](./README_EN.md)
 
-> Preserved from the official historical README, including original images. Refer to the 1.0.7 main page for current editions, installation and behavior.
+> Features and updates from v1.0.1–v1.0.6, with screenshots of the UI at the time. See the [v1.0.7 main page](./README_EN.md) for current controls, installation and edition boundaries.
 
 ## 13. 1.0.1 Changelog
 
-> The v1.0.1–v1.0.5 sections record their original releases. For current behavior and edition boundaries, use the v1.0.6 (0930) guidance on this page.
+> These entries describe each release at the time. Follow the [v1.0.7 main page](./README_EN.md) for current instructions.
 
 This `1.0.1` update primarily focuses on the enhancement of two professional edition capabilities:
 
@@ -207,11 +207,11 @@ Agent Mode requires an active trial or Professional license. It starts from the 
 
 ### 3. Extreme performance and low resource use
 
-Firefox no longer keeps passive capture listeners alive unnecessarily: `webRequest` listeners exist only while their feature state requires them. DOM snapshots, ref assignment, list rows, capture notifications, MutationObserver reuse, Agent transport, and MCP transport now use one-pass traversal, caches, batching, compact envelopes, and bounded pagination. Large results remain resumable through `next_cursor`, preserving evidence while reducing transfer and memory cost.
+Lower Firefox background resource use and improved large-page reading, capture-list updates and Agent / MCP responsiveness. Large results can be read in pages, keeping workflows responsive without losing evidence.
 
 ### 4. Default-off Skills and a strict allowlist
 
-The 19 pentest and 28 CTF built-in sub-modules now include the v1.0.6 runtime contract. Skills are off in new Agent conversations. Both Advanced Settings enablement and the current conversation's Skills control must be on; otherwise Skill bodies never enter model context and Agent cannot bypass the user's selection.
+Updated the built-in knowledge for 19 pentest and 28 CTF sub-modules. Skills are off in new Agent conversations. Both Advanced Settings enablement and the current conversation's Skills control must be on; otherwise Skill bodies never enter model context and Agent cannot bypass the user's selection.
 
 ### 5. Community capabilities opened since v1.0.5
 
@@ -222,4 +222,4 @@ Smart Proxy Router, Full Deep Search, and Sensitive Information Matching (built-
 - Capture history distinguishes current domain, current tab, and all records. Cross-subdomain requests remain visible under the originating tab. Intercept queues refresh automatically, and missing original request or response bodies show diagnostics.
 - Replay opens in Pretty by default; edits in Pretty or Raw are sent. WebSocket frames, batch replay, AI analysis, and dark-link results have clearer feedback.
 - Settings delete confirmations use in-extension dialogs. Firefox shortcut buttons match Chrome; English persona content updates when switching language, and dark-link settings remain scrollable in short popups and rule names wrap. Pending Agent approvals can be reopened from the waiting indicator, while backdrop and Escape no longer dismiss the approval dialog.
-- Local MCP Server 1.0.13 improves setup and connection diagnostics. Extension scripts in the official Chrome and Firefox ZIPs are obfuscated.
+- Local MCP Server 1.0.13 improves setup and connection diagnostics.
