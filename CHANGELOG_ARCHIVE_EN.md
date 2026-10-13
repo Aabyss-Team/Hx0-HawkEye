@@ -29,18 +29,18 @@ This `1.0.1` update primarily focuses on the enhancement of two professional edi
   <img width="1548" height="940" alt="image" src="https://github.com/user-attachments/assets/e255ea62-6817-4ad3-815e-c1f7b40c77e2" />
 
   
-- **Stability Improvements**: Concurrently strengthened details related to request header completion and proxy release in the standard capture mode, reducing display discrepancies and the probability of conflicts when switching between standard mode, intercept mode, and proxy settings.
+- **Stability Improvements**: Improved request-header display and reliability when switching between normal capture, interception and proxy settings.
 - **Sidebar and Batch Page Optimization**: Sidebar message display and interaction optimization (consistent across both ends), overall layout optimization of batch pages.  
 - **Enhanced In-Page Replay and In-Page Fuzz Functions**: Updated to support form POST (Request Header Content-Type: application/x-www-form-urlencoded).
 - **Replay Workspace Optimized**:  Encoding/decoding functions now support response body processing, added scope differentiation, and unified undo/redo records for both requests and responses.
 - **“All domains” filter**: Fixed incorrect list or filter behavior when the host filter is set to “All domains” and it interacts with the workbench scope (current tab vs all traffic).
 - **Capture / intercept list**: Column widths can be adjusted by dragging the vertical handles on the right side of each header cell; widths are saved locally and restored the next time you open the panel.
-- **302 / redirect capture**: Improved how redirects (e.g. 302) are recorded and deduplicated across webRequest and passive CDP paths, reducing duplicate entries and missed captures caused by inconsistent typing.
+- **302 / redirect capture**: Improved recording of redirects (e.g. 302), with fewer missed requests and duplicate entries.
 - **Three-state header sorting**: The capture / intercept table headers cycle default → ascending → descending → default. The Fuzz results table uses the same pattern; clearing sort restores the original row order by sequence; clicking a column-width handle does not trigger sorting.
 
 ## 14. 1.0.2 Changelog
 
-This `v1.0.2` release strengthens **HTTP replay headers**, adds a **WebSocket workbench**, expands the **AI Task Console** (**in-task hints** + **orchestration improvements**), and brings **intercept** to the Community Edition—boosting Web assessments, CTF workflows, and daily capture analysis.
+This `v1.0.2` release strengthens **HTTP replay headers**, adds a **WebSocket workbench**, expands the **AI Task Console** (**in-task hints**), and brings **intercept** to the Community Edition—boosting Web assessments, CTF workflows, and daily capture analysis.
 
 <img width="1055" height="1491" alt="v1 0 2海报-en" src="https://github.com/user-attachments/assets/98ec2d5e-e410-40c3-92fd-088a87f2d467" />
 
@@ -74,7 +74,7 @@ The AI Task Module currently supports two modes:
 
   <img width="3912" height="2070" alt="27e66bc42b733225d16ceccd9e78eed7" src="https://github.com/user-attachments/assets/a00c9dc2-8203-4a2a-aadd-ee32971d0138" />
 
-The AI Task module records execution, evidence, key payloads, Flag hits, and final reports; while **running**, use toolbar **Supplementary hints** to **queue** context for later turns **without replacing** the pre-launch brief. The underlying **multi-stage adaptive orchestration** is continuously hardened (tool chain, budgets, readability). See in-product User Manual §10.
+AI Tasks record execution, request evidence, key payloads, Flag hits and final reports. Use **Supplementary hints** while a task runs to provide new information for its next steps. See the in-product User Manual §10.
 
 ### 3. Interception Mode Is Now Available in the Community Edition
 
@@ -92,14 +92,14 @@ Enable **WebSocket** under capture types, then filter by type in the sidebar; ha
 
 ### 5. AI Tasks: In-Task Supplementary Hints
 
-While a task **runs**, expand **Supplementary hints**, enter newly noticed parameters, reflections, paths, or CTF hints, and **Submit**; entries are **queued** with timestamps and appended as **runtime user supplementary hints** for later model turns, with per-turn and queue size caps. **Do not** paste real secrets; redaction and authorization rules match the full AI workflow.
+While a task runs, expand **Supplementary hints**, enter newly discovered parameters, responses, paths or CTF hints, and choose **Submit**. The task considers these details in later steps. Individual submissions and the queue have length limits; follow the interface prompts and do not paste real passwords.
 
 <img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/6634413a-4d35-4e2f-b286-5c7a88c29c84" />
 <img width="1548" height="942" alt="image" src="https://github.com/user-attachments/assets/c40d4f83-6d44-46a6-b8e3-d170f274c2f7" />
 
-### 6. AI Tasks: Orchestration and Execution Improvements
+### 6. AI Tasks: Execution Improvements
 
-The **AI Task Console** multi-stage adaptive pipeline is tightened: **multi-turn agent** loops with real HTTP evidence, **structured runtime memory** (including failure memory aligned with sidebar metrics), and **protocol checks / replanning** for steadier stages and CTF early-finalize paths.
+AI Tasks use earlier request evidence and failed steps to adjust their plans. Once the goal is met or a Flag is found, they organize results into a report.
 
 ---
 
@@ -134,7 +134,7 @@ This `v1.0.4` release brings four main updates:
 
 ### 1. Tampermonkey Scripts + Page Script Workspace (Pro)
 
-Import `.user.js` userscripts and manage them in the sidebar with one-click inject. AI can create or optimize scripts from traffic and tie them into capture, replay, and sensitive scanning. Human-written scripts, AI-written scripts, and AI-orchestrated scripts share one workflow.
+Import `.user.js` userscripts and manage them in the sidebar with one-click inject. AI can create or optimize scripts from traffic and tie them into capture, replay, and sensitive scanning. Use scripts you write, scripts created with AI, or scripts run by AI Tasks in the same workspace.
 
 <img width="3046" height="1688" alt="041bc1f31c42a9d53fedf9c92b972b9a" src="https://github.com/user-attachments/assets/067a5dab-9e00-4cd9-a964-012d5733f8d5" />
 
@@ -153,7 +153,6 @@ More stable intercept for local labs and self-signed HTTPS; fixes regressions su
 
 Fixes Firefox capture, sidebar, intercept, replay, and script injection; daily experience is further aligned across Chrome and Firefox.
 
-> See `1.0.4更新说明` in the repo for the full release notes.
 
 ---
 
@@ -163,7 +162,7 @@ This `v1.0.5` release brings four main updates:
 
 ### 1. AI Task Console Overhaul (Core Release)
 
-Execution log redesigned as a **timeline card stream** (color-coded stage / AI / test / tool-call cards; expandable tool JSON); **draggable split** between log and report; **task background AI understanding** before launch; reports include **vulnerability inventory + request/response evidence**; built-in `crypto.logic.analyze` and `codec.transform` for advanced crypto workflows.
+Execution records appear on a timeline with expandable tool results. Drag the divider to adjust the log and report widths. Before starting, AI can help interpret the task brief. Reports include **findings and request / response evidence**, with support for encryption-logic analysis and advanced codec operations.
 
 <img width="1526" height="891" alt="image" src="https://github.com/user-attachments/assets/a1e25ad7-7aa1-4b01-a42f-adec0a4dbcc6" />
 
@@ -205,13 +204,13 @@ Agent Mode requires an active trial or Professional license. It starts from the 
 
 <img width="1500" height="900" alt="v1.0.6 Browser-level Agent" src="https://github.com/user-attachments/assets/b9491db0-727c-4a09-8020-0f87abd97efe" />
 
-### 3. Extreme performance and low resource use
+### 3. Performance and resource use
 
 Lower Firefox background resource use and improved large-page reading, capture-list updates and Agent / MCP responsiveness. Large results can be read in pages, keeping workflows responsive without losing evidence.
 
-### 4. Default-off Skills and a strict allowlist
+### 4. Choose which Skills Agent uses
 
-Updated the built-in knowledge for 19 pentest and 28 CTF sub-modules. Skills are off in new Agent conversations. Both Advanced Settings enablement and the current conversation's Skills control must be on; otherwise Skill bodies never enter model context and Agent cannot bypass the user's selection.
+The built-in knowledge base includes 19 pentest and 28 CTF sub-modules. Skills are off in new Agent chats. To use them, select available skills in Advanced Settings and enable **Skills** in the current chat.
 
 ### 5. Community capabilities opened since v1.0.5
 
