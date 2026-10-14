@@ -21,6 +21,19 @@ Built on capture, intercept, replay and AI automation, this release adds an inde
 <a id="whats-new"></a>
 ## What's new in 1.0.7?
 
+<a id="update-20261015"></a>
+### 2026.10/15 Update
+
+> This update builds on **v1.0.7** for both Chrome and Firefox.
+>
+> - **AI scene suggestions**: generate three or four useful work, learning, daily-life or entertainment ideas from the page, recent conversation, selected persona and Skills, and opted-in historical memory. Click to send; Refresh beside the pills requests another batch. Network failures can show labeled generic suggestions.
+> - **User-controlled suggestions**: a new Advanced-setting switch is on by default. Turn it off to hide the AI pills, stop suggestion generation and cancel pending requests; built-in home-screen task cards remain available with local Refresh to save tokens and local inference work. Normal chat and task execution continue.
+> - **Main panel startup**: faster main-panel startup after clicking the extension icon, with a fix for capture UI sometimes requiring a second click.
+> - **Agent question dialogs**: text and file requests use the composer; decisions offer concrete choices. Dismissed question dialogs can be reopened from their pending-reply bubble.
+> - **Codec accuracy**: preserve UTF-8 BOMs and fix CTR counter carry, empty-input handling, Quoted-Printable line wrapping and HTML entity compatibility.
+> - **MCP setup guidance**: correctly escaped Windows JSON/TOML paths. If no usable download path is available, locate the bundled `mcp-server/hawkeye-mcp-server.mjs` in the actual extension installation, then verify the file before configuring it.
+> - **Bilingual documentation**: direct navigation to Advanced model settings, plus updated guidance for the toggle, recommendation context, Refresh, fallback behavior and MCP server lookup.
+
 This release turns individual data operations into reusable workflows, and connects page signals to results you can verify.
 
 | Core update | What it helps you do | Where to start |
@@ -30,7 +43,7 @@ This release turns individual data operations into reusable workflows, and conne
 | **Text / JSON comparison and binary recovery** | Find meaningful response changes; recover original files from Hex / Base64 | Codec → Text / JSON comparison; Output → Save to file |
 | **QR / barcodes and IP network tools** | Generate and read codes offline; calculate IPv4 / IPv6 addresses and ranges precisely | Codec → corresponding tab |
 | **Four official page assistants** | Page intelligence, decoding, pentest analysis and phishing mail review alongside the page | Scripts → select assistant → Inject into current page |
-| **Agent and MCP integration** | 44 task ideas, goal/plan modes and resumable work; 4 concurrent chats, @ references and shared workbench tools | [Agent workspace and attachments](#agent-workspace); Basic settings → HawkEye Browser Automation MCP |
+| **Agent and MCP integration** | AI scene suggestions, goal/plan modes and resumable work; 4 concurrent chats, @ references and shared workbench tools | [Agent workspace and attachments](#agent-workspace); Basic settings → HawkEye Browser Automation MCP |
 | **Context, attachments and file delivery** | Per-model image settings, real bookmarks, image/code inputs, local scanning, live editing and report downloads | Agent → model menu / @ references / ＋ attachments |
 | **Queued Agent follow-ups** | Queue follow-ups or send them now, retry failed sends with messages and attachments retained; other chats keep running | Agent → waiting queue → Send now |
 | **Three-point micro Fuzz** | Configure multiple parameters and preview a bounded test before running it | Replay → mark injection points → micro Fuzz |
@@ -131,7 +144,7 @@ Core flow: **Capture** (optional **WebSocket**) → **Filter** → **Detail** �
 | **Independent codec workbench (1.0.7)** | 147 operation entries, recipes of up to 16 steps, parameters, live processing and recipe import / export; each basic or advanced operation checks its edition entitlement. |
 | **Smart decoding and data comparison (1.0.7)** | Multi-layer candidates and paths, locally verified AI suggestions, text / JSON comparison and original-byte file recovery; IP, QR and barcode tools are also available. |
 | **Four official page assistants (1.0.7)** | Page intelligence, smart decoding, penetration analysis and phishing mail review, with manual injection, match rules and script shortcuts. |
-| **Feature tour and update notices (1.0.7)** | 13 cards introduce feature entry points; daily official update checks for your browser when online. |
+| **Feature tour and update notices (1.0.7)** | A feature tour introduces the main entry points; daily official update checks for your browser when online. |
 
 
 **Chrome and Firefox** differ in sidebar hosting, response-body capture, and intercept prompts. Chrome passive listening works only when the browser exposes a body; Firefox has no equivalent switch. See the in-extension manual for limits.
@@ -258,7 +271,7 @@ The scripts workbench also imports `.user.js` and ordinary JavaScript, with edit
 
 ![Agent home with task ideas for AI decoding, JSON comparison, recipes and three-point Fuzz](https://github.com/user-attachments/assets/616ffa38-4914-48f7-a3d1-5f90a19941bf)
 
-**PRO** Agent Mode connects the current browser to HawkEye tools. Its **44 task ideas** appear four at a time, with **Show more**. Goal mode, plan mode, deep thinking, Skills, execution records, saved progress and task recovery are available.
+**PRO** Agent Mode connects the current browser to HawkEye tools. When enabled, AI scene suggestions generate **three or four ideas** from the page and conversation. Click to execute or Refresh; turn them off in Advanced settings to save tokens. Goal mode, plan mode, deep thinking, Skills, execution records, saved progress and task recovery are available.
 
 <a id="agent-workspace"></a>
 #### Workspace, references and attachment updates
@@ -345,7 +358,7 @@ In 1.0.7, catalog lookup, recipe execution, comparison, code generation / decodi
 
 ### 3.11 Feature introductions and updates
 
-After installation or an upgrade, the feature tour introduces the main features and their entry points. Start using HawkEye after the tour, or close it at any time. The 13 cards now include two Agent updates: concurrent chats with queued follow-ups, and @ references with attachments and file delivery.
+After installation or an upgrade, the feature tour introduces the main features and their entry points. Start using HawkEye after the tour, or close it at any time.
 
 When the official GitHub service is reachable, the extension attempts an update check at least daily. Offline or unreachable intranet environments are skipped quietly, without interrupting local work. An available update adds a red dot above the footer version link, which opens the official project.
 
@@ -862,10 +875,10 @@ Smart Proxy Router, Full Deep Search, and Sensitive Information Matching (built-
 - **Independent codec workbench:** 147 operation entries and recipes of up to 16 steps, with one workspace for basic data processing and advanced parameterized operations.
 - **Smart decoding and practical data tools:** multi-layer paths, locally verified AI suggestions, Morse punctuation, text / JSON comparison, binary-file recovery, IP and QR / barcode tools.
 - **Four official page assistants:** shortcuts, AI results and analysis suggestions, with improved reading and controls; mail review supports local EML files.
-- **Agent / MCP and micro Fuzz:** 44 task ideas, task-dependent page concurrency, Markdown-table rendering and three-point Fuzz; local MCP Server 1.0.14.
-- **Feature tour and update notices:** 13 cards introduce feature entry points, with daily online checks for official updates.
+- **Agent / MCP and micro Fuzz:** AI scene suggestions, task-dependent page concurrency, Markdown-table rendering and three-point Fuzz; local MCP Server 1.0.14.
+- **Feature tour and update notices:** A feature tour introduces the main entry points, with daily online checks for official updates.
 - **Stability and diagnostics:** improved target URL matching, page interaction after upgrades and cancellation feedback; clearer search failures and fallback options.
 
 See the illustrated [feature walkthroughs](#features) and [quick start](#quick-start). The 1.0.1–1.0.6 changelogs are on this page; a [separate history archive](./CHANGELOG_ARCHIVE_EN.md) is also available.
 
-<!-- HX0_BUILD_INFO {"schema":1,"builds":{"Chrome":{"version":"1.0.7","platform":"Chrome","buildId":"9d8ce49d564238d0e67c1f3ee64148c3cc153d372abac69f602da379fabfc177","builtAt":"2026-10-12T22:39:07.242Z"},"Firefox":{"version":"1.0.7","platform":"Firefox","buildId":"bc0aafddbd6cf70d59bba263aa98fe8710e616cb35156531a0c93885d86ecfd0","builtAt":"2026-10-12T22:39:07.242Z"}}} -->
+<!-- HX0_BUILD_INFO {"schema":1,"builds":{"Chrome":{"version":"1.0.7","platform":"Chrome","buildId":"bb8bac43ddd976ee66c757ed2af316fafe236ae14c15d6fb9fc9bff977eaa292","builtAt":"2026-10-14T22:44:13.080Z"},"Firefox":{"version":"1.0.7","platform":"Firefox","buildId":"19f1b92493bf66f48499a8bf17431312ede77a164737c7d16278ae1f1734a512","builtAt":"2026-10-14T22:44:14.148Z"}}} -->
